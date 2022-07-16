@@ -35,8 +35,10 @@ internal struct CharacterAffiliation: Decodable, Equatable {
 }
 
 internal struct CharacterImages: Decodable, Equatable {
-    internal let gridURL: String
-    internal let pageURL: String
+    @FailableDecodable
+    internal var gridURL: URL?
+    @FailableDecodable
+    internal var pageURL: URL?
     
     private enum CodingKeys: String, CodingKey {
         case gridURL = "grid_url"

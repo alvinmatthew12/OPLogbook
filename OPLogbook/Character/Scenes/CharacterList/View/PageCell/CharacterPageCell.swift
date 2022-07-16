@@ -39,7 +39,7 @@ internal final class CharacterPageCell: UICollectionViewCell {
     }
     
     internal func setupData(_ data: Character) {
-        imageView.url = URL(string: data.images.pageURL)
+        imageView.url = data.images.pageURL
         epithetLabel.text = data.epithet
         nameLabel.text = data.name
         affiliationImageView.image = UIImage(named: data.affiliation.imageName)

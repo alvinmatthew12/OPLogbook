@@ -14,36 +14,26 @@ public class OPImageView: UIView {
     
     public var url: URL? {
         didSet {
-            if isVisible {
-                fetchImage(url: url)
-            }
+            setup()
         }
     }
     
     public var image: UIImage? {
         didSet {
-            if isVisible {
-                setLocalImage(image)
-            }
+            setup()
         }
     }
     
     public var imageShape: DisplayRadius = .none {
         didSet {
-            if isVisible {
-                setupCornerRadius()
-            }
+            setupCornerRadius()
         }
-    }
-    
-    private var calculatedSize: CGSize {
-        isVisible ? self.bounds.size : CGSize.zero
     }
     
     private var imageCornerRadius: CGFloat {
         switch imageShape {
         case .circle:
-            return max(calculatedSize.width, 0)
+            return max(self.bounds.size.width, 0)
         case let .rect(cornerRadius):
             return cornerRadius
         case .none:
@@ -63,33 +53,20 @@ public class OPImageView: UIView {
         }
     }
     
-    private var isFetchingImage: Bool = false {
-        didSet {
-            guard isFetchingImage != oldValue else { return }
-            configShimmerView()
-        }
-    }
-    
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override public func awakeFromNib() {
-        super.awakeFromNib()
-        setup()
-    }
+    private var isFetchingImage: Bool = false
     
     private func setup() {
         backgroundColor = .clear
         contentMode = .scaleAspectFit
-        
-        imageView.fixInView(self)
         setupCornerRadius()
+        
+        if imageView.isDescendant(of: self) == false {
+            imageView.fixInView(self)
+        }
+        if shimmerView.isDescendant(of: self) == false {
+            shimmerView.layer.zPosition = -1
+            shimmerView.fixInView(self)
+        }
         
         if let image = image {
             setLocalImage(image)
@@ -113,9 +90,11 @@ public class OPImageView: UIView {
             .onProgress { receivedSize, totalSize in  }
             .onSuccess { [weak self] result in
                 self?.isFetchingImage = false
+                self?.shimmerView.removeFromSuperview()
             }
             .onFailure { [weak self] error in
                 self?.isFetchingImage = false
+                self?.shimmerView.removeFromSuperview()
             }
             .set(to: imageView)
     }
@@ -123,14 +102,5 @@ public class OPImageView: UIView {
     private func setupCornerRadius() {
         self.clipsToBounds = true
         self.layer.cornerRadius = imageCornerRadius
-    }
-    
-    private func configShimmerView() {
-        if isFetchingImage {
-            shimmerView.layer.zPosition = -1
-            shimmerView.fixInView(self)
-        } else {
-            shimmerView.removeFromSuperview()
-        }
     }
 }

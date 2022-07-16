@@ -52,7 +52,7 @@ internal final class CharacterListViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        collectionView.fixInViewSafeArea(self.view)
+        collectionView.fixInView(self.view, toSafeArea: true)
         collectionView.dataSource = self
         collectionView.delegate = self
         setupCollectionLayout()
@@ -132,7 +132,7 @@ extension CharacterListViewController: UICollectionViewDataSource, UICollectionV
         let character = characters[indexPath.item]
         if isGridMode {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterGridCell.identifier, for: indexPath) as? CharacterGridCell {
-                cell.setupData(character)
+                cell.imageView.url = character.images.gridURL
                 return cell
             }
         } else {

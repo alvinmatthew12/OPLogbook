@@ -10,7 +10,7 @@ import UIKit
 internal final class CharacterGridCell: UICollectionViewCell {
     internal static let identifier = "CharacterGridCell"
     
-    private let imageView: OPImageView = {
+    internal let imageView: OPImageView = {
         let imageView = OPImageView()
         imageView.imageShape = .rect(cornerRadius: 12)
         return imageView
@@ -28,9 +28,5 @@ internal final class CharacterGridCell: UICollectionViewCell {
     override internal func prepareForReuse() {
         super.prepareForReuse()
         imageView.url = nil
-    }
-    
-    internal func setupData(_ data: Character) {
-        imageView.url = URL(string: data.images.gridURL)
     }
 }
