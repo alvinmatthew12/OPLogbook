@@ -5,6 +5,8 @@
 //  Created by Alvin Matthew Pratama on 16/07/22.
 //
 
+import RxCocoa
+import RxSwift
 import UIKit
 
 internal final class CharacterPageCell: UICollectionViewCell {
@@ -20,12 +22,20 @@ internal final class CharacterPageCell: UICollectionViewCell {
     @IBOutlet private weak var exploreButton: OPButton!
     @IBOutlet private weak var shortDescription: UILabel!
     
+    internal var disposeBag = DisposeBag()
+    internal var didTapExploreButton: (() -> Void)?
+    
     override internal func awakeFromNib() {
         super.awakeFromNib()
         affiliationContainerView.clipsToBounds = true
         affiliationContainerView.layer.cornerRadius = 8
         shortDescription.textColor = .typographyColor
         
+        exploreButton.rx.tap.asDriver()
+            .drive(onNext: { [weak self] in
+                self?.didTapExploreButton?()
+            })
+            .disposed(by: disposeBag)
     }
     
     internal func setupData(_ data: Character) {

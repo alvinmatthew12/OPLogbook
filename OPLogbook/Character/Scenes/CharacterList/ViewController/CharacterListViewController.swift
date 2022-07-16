@@ -10,7 +10,13 @@ import RxSwift
 import UIKit
 
 internal final class CharacterListViewController: UIViewController {
-    @IBOutlet private weak var collectionView: UICollectionView!
+    private let collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
+    }()
+    
     private let layoutModeButton = OPButton(
         title: "",
         mode: .image(UIImage(unifyIcon: .carousel)),
@@ -46,14 +52,11 @@ internal final class CharacterListViewController: UIViewController {
     }
     
     private func setupCollectionView() {
+        collectionView.fixInViewSafeArea(self.view)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        
         setupCollectionLayout()
-        
-        collectionView.register(CharacterGridCell.nib, forCellWithReuseIdentifier: CharacterGridCell.identifier)
+        collectionView.register(CharacterGridCell.self, forCellWithReuseIdentifier: CharacterGridCell.identifier)
         collectionView.register(CharacterPageCell.nib, forCellWithReuseIdentifier: CharacterPageCell.identifier)
     }
     
@@ -113,6 +116,11 @@ internal final class CharacterListViewController: UIViewController {
             layoutModeButton.mode = .image(UIImage(unifyIcon: .grid))
         }
     }
+    
+    private func navigateToDetail(_ characterID: String) {
+        let vc = CharacterDetailViewController(id: characterID)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension CharacterListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -130,6 +138,9 @@ extension CharacterListViewController: UICollectionViewDataSource, UICollectionV
         } else {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterPageCell.identifier, for: indexPath) as? CharacterPageCell {
                 cell.setupData(character)
+                cell.didTapExploreButton = { [weak self, character] in
+                    self?.navigateToDetail(character.id)
+                }
                 return cell
             }
         }
@@ -145,5 +156,11 @@ extension CharacterListViewController: UICollectionViewDataSource, UICollectionV
         } else {
             return collectionView.bounds.size
         }
+    }
+    
+    internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard isGridMode else { return }
+        let character = characters[indexPath.item]
+        navigateToDetail(character.id)
     }
 }

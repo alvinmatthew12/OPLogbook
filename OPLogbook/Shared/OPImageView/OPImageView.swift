@@ -63,18 +63,6 @@ public class OPImageView: UIView {
         }
     }
     
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .clear
-        contentMode = .scaleAspectFit
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        backgroundColor = .clear
-        contentMode = .scaleAspectFit
-    }
-    
     private var isFetchingImage: Bool = false {
         didSet {
             guard isFetchingImage != oldValue else { return }
@@ -82,8 +70,24 @@ public class OPImageView: UIView {
         }
     }
     
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
+        setup()
+    }
+    
+    private func setup() {
+        backgroundColor = .clear
+        contentMode = .scaleAspectFit
+        
         imageView.fixInView(self)
         setupCornerRadius()
         

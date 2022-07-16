@@ -8,7 +8,7 @@
 import RxSwift
 
 extension JSONDecoder {
-    public func readJson<T: Decodable>(fileName: String, keyPath: String? = nil, bundle: Bundle = Bundle.main) -> Observable<Result<T, NetworkError>> {
+    public func readJson<T: Decodable>(_ type: T.Type = T.self, fileName: String, keyPath: String? = nil, bundle: Bundle = Bundle.main) -> Observable<Result<T, NetworkError>> {
         guard let url = bundle.url(forResource: fileName, withExtension: "json") else { return .just(.failure(.serverError)) }
         let decoder = JSONDecoder()
         do {

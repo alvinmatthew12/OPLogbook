@@ -8,14 +8,26 @@
 import UIKit
 
 internal final class CharacterGridCell: UICollectionViewCell {
-    internal static let nib = UINib(nibName: "CharacterGridCell", bundle: nil)
     internal static let identifier = "CharacterGridCell"
     
-    @IBOutlet weak var imageView: OPImageView!
-    
-    override internal func awakeFromNib() {
-        super.awakeFromNib()
+    private let imageView: OPImageView = {
+        let imageView = OPImageView()
         imageView.imageShape = .rect(cornerRadius: 12)
+        return imageView
+    }()
+    
+    override internal init(frame: CGRect) {
+        super.init(frame: frame)
+        imageView.fixInView(self.contentView)
+    }
+    
+    required internal init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override internal func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.url = nil
     }
     
     internal func setupData(_ data: Character) {

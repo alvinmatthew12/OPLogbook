@@ -24,13 +24,24 @@ extension UIView {
         return isVisible(view: self, inView: self.superview)
     }
     
-    public func fixInView(_ container: UIView) -> Void {
+    public func fixInView(_ container: UIView) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.frame = container.frame
+        self.frame = container.bounds
         container.addSubview(self)
         NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: container, attribute: .leading, multiplier: 1.0, constant: 0).isActive = true
         NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: container, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true
         NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: container, attribute: .top, multiplier: 1.0, constant: 0).isActive = true
         NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: container, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
+    }
+    
+    public func fixInViewSafeArea(_ container: UIView) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.frame = container.bounds
+        container.addSubview(self)
+        let guide = container.safeAreaLayoutGuide
+        NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: guide, attribute: .leading, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: guide, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: guide, attribute: .top, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: guide, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
     }
 }

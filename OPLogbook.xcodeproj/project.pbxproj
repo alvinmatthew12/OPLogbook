@@ -23,7 +23,6 @@
 		E1A95FB1288256A4009367EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A95FAF288256A4009367EA /* LaunchScreen.storyboard */; };
 		E1A95FC228825D2E009367EA /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95FC128825D2E009367EA /* ViewModelType.swift */; };
 		E1EAEEE428825E2A00C6425B /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEE228825E2A00C6425B /* CharacterListViewController.swift */; };
-		E1EAEEE528825E2A00C6425B /* CharacterListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1EAEEE328825E2A00C6425B /* CharacterListViewController.xib */; };
 		E1EAEEE82882620A00C6425B /* Characters.json in Resources */ = {isa = PBXBuildFile; fileRef = E1EAEEE72882620A00C6425B /* Characters.json */; };
 		E1EAEEEC2882625C00C6425B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEEB2882625C00C6425B /* Character.swift */; };
 		E1EAEEF02882642800C6425B /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEEF2882642800C6425B /* CharacterListViewModel.swift */; };
@@ -31,7 +30,6 @@
 		E1EAEEF62882656F00C6425B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEF52882656F00C6425B /* NetworkError.swift */; };
 		E1EAEEF82882662900C6425B /* JSONDecoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEF72882662900C6425B /* JSONDecoder+Extension.swift */; };
 		E1EAEEFD28826E1F00C6425B /* CharacterGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEFB28826E1F00C6425B /* CharacterGridCell.swift */; };
-		E1EAEEFE28826E1F00C6425B /* CharacterGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1EAEEFC28826E1F00C6425B /* CharacterGridCell.xib */; };
 		E1EAEF02288275EC00C6425B /* UnifyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEF01288275EC00C6425B /* UnifyIcon.swift */; };
 		E1EAEF05288276C700C6425B /* UIColor+UnifyColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEF04288276C700C6425B /* UIColor+UnifyColors.swift */; };
 		E1EAEF082882788800C6425B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEF072882788800C6425B /* UIColor+Extension.swift */; };
@@ -39,6 +37,8 @@
 		E1FC27D62882B3FA00F85279 /* OPImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC27D52882B3FA00F85279 /* OPImageView+Extension.swift */; };
 		E1FC27D82882B73C00F85279 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC27D72882B73C00F85279 /* UIView+Extension.swift */; };
 		E1FC27DB2882C26F00F85279 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC27DA2882C26F00F85279 /* ShimmerView.swift */; };
+		E1FC27E02882E85700F85279 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC27DE2882E85700F85279 /* CharacterDetailViewController.swift */; };
+		E1FC27E42882E92100F85279 /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC27E32882E92100F85279 /* CharacterDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +62,6 @@
 		E1A95FB2288256A4009367EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1A95FC128825D2E009367EA /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		E1EAEEE228825E2A00C6425B /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
-		E1EAEEE328825E2A00C6425B /* CharacterListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterListViewController.xib; sourceTree = "<group>"; };
 		E1EAEEE72882620A00C6425B /* Characters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Characters.json; sourceTree = "<group>"; };
 		E1EAEEEB2882625C00C6425B /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		E1EAEEEF2882642800C6425B /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
@@ -70,7 +69,6 @@
 		E1EAEEF52882656F00C6425B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		E1EAEEF72882662900C6425B /* JSONDecoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extension.swift"; sourceTree = "<group>"; };
 		E1EAEEFB28826E1F00C6425B /* CharacterGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGridCell.swift; sourceTree = "<group>"; };
-		E1EAEEFC28826E1F00C6425B /* CharacterGridCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterGridCell.xib; sourceTree = "<group>"; };
 		E1EAEF01288275EC00C6425B /* UnifyIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifyIcon.swift; sourceTree = "<group>"; };
 		E1EAEF04288276C700C6425B /* UIColor+UnifyColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+UnifyColors.swift"; sourceTree = "<group>"; };
 		E1EAEF072882788800C6425B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -78,6 +76,8 @@
 		E1FC27D52882B3FA00F85279 /* OPImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OPImageView+Extension.swift"; sourceTree = "<group>"; };
 		E1FC27D72882B73C00F85279 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E1FC27DA2882C26F00F85279 /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
+		E1FC27DE2882E85700F85279 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
+		E1FC27E32882E92100F85279 /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +209,7 @@
 		E1A95FC928825DCE009367EA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E1FC27DC2882E68E00F85279 /* CharacterDetail */,
 				E1A95FC428825D8B009367EA /* CharacterList */,
 			);
 			path = Scenes;
@@ -218,7 +219,6 @@
 			isa = PBXGroup;
 			children = (
 				E1EAEEE228825E2A00C6425B /* CharacterListViewController.swift */,
-				E1EAEEE328825E2A00C6425B /* CharacterListViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -298,7 +298,6 @@
 			isa = PBXGroup;
 			children = (
 				E1EAEEFB28826E1F00C6425B /* CharacterGridCell.swift */,
-				E1EAEEFC28826E1F00C6425B /* CharacterGridCell.xib */,
 			);
 			path = GridCell;
 			sourceTree = "<group>";
@@ -356,6 +355,31 @@
 				E1FC27DA2882C26F00F85279 /* ShimmerView.swift */,
 			);
 			path = ShimmerView;
+			sourceTree = "<group>";
+		};
+		E1FC27DC2882E68E00F85279 /* CharacterDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E1FC27E22882E91200F85279 /* ViewModel */,
+				E1FC27DD2882E6A400F85279 /* ViewController */,
+			);
+			path = CharacterDetail;
+			sourceTree = "<group>";
+		};
+		E1FC27DD2882E6A400F85279 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E1FC27DE2882E85700F85279 /* CharacterDetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E1FC27E22882E91200F85279 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E1FC27E32882E92100F85279 /* CharacterDetailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,8 +445,6 @@
 				E15CDF7B288283100099D91C /* CharacterPageCell.xib in Resources */,
 				E1A95FB1288256A4009367EA /* LaunchScreen.storyboard in Resources */,
 				E1A95FAE288256A4009367EA /* Assets.xcassets in Resources */,
-				E1EAEEE528825E2A00C6425B /* CharacterListViewController.xib in Resources */,
-				E1EAEEFE28826E1F00C6425B /* CharacterGridCell.xib in Resources */,
 				E1EAEEE82882620A00C6425B /* Characters.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,8 +519,10 @@
 				E15CDF82288295880099D91C /* OPButton.swift in Sources */,
 				E1FC27D82882B73C00F85279 /* UIView+Extension.swift in Sources */,
 				E1EAEEF82882662900C6425B /* JSONDecoder+Extension.swift in Sources */,
+				E1FC27E02882E85700F85279 /* CharacterDetailViewController.swift in Sources */,
 				E1EAEF02288275EC00C6425B /* UnifyIcon.swift in Sources */,
 				E15CDF8628829BFD0099D91C /* UIFont+Extension.swift in Sources */,
+				E1FC27E42882E92100F85279 /* CharacterDetailViewModel.swift in Sources */,
 				E1A95FC228825D2E009367EA /* ViewModelType.swift in Sources */,
 				E15CDF882882AE650099D91C /* UIButton+BarButtonItem.swift in Sources */,
 			);
