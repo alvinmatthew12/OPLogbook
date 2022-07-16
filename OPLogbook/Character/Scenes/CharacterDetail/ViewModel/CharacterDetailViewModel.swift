@@ -23,7 +23,7 @@ internal final class CharacterDetailViewModel: ViewModelType {
     }
     
     internal struct Output {
-        internal let character: Driver<Character>
+        internal let components: Driver<[CharacterDetailComponent]>
         internal let networkError: Driver<NetworkError>
     }
     
@@ -41,6 +41,15 @@ internal final class CharacterDetailViewModel: ViewModelType {
                 return data
             }
         
+        let components = character
+            .flatMapLatest { character -> Driver<[CharacterDetailComponent]> in
+                let components: [CharacterDetailComponent] = [
+                    .image(character.images.detailURL)
+                ]
+                return .just(components)
+            }
+            
+        
         let networkError = response
             .compactMap { result -> NetworkError? in
                 guard case let .failure(error) = result else { return nil }
@@ -48,7 +57,7 @@ internal final class CharacterDetailViewModel: ViewModelType {
             }
         
         return Output(
-            character: character,
+            components: components,
             networkError: networkError
         )
     }

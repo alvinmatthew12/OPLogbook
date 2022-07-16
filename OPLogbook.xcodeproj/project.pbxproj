@@ -24,6 +24,8 @@
 		E1A95FC228825D2E009367EA /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95FC128825D2E009367EA /* ViewModelType.swift */; };
 		E1DF10FD28832DE80024D31B /* CharacterDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF10FC28832DE80024D31B /* CharacterDetailImageCell.swift */; };
 		E1DF1100288330BA0024D31B /* FailableDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF10FF288330BA0024D31B /* FailableDecodable.swift */; };
+		E1DF11022883391D0024D31B /* CharacterDetailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF11012883391D0024D31B /* CharacterDetailComponent.swift */; };
+		E1DF110428833A760024D31B /* CharacterDetailViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF110328833A760024D31B /* CharacterDetailViewController+CollectionView.swift */; };
 		E1EAEEE428825E2A00C6425B /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEE228825E2A00C6425B /* CharacterListViewController.swift */; };
 		E1EAEEE82882620A00C6425B /* Characters.json in Resources */ = {isa = PBXBuildFile; fileRef = E1EAEEE72882620A00C6425B /* Characters.json */; };
 		E1EAEEEC2882625C00C6425B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEEB2882625C00C6425B /* Character.swift */; };
@@ -65,6 +67,8 @@
 		E1A95FC128825D2E009367EA /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		E1DF10FC28832DE80024D31B /* CharacterDetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailImageCell.swift; sourceTree = "<group>"; };
 		E1DF10FF288330BA0024D31B /* FailableDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableDecodable.swift; sourceTree = "<group>"; };
+		E1DF11012883391D0024D31B /* CharacterDetailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailComponent.swift; sourceTree = "<group>"; };
+		E1DF110328833A760024D31B /* CharacterDetailViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterDetailViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		E1EAEEE228825E2A00C6425B /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		E1EAEEE72882620A00C6425B /* Characters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Characters.json; sourceTree = "<group>"; };
 		E1EAEEEB2882625C00C6425B /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				E1DF10FB28832DB10024D31B /* ImageCell */,
+				E1DF11012883391D0024D31B /* CharacterDetailComponent.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				E1FC27DE2882E85700F85279 /* CharacterDetailViewController.swift */,
+				E1DF110328833A760024D31B /* CharacterDetailViewController+CollectionView.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -543,6 +549,7 @@
 				E1EAEF05288276C700C6425B /* UIColor+UnifyColors.swift in Sources */,
 				E1FC27DB2882C26F00F85279 /* ShimmerView.swift in Sources */,
 				E15CDF84288295BC0099D91C /* OPButton+Extension.swift in Sources */,
+				E1DF110428833A760024D31B /* CharacterDetailViewController+CollectionView.swift in Sources */,
 				E1EAEEFD28826E1F00C6425B /* CharacterGridCell.swift in Sources */,
 				E1EAEEF02882642800C6425B /* CharacterListViewModel.swift in Sources */,
 				E1EAEEF32882648600C6425B /* CharacterUseCase.swift in Sources */,
@@ -550,6 +557,7 @@
 				E15CDF82288295880099D91C /* OPButton.swift in Sources */,
 				E1FC27D82882B73C00F85279 /* UIView+Extension.swift in Sources */,
 				E1EAEEF82882662900C6425B /* JSONDecoder+Extension.swift in Sources */,
+				E1DF11022883391D0024D31B /* CharacterDetailComponent.swift in Sources */,
 				E1FC27E02882E85700F85279 /* CharacterDetailViewController.swift in Sources */,
 				E1EAEF02288275EC00C6425B /* UnifyIcon.swift in Sources */,
 				E1DF1100288330BA0024D31B /* FailableDecodable.swift in Sources */,

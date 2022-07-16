@@ -15,11 +15,25 @@ internal final class CharacterDetailImageCell: UICollectionViewCell {
     override internal init(frame: CGRect) {
         super.init(frame: frame)
         
-        imageView.fixInView(self.contentView, attributes: [.top, .leading, .trailing])
-        imageView.heightAnchor.constraint(equalToConstant: 350).isActive = true
+        contentView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.fixInView(contentView)
     }
 
     required internal init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    override internal func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        super.preferredLayoutAttributesFitting(layoutAttributes)
+        
+        setNeedsLayout()
+        layoutIfNeeded()
+        
+        let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
+        var frame = layoutAttributes.frame
+        frame.size.height = ceil(size.height)
+        layoutAttributes.frame = frame
+        return layoutAttributes
     }
 }

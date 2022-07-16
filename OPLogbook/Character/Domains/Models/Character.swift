@@ -39,9 +39,12 @@ internal struct CharacterImages: Decodable, Equatable {
     internal var gridURL: URL?
     @FailableDecodable
     internal var pageURL: URL?
+    @FailableDecodable
+    internal var detailURL: URL?
     
     private enum CodingKeys: String, CodingKey {
         case gridURL = "grid_url"
         case pageURL = "page_url"
+        case detailURL = "detail_url"
     }
 }

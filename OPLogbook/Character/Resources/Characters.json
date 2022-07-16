@@ -13,7 +13,8 @@
             },
             "images": {
                 "grid_url": "https://i.ibb.co/QPGmF7F/luffy-grid-image.png",
-                "page_url": "https://i.ibb.co/bz4c2tX/luffy-page-image.png"
+                "page_url": "https://i.ibb.co/bz4c2tX/luffy-page-image.png",
+                "detail_url": "https://i.ibb.co/BwWtx17/luffy-detail-image.png"
             }
         },
         {
@@ -29,7 +30,8 @@
             },
             "images": {
                 "grid_url": "https://i.ibb.co/MgQs6w9/zoro-grid-image.png",
-                "page_url": "https://i.ibb.co/QXD9Lf0/zoro-page-image.png"
+                "page_url": "https://i.ibb.co/QXD9Lf0/zoro-page-image.png",
+                "detail_url": "https://i.ibb.co/jHKbcGN/zoro-detail-image.png"
             }
         }
     ]

@@ -55,9 +55,23 @@ public class OPImageView: UIView {
     
     private var isFetchingImage: Bool = false
     
-    private func setup() {
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
         backgroundColor = .clear
         contentMode = .scaleAspectFit
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override public func awakeFromNib() {
+        super.awakeFromNib()
+        backgroundColor = .clear
+        contentMode = .scaleAspectFit
+    }
+    
+    private func setup() {
         setupCornerRadius()
         
         if imageView.isDescendant(of: self) == false {
