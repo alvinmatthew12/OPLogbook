@@ -10,6 +10,7 @@ import Kingfisher
 
 public class OPImageView: UIView {
     private let imageView = UIImageView()
+    private let shimmerView = ShimmerView()
     
     public var url: URL? {
         didSet {
@@ -74,22 +75,27 @@ public class OPImageView: UIView {
         contentMode = .scaleAspectFit
     }
     
-    private var isFetchingImage: Bool = false
+    private var isFetchingImage: Bool = false {
+        didSet {
+            guard isFetchingImage != oldValue else { return }
+            configShimmerView()
+        }
+    }
     
     override public func awakeFromNib() {
         super.awakeFromNib()
+        imageView.fixInView(self)
+        setupCornerRadius()
         
         if let image = image {
             setLocalImage(image)
-        } else {
+        } else if let url = url {
             fetchImage(url: url)
         }
-        setupCornerRadius()
     }
     
     private func setLocalImage(_ image: UIImage?) {
         imageView.image = image
-        setupImageViewSize()
     }
     
     private func fetchImage(url: URL?) {
@@ -97,32 +103,30 @@ public class OPImageView: UIView {
         isFetchingImage = true
         
         KF.url(url)
-          .loadDiskFileSynchronously()
-          .cacheMemoryOnly()
-          .fade(duration: 0.25)
-          .onProgress { receivedSize, totalSize in  }
-          .onSuccess { [weak self] result in
-              self?.isFetchingImage = false
-              self?.setupImageViewSize()
-          }
-          .onFailure { [weak self] error in
-              self?.isFetchingImage = false
-          }
-          .set(to: imageView)
-    }
-    
-    private func setupImageViewSize() {
-        addSubview(imageView)
-        imageView.frame = self.frame
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+            .loadDiskFileSynchronously()
+            .cacheMemoryOnly()
+            .fade(duration: 0.25)
+            .onProgress { receivedSize, totalSize in  }
+            .onSuccess { [weak self] result in
+                self?.isFetchingImage = false
+            }
+            .onFailure { [weak self] error in
+                self?.isFetchingImage = false
+            }
+            .set(to: imageView)
     }
     
     private func setupCornerRadius() {
         self.clipsToBounds = true
         self.layer.cornerRadius = imageCornerRadius
+    }
+    
+    private func configShimmerView() {
+        if isFetchingImage {
+            shimmerView.layer.zPosition = -1
+            shimmerView.fixInView(self)
+        } else {
+            shimmerView.removeFromSuperview()
+        }
     }
 }

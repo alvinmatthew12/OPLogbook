@@ -27,4 +27,8 @@ extension UIColor {
     public static var baseWhite: UIColor {
         getColorByName("baseWhite")
     }
+    
+    public static var neutralColor: UIColor {
+        getColorByName("neutralColor")
+    }
 }
