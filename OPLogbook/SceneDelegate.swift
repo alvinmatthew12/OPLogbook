@@ -20,8 +20,18 @@ public final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         let rootNavigationController = UINavigationController(rootViewController: CharacterListViewController())
         rootNavigationController.view.backgroundColor = .baseWhite
+        setupNavigationControllerAppearance()
         window.rootViewController = rootNavigationController
         window.makeKeyAndVisible()
+    }
+    
+    private func setupNavigationControllerAppearance() {
+        let attributes = [
+            NSAttributedString.Key.font:  UIFont.systemFont(ofSize: 0.1),
+            NSAttributedString.Key.foregroundColor: UIColor.clear
+        ]
+        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .highlighted)
     }
 
     public func sceneDidDisconnect(_ scene: UIScene) {
