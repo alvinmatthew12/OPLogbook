@@ -35,11 +35,11 @@ internal struct CharacterAffiliation: Decodable, Equatable {
 }
 
 internal struct CharacterImages: Decodable, Equatable {
-    internal let gridImageName: String
-    internal let pageImageName: String
+    internal let gridURL: String
+    internal let pageURL: String
     
     private enum CodingKeys: String, CodingKey {
-        case gridImageName = "grid_image_name"
-        case pageImageName = "page_image_name"
+        case gridURL = "grid_url"
+        case pageURL = "page_url"
     }
 }

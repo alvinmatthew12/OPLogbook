@@ -12,8 +12,8 @@
                 "image_name": "strawhat-jolly-roger"
             },
             "images": {
-                "grid_image_name": "luffy-grid-image",
-                "page_image_name": "luffy-page-image"
+                "grid_url": "https://i.ibb.co/QPGmF7F/luffy-grid-image.png",
+                "page_url": "https://i.ibb.co/bz4c2tX/luffy-page-image.png"
             }
         },
         {
@@ -28,8 +28,8 @@
                 "image_name": "strawhat-jolly-roger"
             },
             "images": {
-                "grid_image_name": "zoro-grid-image",
-                "page_image_name": "zoro-page-image"
+                "grid_url": "https://i.ibb.co/MgQs6w9/zoro-grid-image.png",
+                "page_url": "https://i.ibb.co/QXD9Lf0/zoro-page-image.png"
             }
         }
     ]

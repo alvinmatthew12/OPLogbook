@@ -35,6 +35,9 @@
 		E1EAEF02288275EC00C6425B /* UnifyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEF01288275EC00C6425B /* UnifyIcon.swift */; };
 		E1EAEF05288276C700C6425B /* UIColor+UnifyColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEF04288276C700C6425B /* UIColor+UnifyColors.swift */; };
 		E1EAEF082882788800C6425B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEF072882788800C6425B /* UIColor+Extension.swift */; };
+		E1FC27D42882B3C600F85279 /* OPImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC27D32882B3C600F85279 /* OPImageView.swift */; };
+		E1FC27D62882B3FA00F85279 /* OPImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC27D52882B3FA00F85279 /* OPImageView+Extension.swift */; };
+		E1FC27D82882B73C00F85279 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC27D72882B73C00F85279 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +73,9 @@
 		E1EAEF01288275EC00C6425B /* UnifyIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifyIcon.swift; sourceTree = "<group>"; };
 		E1EAEF04288276C700C6425B /* UIColor+UnifyColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+UnifyColors.swift"; sourceTree = "<group>"; };
 		E1EAEF072882788800C6425B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		E1FC27D32882B3C600F85279 /* OPImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPImageView.swift; sourceTree = "<group>"; };
+		E1FC27D52882B3FA00F85279 /* OPImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OPImageView+Extension.swift"; sourceTree = "<group>"; };
+		E1FC27D72882B73C00F85279 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +254,7 @@
 				E15CDF7E288291010099D91C /* Double+Extension.swift */,
 				E15CDF8528829BFD0099D91C /* UIFont+Extension.swift */,
 				E15CDF872882AE650099D91C /* UIButton+BarButtonItem.swift */,
+				E1FC27D72882B73C00F85279 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -297,6 +304,7 @@
 		E1EAEEFF288275D400C6425B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E1FC27D22882B3B700F85279 /* OPImageView */,
 				E15CDF80288295530099D91C /* OPButton */,
 				E1EAEF062882787800C6425B /* Extensions */,
 				E1EAEF03288276B600C6425B /* UnifyColor */,
@@ -328,6 +336,15 @@
 				E15CDF7C288289F70099D91C /* UICollectionView+Carousel.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E1FC27D22882B3B700F85279 /* OPImageView */ = {
+			isa = PBXGroup;
+			children = (
+				E1FC27D32882B3C600F85279 /* OPImageView.swift */,
+				E1FC27D52882B3FA00F85279 /* OPImageView+Extension.swift */,
+			);
+			path = OPImageView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -453,6 +470,7 @@
 				E15CDF7628827B360099D91C /* UIImage+UnifyIcons.swift in Sources */,
 				E1A95FA5288256A2009367EA /* AppDelegate.swift in Sources */,
 				E1EAEF082882788800C6425B /* UIColor+Extension.swift in Sources */,
+				E1FC27D62882B3FA00F85279 /* OPImageView+Extension.swift in Sources */,
 				E15CDF7F288291010099D91C /* Double+Extension.swift in Sources */,
 				E1EAEEEC2882625C00C6425B /* Character.swift in Sources */,
 				E15CDF7A288283100099D91C /* CharacterPageCell.swift in Sources */,
@@ -463,7 +481,9 @@
 				E1EAEEFD28826E1F00C6425B /* CharacterGridCell.swift in Sources */,
 				E1EAEEF02882642800C6425B /* CharacterListViewModel.swift in Sources */,
 				E1EAEEF32882648600C6425B /* CharacterUseCase.swift in Sources */,
+				E1FC27D42882B3C600F85279 /* OPImageView.swift in Sources */,
 				E15CDF82288295880099D91C /* OPButton.swift in Sources */,
+				E1FC27D82882B73C00F85279 /* UIView+Extension.swift in Sources */,
 				E1EAEEF82882662900C6425B /* JSONDecoder+Extension.swift in Sources */,
 				E1EAEF02288275EC00C6425B /* UnifyIcon.swift in Sources */,
 				E15CDF8628829BFD0099D91C /* UIFont+Extension.swift in Sources */,

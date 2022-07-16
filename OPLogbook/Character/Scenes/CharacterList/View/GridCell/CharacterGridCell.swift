@@ -11,17 +11,14 @@ internal final class CharacterGridCell: UICollectionViewCell {
     internal static let nib = UINib(nibName: "CharacterGridCell", bundle: nil)
     internal static let identifier = "CharacterGridCell"
     
-    @IBOutlet private weak var containerView: UIView!
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: OPImageView!
     
     override internal func awakeFromNib() {
         super.awakeFromNib()
-        
-        containerView.layer.cornerRadius = 12
-        containerView.clipsToBounds = true
+        imageView.imageShape = .rect(cornerRadius: 12)
     }
     
     internal func setupData(_ data: Character) {
-        imageView.image = UIImage(named: data.images.gridImageName)
+        imageView.url = URL(string: data.images.gridURL)
     }
 }

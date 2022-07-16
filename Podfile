@@ -8,5 +8,6 @@ target 'OPLogbook' do
   # Pods for OPLogbook
   pod 'RxSwift', '6.5.0'
   pod 'RxCocoa', '6.5.0'
+  pod 'Kingfisher', '~> 7.0'
 
 end

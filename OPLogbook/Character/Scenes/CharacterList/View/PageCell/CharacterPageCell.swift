@@ -11,7 +11,7 @@ internal final class CharacterPageCell: UICollectionViewCell {
     internal static let nib = UINib(nibName: "CharacterPageCell", bundle: nil)
     internal static let identifier = "CharacterPageCell"
 
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: OPImageView!
     @IBOutlet private weak var epithetLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var affiliationContainerView: UIView!
@@ -29,7 +29,7 @@ internal final class CharacterPageCell: UICollectionViewCell {
     }
     
     internal func setupData(_ data: Character) {
-        imageView.image = UIImage(named: data.images.pageImageName)
+        imageView.url = URL(string: data.images.pageURL)
         epithetLabel.text = data.epithet
         nameLabel.text = data.name
         affiliationImageView.image = UIImage(named: data.affiliation.imageName)
