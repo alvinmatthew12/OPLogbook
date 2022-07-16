@@ -1,0 +1,36 @@
+{
+    "data": [
+        {
+            "id": "1",
+            "name": "Monkey D. Luffy",
+            "epithet": "Straw Hat",
+            "bounty": 3000000000,
+            "short_description": "Monkey D. Luffy is the main protagonist of anime, One Piece. He is the founder and captain of the increasingly infamous and powerful Straw Hat Pirates, as well as one of its top fighters.",
+            "affiliation": {
+                "id": "1",
+                "name": "Straw Hat Pirates",
+                "image_name": "strawhat-jolly-roger"
+            },
+            "images": {
+                "grid_image_name": "luffy-grid-image",
+                "page_image_name": "luffy-page-image"
+            }
+        },
+        {
+            "id": "2",
+            "name": "Roronoa Zoro",
+            "epithet": "Pirate Hunter",
+            "bounty": 320000000,
+            "short_description": "Roronoa Zoro, also known as Pirate Hunter Zoro, is the combatant of the Straw Hat Pirates, and one of their two swordsmen. Formerly a bounty hunter, he is first to join Luffy's crew.",
+            "affiliation": {
+                "id": "1",
+                "name": "Straw Hat Pirates",
+                "image_name": "strawhat-jolly-roger"
+            },
+            "images": {
+                "grid_image_name": "zoro-grid-image",
+                "page_image_name": "zoro-page-image"
+            }
+        }
+    ]
+}
