@@ -18,9 +18,7 @@ internal final class CharacterDetailDescriptionCell: UICollectionViewCell {
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(label)
-        label.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        label.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20).isActive = true
-        label.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -20).isActive = true
+        label.fixInView(self.contentView, attributes: [.top, .leading, .trailing])
     }
 
     required internal init?(coder aDecoder: NSCoder) {

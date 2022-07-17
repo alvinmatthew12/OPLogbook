@@ -51,15 +51,24 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
         let width = collectionView.frame.size.width
         
         switch component.layout {
-        case let .fullWidth(height):
-            return CGSize(width: width, height: height)
+        case let .fullWidth(height, margins, lineSpacing):
+            let totalMargin: CGFloat = margins.left + margins.right
+            let _width = width - totalMargin
+            let _height = height + lineSpacing
+            return CGSize(width: _width, height: _height)
             
-        case let .staggered(height):
-            return CGSize(width: width / 2, height: height)
+        case let .staggered(height, margins, interItemSpacing, lineSpacing):
+            let totalMargin: CGFloat = margins.left + margins.right
+            let interItemHalf = (interItemSpacing / 2)
+            let _width = (width / 2) - interItemHalf - totalMargin
+            let _height = height + lineSpacing
+            return CGSize(width: _width, height: _height)
             
-        case let .dynamicText(attributedText, textLineSpacing, totalMargin, lineSpacing):
+        case let .dynamicText(attributedText, textLineSpacing, margins, lineSpacing):
             let textWidth = attributedText.size().width
             let textHeight: CGFloat = textLineSpacing
+            let totalMargin: CGFloat = margins.left + margins.right
+            
             let widthWithPadding = width - totalMargin
             
             let deltaWidth = textWidth / widthWithPadding
@@ -71,7 +80,8 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
             let containerHeight = max((textHeight * multiply), 50)
             let height = containerHeight + lineSpacing
             
-            return CGSize(width: width, height: height)
+            let _width = width - totalMargin
+            return CGSize(width: _width, height: height)
         }
     }
 }

@@ -186,6 +186,13 @@
 			path = Typography;
 			sourceTree = "<group>";
 		};
+		E170009B2884BCD700E7C254 /* VStackTileCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VStackTileCell;
+			sourceTree = "<group>";
+		};
 		E1A95F98288256A2009367EA = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +305,7 @@
 		E1DF10FA28832DAD0024D31B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E170009B2884BCD700E7C254 /* VStackTileCell */,
 				E170008C2884961700E7C254 /* DescriptionCell */,
 				E1700085288471F600E7C254 /* NameCell */,
 				E1DF10FB28832DB10024D31B /* ImageCell */,
