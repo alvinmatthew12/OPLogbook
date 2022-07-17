@@ -15,6 +15,10 @@
 		E15CDF84288295BC0099D91C /* OPButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15CDF83288295BC0099D91C /* OPButton+Extension.swift */; };
 		E15CDF8628829BFD0099D91C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15CDF8528829BFD0099D91C /* UIFont+Extension.swift */; };
 		E15CDF882882AE650099D91C /* UIButton+BarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15CDF872882AE650099D91C /* UIButton+BarButtonItem.swift */; };
+		E170007D28845B0500E7C254 /* CharacterListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E170007C28845B0500E7C254 /* CharacterListViewController.xib */; };
+		E170008128845C8A00E7C254 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E170007F28845C8A00E7C254 /* CharacterDetailViewController.swift */; };
+		E170008228845C8A00E7C254 /* CharacterDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E170008028845C8A00E7C254 /* CharacterDetailViewController.xib */; };
+		E170008428845CAA00E7C254 /* CharacterDetailViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E170008328845CAA00E7C254 /* CharacterDetailViewController+CollectionView.swift */; };
 		E1A95FA5288256A2009367EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95FA4288256A2009367EA /* AppDelegate.swift */; };
 		E1A95FA7288256A2009367EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95FA6288256A2009367EA /* SceneDelegate.swift */; };
 		E1A95FAE288256A4009367EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A95FAD288256A4009367EA /* Assets.xcassets */; };
@@ -55,6 +59,10 @@
 		E15CDF83288295BC0099D91C /* OPButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OPButton+Extension.swift"; sourceTree = "<group>"; };
 		E15CDF8528829BFD0099D91C /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		E15CDF872882AE650099D91C /* UIButton+BarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+BarButtonItem.swift"; sourceTree = "<group>"; };
+		E170007C28845B0500E7C254 /* CharacterListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterListViewController.xib; sourceTree = "<group>"; };
+		E170007F28845C8A00E7C254 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
+		E170008028845C8A00E7C254 /* CharacterDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailViewController.xib; sourceTree = "<group>"; };
+		E170008328845CAA00E7C254 /* CharacterDetailViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterDetailViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		E1A95FA1288256A2009367EA /* OPLogbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OPLogbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A95FA4288256A2009367EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1A95FA6288256A2009367EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +130,16 @@
 				E15CDF83288295BC0099D91C /* OPButton+Extension.swift */,
 			);
 			path = OPButton;
+			sourceTree = "<group>";
+		};
+		E170007E28845C7700E7C254 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E170007F28845C8A00E7C254 /* CharacterDetailViewController.swift */,
+				E170008028845C8A00E7C254 /* CharacterDetailViewController.xib */,
+				E170008328845CAA00E7C254 /* CharacterDetailViewController+CollectionView.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		E1A95F98288256A2009367EA = {
@@ -217,6 +235,7 @@
 		E1A95FCA28825DE7009367EA /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E170007C28845B0500E7C254 /* CharacterListViewController.xib */,
 				E1EAEEE228825E2A00C6425B /* CharacterListViewController.swift */,
 				E1DF11052883454C0024D31B /* CharacterListViewController+TransitioningDelegate.swift */,
 			);
@@ -387,6 +406,7 @@
 			children = (
 				E1DF10FA28832DAD0024D31B /* View */,
 				E1FC27E22882E91200F85279 /* ViewModel */,
+				E170007E28845C7700E7C254 /* ViewController */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -459,10 +479,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E170007D28845B0500E7C254 /* CharacterListViewController.xib in Resources */,
 				E1A95FB1288256A4009367EA /* LaunchScreen.storyboard in Resources */,
 				E1A95FAE288256A4009367EA /* Assets.xcassets in Resources */,
 				E1EAEEE82882620A00C6425B /* Characters.json in Resources */,
 				E1C320932884428500311F8A /* CharacterListItemCell.xib in Resources */,
+				E170008228845C8A00E7C254 /* CharacterDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +552,7 @@
 				E1A95FA7288256A2009367EA /* SceneDelegate.swift in Sources */,
 				E1EAEF05288276C700C6425B /* UIColor+UnifyColors.swift in Sources */,
 				E1FC27DB2882C26F00F85279 /* ShimmerView.swift in Sources */,
+				E170008128845C8A00E7C254 /* CharacterDetailViewController.swift in Sources */,
 				E15CDF84288295BC0099D91C /* OPButton+Extension.swift in Sources */,
 				E1EAEEF02882642800C6425B /* CharacterListViewModel.swift in Sources */,
 				E1C320922884428500311F8A /* CharacterListItemCell.swift in Sources */,
@@ -544,6 +567,7 @@
 				E15CDF8628829BFD0099D91C /* UIFont+Extension.swift in Sources */,
 				E1FC27E42882E92100F85279 /* CharacterDetailViewModel.swift in Sources */,
 				E1A95FC228825D2E009367EA /* ViewModelType.swift in Sources */,
+				E170008428845CAA00E7C254 /* CharacterDetailViewController+CollectionView.swift in Sources */,
 				E15CDF882882AE650099D91C /* UIButton+BarButtonItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

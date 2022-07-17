@@ -92,16 +92,16 @@ public final class OPButton: UIButton {
         
         switch mode {
         case .fill:
-            backgroundColor = .primaryColor
+            backgroundColor = .TL10
             setTitleColor(.white, for: .normal)
         case .ghost:
             backgroundColor = UIColor.clear
             layer.borderWidth = 1
-            layer.borderColor = UIColor.primaryColor.cgColor
-            setTitleColor(.typographyColor, for: .normal)
+            layer.borderColor = UIColor.TL10.cgColor
+            setTitleColor(.BW50, for: .normal)
         case .text:
             backgroundColor = UIColor.clear
-            setTitleColor(.typographyColor, for: .normal)
+            setTitleColor(.BW50, for: .normal)
         case let .image(image):
             backgroundColor = UIColor.clear
             setImage(image, for: .normal)
@@ -133,7 +133,7 @@ public final class OPButton: UIButton {
     private func createActivityIndicator() -> UIActivityIndicatorView {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.color = UIColor.grayColor
+        activityIndicator.color = UIColor.GY50
         return activityIndicator
     }
 

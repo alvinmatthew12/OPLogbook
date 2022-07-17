@@ -8,10 +8,6 @@
 import UIKit
 
 extension UIColor {
-    private static func getColorByName(_ colorName: String) -> UIColor {
-        UIColor(named: colorName) ?? UIColor.black
-    }
-    
     private static func getColorByHexaRGB(_ hexaRGB: String) -> UIColor {
         UIColor(hexaRGB: hexaRGB) ?? UIColor.black
     }
@@ -38,25 +34,5 @@ extension UIColor {
     
     public static var GY50: UIColor {
         getColorByHexaRGB("6B6F74")
-    }
-    
-    public static var primaryColor: UIColor {
-        getColorByName("primaryColor")
-    }
-    
-    public static var grayColor: UIColor {
-        getColorByName("grayColor")
-    }
-    
-    public static var typographyColor: UIColor {
-        getColorByName("typographyColor")
-    }
-    
-    public static var baseWhite: UIColor {
-        getColorByName("baseWhite")
-    }
-    
-    public static var neutralColor: UIColor {
-        getColorByName("neutralColor")
     }
 }

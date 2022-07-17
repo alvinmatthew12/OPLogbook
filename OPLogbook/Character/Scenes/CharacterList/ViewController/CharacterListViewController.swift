@@ -10,23 +10,10 @@ import RxSwift
 import UIKit
 
 internal final class CharacterListViewController: UIViewController {
-    private let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 25
-        layout.minimumInteritemSpacing = 25
-        layout.sectionInset = UIEdgeInsets(top: 16, left: 30, bottom: 0, right: 30)
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
-        collectionView.setCollectionViewLayout(layout, animated: false)
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = .BB30
-        return collectionView
-    }()
-    
+    @IBOutlet private weak var collectionView: UICollectionView!
     internal var selectedCell: CharacterListItemCell?
     internal var selectedCellImageViewSnapshot: UIView?
-//    internal var animator: CharacterPageAnimator?
+    internal var animator: CharacterPageAnimator?
     
     private let disposeBag = DisposeBag()
     private let viewModel: CharacterListViewModel
@@ -44,14 +31,35 @@ internal final class CharacterListViewController: UIViewController {
     override internal func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Characters"
+        
+        setupBarButton()
         setupCollectionView()
         bindViewModel()
     }
     
+    private func setupBarButton() {
+        let menusButton = OPButton(title: "", mode: .image(.init(unifyIcon: .menus)), size: .micro)
+        let searchButton = OPButton(title: "", mode: .image(.init(unifyIcon: .search)), size: .micro)
+        navigationItem.leftBarButtonItem = menusButton.toBarButtonItem()
+        navigationItem.rightBarButtonItem = searchButton.toBarButtonItem()
+    }
+    
     private func setupCollectionView() {
-        collectionView.fixInView(self.view, toSafeArea: true)
+        collectionView.backgroundColor = .BB30
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 25
+        layout.minimumInteritemSpacing = 25
+        layout.sectionInset = UIEdgeInsets(top: 16, left: 30, bottom: 0, right: 30)
+        collectionView.setCollectionViewLayout(layout, animated: false)
+        
         collectionView.register(CharacterListItemCell.nib, forCellWithReuseIdentifier: CharacterListItemCell.identifier)
     }
     
@@ -77,12 +85,10 @@ internal final class CharacterListViewController: UIViewController {
     }
     
     private func presentDetailController(_ characterID: String) {
-//        let vc = CharacterDetailViewController(id: characterID)
-//        vc.transitioningDelegate = self
-//        vc.viewDidLoad()
-//
-//        vc.modalPresentationStyle = .fullScreen
-//        present(vc, animated: true)
+        let vc = CharacterDetailViewController(id: characterID)
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 }
 

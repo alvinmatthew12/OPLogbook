@@ -8,27 +8,27 @@
 import UIKit
 
 public enum UnifyIcon: String, Equatable {
-    case carousel
-    case grid
     case chevronLeft
+    case chevronRight
+    case menus
+    case search
 }
 
 extension UnifyIcon {
     public var fileName: String {
         switch self {
-        case .carousel:
-            return "ic-carousel"
-        case .grid:
-            return "ic-grid"
         case .chevronLeft:
             return "ic-chevron-left"
+        case .chevronRight:
+            return "ic-chevron-right"
+        case .menus:
+            return "ic-menus"
+        case .search:
+            return "ic-search"
         }
     }
     
     public var color: UIColor? {
-        switch self {
-        case .carousel, .grid, .chevronLeft:
-            return .primaryColor
-        }
+        return .GY50
     }
 }
