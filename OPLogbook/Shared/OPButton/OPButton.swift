@@ -104,7 +104,7 @@ public final class OPButton: UIButton {
             setTitleColor(.BW50, for: .normal)
         case let .image(image):
             backgroundColor = UIColor.clear
-            setImage(image, for: .normal)
+            setBackgroundImage(image, for: .normal)
             contentMode = .scaleAspectFit
             widthAnchor.constraint(equalToConstant: size.height).isActive = true
         }

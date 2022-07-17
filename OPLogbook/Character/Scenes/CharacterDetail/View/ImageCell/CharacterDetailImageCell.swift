@@ -7,7 +7,7 @@
 
 import UIKit
 
-internal final class CharacterDetailImageCell: UICollectionViewCell {
+internal final class CharacterDetailImageCell: CharacterDetailBaseCell {
     internal static let identifier = "CharacterDetailImageCell"
     
     internal let imageView = OPImageView()
@@ -18,23 +18,11 @@ internal final class CharacterDetailImageCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.fixInView(self, attributes: [.top, .leading, .trailing])
         imageView.backgroundColor = .red
-        contentView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+//        contentView.heightAnchor.constraint(equalToConstant: 270).isActive = true
     }
 
     required internal init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    override internal func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        super.preferredLayoutAttributesFitting(layoutAttributes)
-        
-        setNeedsLayout()
-        layoutIfNeeded()
-        
-        let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
-        var frame = layoutAttributes.frame
-        frame.size.height = ceil(size.height)
-        layoutAttributes.frame = frame
-        return layoutAttributes
     }
 }

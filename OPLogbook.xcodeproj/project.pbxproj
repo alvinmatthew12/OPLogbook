@@ -19,6 +19,9 @@
 		E170008128845C8A00E7C254 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E170007F28845C8A00E7C254 /* CharacterDetailViewController.swift */; };
 		E170008228845C8A00E7C254 /* CharacterDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E170008028845C8A00E7C254 /* CharacterDetailViewController.xib */; };
 		E170008428845CAA00E7C254 /* CharacterDetailViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E170008328845CAA00E7C254 /* CharacterDetailViewController+CollectionView.swift */; };
+		E17000872884726F00E7C254 /* CharacterDetailBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000862884726F00E7C254 /* CharacterDetailBaseCell.swift */; };
+		E170008A2884759900E7C254 /* CharacterDetailNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000882884759900E7C254 /* CharacterDetailNameCell.swift */; };
+		E170008B2884759900E7C254 /* CharacterDetailNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17000892884759900E7C254 /* CharacterDetailNameCell.xib */; };
 		E1A95FA5288256A2009367EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95FA4288256A2009367EA /* AppDelegate.swift */; };
 		E1A95FA7288256A2009367EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95FA6288256A2009367EA /* SceneDelegate.swift */; };
 		E1A95FAE288256A4009367EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A95FAD288256A4009367EA /* Assets.xcassets */; };
@@ -63,6 +66,9 @@
 		E170007F28845C8A00E7C254 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		E170008028845C8A00E7C254 /* CharacterDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailViewController.xib; sourceTree = "<group>"; };
 		E170008328845CAA00E7C254 /* CharacterDetailViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterDetailViewController+CollectionView.swift"; sourceTree = "<group>"; };
+		E17000862884726F00E7C254 /* CharacterDetailBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailBaseCell.swift; sourceTree = "<group>"; };
+		E17000882884759900E7C254 /* CharacterDetailNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailNameCell.swift; sourceTree = "<group>"; };
+		E17000892884759900E7C254 /* CharacterDetailNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailNameCell.xib; sourceTree = "<group>"; };
 		E1A95FA1288256A2009367EA /* OPLogbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OPLogbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A95FA4288256A2009367EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1A95FA6288256A2009367EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,11 +141,20 @@
 		E170007E28845C7700E7C254 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E170007F28845C8A00E7C254 /* CharacterDetailViewController.swift */,
 				E170008028845C8A00E7C254 /* CharacterDetailViewController.xib */,
+				E170007F28845C8A00E7C254 /* CharacterDetailViewController.swift */,
 				E170008328845CAA00E7C254 /* CharacterDetailViewController+CollectionView.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E1700085288471F600E7C254 /* NameCell */ = {
+			isa = PBXGroup;
+			children = (
+				E17000882884759900E7C254 /* CharacterDetailNameCell.swift */,
+				E17000892884759900E7C254 /* CharacterDetailNameCell.xib */,
+			);
+			path = NameCell;
 			sourceTree = "<group>";
 		};
 		E1A95F98288256A2009367EA = {
@@ -254,8 +269,10 @@
 		E1DF10FA28832DAD0024D31B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E1700085288471F600E7C254 /* NameCell */,
 				E1DF10FB28832DB10024D31B /* ImageCell */,
 				E1DF11012883391D0024D31B /* CharacterDetailComponent.swift */,
+				E17000862884726F00E7C254 /* CharacterDetailBaseCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -483,6 +500,7 @@
 				E1A95FB1288256A4009367EA /* LaunchScreen.storyboard in Resources */,
 				E1A95FAE288256A4009367EA /* Assets.xcassets in Resources */,
 				E1EAEEE82882620A00C6425B /* Characters.json in Resources */,
+				E170008B2884759900E7C254 /* CharacterDetailNameCell.xib in Resources */,
 				E1C320932884428500311F8A /* CharacterListItemCell.xib in Resources */,
 				E170008228845C8A00E7C254 /* CharacterDetailViewController.xib in Resources */,
 			);
@@ -543,6 +561,7 @@
 				E1A95FA5288256A2009367EA /* AppDelegate.swift in Sources */,
 				E1DF10FD28832DE80024D31B /* CharacterDetailImageCell.swift in Sources */,
 				E1EAEF082882788800C6425B /* UIColor+Extension.swift in Sources */,
+				E17000872884726F00E7C254 /* CharacterDetailBaseCell.swift in Sources */,
 				E1DF1108288345A00024D31B /* CharacterPageAnimator.swift in Sources */,
 				E1FC27D62882B3FA00F85279 /* OPImageView+Extension.swift in Sources */,
 				E15CDF7F288291010099D91C /* Double+Extension.swift in Sources */,
@@ -553,6 +572,7 @@
 				E1EAEF05288276C700C6425B /* UIColor+UnifyColors.swift in Sources */,
 				E1FC27DB2882C26F00F85279 /* ShimmerView.swift in Sources */,
 				E170008128845C8A00E7C254 /* CharacterDetailViewController.swift in Sources */,
+				E170008A2884759900E7C254 /* CharacterDetailNameCell.swift in Sources */,
 				E15CDF84288295BC0099D91C /* OPButton+Extension.swift in Sources */,
 				E1EAEEF02882642800C6425B /* CharacterListViewModel.swift in Sources */,
 				E1C320922884428500311F8A /* CharacterListItemCell.swift in Sources */,

@@ -18,7 +18,7 @@ public class OPImageView: UIView {
         }
     }
     
-    public var image: UIImage? {
+    public var imageName: String? {
         didSet {
             setup()
         }
@@ -67,7 +67,6 @@ public class OPImageView: UIView {
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = .clear
         contentMode = .scaleAspectFit
     }
     
@@ -82,15 +81,16 @@ public class OPImageView: UIView {
             shimmerView.fixInView(self)
         }
         
-        if let image = image {
-            setLocalImage(image)
+        if let imageName = imageName {
+            setLocalImage(imageName)
         } else if let url = url {
             fetchImage(url: url)
         }
     }
     
-    private func setLocalImage(_ image: UIImage?) {
-        imageView.image = image
+    private func setLocalImage(_ imageName: String) {
+        imageView.image = UIImage(named: imageName)
+        shimmerView.removeFromSuperview()
     }
     
     private func fetchImage(url: URL?) {

@@ -11,6 +11,7 @@ import UIKit
 
 internal final class CharacterDetailViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var backButton: UIButton!
     
     internal var imageView = OPImageView()
     
@@ -30,22 +31,24 @@ internal final class CharacterDetailViewController: UIViewController {
     override internal func viewDidLoad() {
         super.viewDidLoad()
         
+        DispatchQueue.main.async {
+            let screenSize = UIScreen.main.bounds.size
+            self.view.frame.size = screenSize
+        }
+        
         setupImageView()
         setupCollectionView()
         bindViewModel()
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
-            self.dismiss(animated: true, completion: nil)
-        }
+        setupRedux()
     }
     
     private func setupImageView() {
-        let width: CGFloat = collectionView.bounds.size.width
-        let padding: CGFloat = 30 + 12.5 + 10 // LR padding + interitem spacing
+        let width: CGFloat = view.bounds.size.width
+        let padding: CGFloat = 30 + 25 + 10 // LR padding + interitem spacing
         let itemWidth: CGFloat = (width / 2) - padding
         
         let itemCenter = (itemWidth / 2)
         let topConstraint = 123 - itemCenter
-        print(topConstraint)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.zPosition = -1
         imageView.imageShape = .rect(cornerRadius: 15)
@@ -53,7 +56,7 @@ internal final class CharacterDetailViewController: UIViewController {
         imageView.widthAnchor.constraint(equalToConstant: itemWidth).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: itemWidth).isActive = true
         imageView.topAnchor.constraint(equalTo: self.collectionView.topAnchor, constant: topConstraint).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: self.collectionView.centerXAnchor).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
     
     private func setupCollectionView() {
@@ -69,10 +72,8 @@ internal final class CharacterDetailViewController: UIViewController {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        layout.estimatedItemSize = CGSize(width: collectionView.frame.width, height: 50)
         collectionView.setCollectionViewLayout(layout, animated: false)
-        
-        collectionView.register(CharacterDetailImageCell.self, forCellWithReuseIdentifier: CharacterDetailImageCell.identifier)
+        registerCell(collectionView)
     }
     
     private func bindViewModel() {
@@ -98,6 +99,14 @@ internal final class CharacterDetailViewController: UIViewController {
         output.networkError
             .drive(onNext: { [weak self] error in
                 print(error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupRedux() {
+        backButton.rx.tap.asDriver()
+            .drive(onNext: { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }
