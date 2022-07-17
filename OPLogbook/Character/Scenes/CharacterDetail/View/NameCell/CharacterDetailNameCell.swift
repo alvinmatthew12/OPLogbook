@@ -22,8 +22,8 @@ internal final class CharacterDetailNameCell: CharacterDetailBaseCell {
     }
     
     internal func setupData(_ epithet: String, _ name: String, _ affiliationImageName: String) {
-        epithetLabel.text = epithet
-        nameLabel.text = name
+        epithetLabel.attributedText = .display1(epithet, color: .GY50, textStyle: [.bold])
+        nameLabel.attributedText = .heading1(name)
         affiliationImageView.imageName = affiliationImageName
     }
 }

@@ -17,9 +17,7 @@ internal final class CharacterDetailImageCell: CharacterDetailBaseCell {
         
         imageView.contentMode = .scaleAspectFill
         imageView.fixInView(self, attributes: [.top, .leading, .trailing])
-        imageView.backgroundColor = .red
         imageView.heightAnchor.constraint(equalToConstant: 250).isActive = true
-//        contentView.heightAnchor.constraint(equalToConstant: 270).isActive = true
     }
 
     required internal init?(coder aDecoder: NSCoder) {

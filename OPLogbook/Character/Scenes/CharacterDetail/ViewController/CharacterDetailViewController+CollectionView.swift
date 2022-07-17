@@ -11,6 +11,7 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
     internal func registerCell(_ collectionView: UICollectionView) {
         collectionView.register(CharacterDetailImageCell.self, forCellWithReuseIdentifier: CharacterDetailImageCell.identifier)
         collectionView.register(CharacterDetailNameCell.nib, forCellWithReuseIdentifier: CharacterDetailNameCell.identifier)
+        collectionView.register(CharacterDetailDescriptionCell.self, forCellWithReuseIdentifier: CharacterDetailDescriptionCell.identifier)
     }
     
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -33,6 +34,12 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
                 return cell
             }
             
+        case let .description(text):
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailDescriptionCell.identifier, for: indexPath) as? CharacterDetailDescriptionCell {
+                cell.label.attributedText = .paragraph2(text, alignment: .justified)
+                return cell
+            }
+            
         }
         
         return UICollectionViewCell()
@@ -46,8 +53,25 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
         switch component.layout {
         case let .fullWidth(height):
             return CGSize(width: width, height: height)
+            
         case let .staggered(height):
             return CGSize(width: width / 2, height: height)
+            
+        case let .dynamicText(attributedText, textLineSpacing, totalMargin, lineSpacing):
+            let textWidth = attributedText.size().width
+            let textHeight: CGFloat = textLineSpacing
+            let widthWithPadding = width - totalMargin
+            
+            let deltaWidth = textWidth / widthWithPadding
+            var multiply = ceil(deltaWidth)
+            if (deltaWidth - floor(deltaWidth) > 0.000001) { // check has decimal
+                multiply += 1
+            }
+            
+            let containerHeight = max((textHeight * multiply), 50)
+            let height = containerHeight + lineSpacing
+            
+            return CGSize(width: width, height: height)
         }
     }
 }

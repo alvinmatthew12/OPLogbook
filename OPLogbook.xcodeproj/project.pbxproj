@@ -22,6 +22,11 @@
 		E17000872884726F00E7C254 /* CharacterDetailBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000862884726F00E7C254 /* CharacterDetailBaseCell.swift */; };
 		E170008A2884759900E7C254 /* CharacterDetailNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000882884759900E7C254 /* CharacterDetailNameCell.swift */; };
 		E170008B2884759900E7C254 /* CharacterDetailNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17000892884759900E7C254 /* CharacterDetailNameCell.xib */; };
+		E17000902884985800E7C254 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = E170008F2884985800E7C254 /* Typography.swift */; };
+		E17000922884993700E7C254 /* Typography+Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000912884993700E7C254 /* Typography+Constant.swift */; };
+		E17000942884A02100E7C254 /* Typography+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000932884A02100E7C254 /* Typography+Helper.swift */; };
+		E17000962884A82800E7C254 /* CharacterDetailDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000952884A82800E7C254 /* CharacterDetailDescriptionCell.swift */; };
+		E170009A2884A97300E7C254 /* Typography+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000992884A97300E7C254 /* Typography+Size.swift */; };
 		E1A95FA5288256A2009367EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95FA4288256A2009367EA /* AppDelegate.swift */; };
 		E1A95FA7288256A2009367EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95FA6288256A2009367EA /* SceneDelegate.swift */; };
 		E1A95FAE288256A4009367EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A95FAD288256A4009367EA /* Assets.xcassets */; };
@@ -69,6 +74,11 @@
 		E17000862884726F00E7C254 /* CharacterDetailBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailBaseCell.swift; sourceTree = "<group>"; };
 		E17000882884759900E7C254 /* CharacterDetailNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailNameCell.swift; sourceTree = "<group>"; };
 		E17000892884759900E7C254 /* CharacterDetailNameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailNameCell.xib; sourceTree = "<group>"; };
+		E170008F2884985800E7C254 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
+		E17000912884993700E7C254 /* Typography+Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Typography+Constant.swift"; sourceTree = "<group>"; };
+		E17000932884A02100E7C254 /* Typography+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Typography+Helper.swift"; sourceTree = "<group>"; };
+		E17000952884A82800E7C254 /* CharacterDetailDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailDescriptionCell.swift; sourceTree = "<group>"; };
+		E17000992884A97300E7C254 /* Typography+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Typography+Size.swift"; sourceTree = "<group>"; };
 		E1A95FA1288256A2009367EA /* OPLogbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OPLogbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A95FA4288256A2009367EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1A95FA6288256A2009367EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +165,25 @@
 				E17000892884759900E7C254 /* CharacterDetailNameCell.xib */,
 			);
 			path = NameCell;
+			sourceTree = "<group>";
+		};
+		E170008C2884961700E7C254 /* DescriptionCell */ = {
+			isa = PBXGroup;
+			children = (
+				E17000952884A82800E7C254 /* CharacterDetailDescriptionCell.swift */,
+			);
+			path = DescriptionCell;
+			sourceTree = "<group>";
+		};
+		E170008E2884982200E7C254 /* Typography */ = {
+			isa = PBXGroup;
+			children = (
+				E170008F2884985800E7C254 /* Typography.swift */,
+				E17000912884993700E7C254 /* Typography+Constant.swift */,
+				E17000932884A02100E7C254 /* Typography+Helper.swift */,
+				E17000992884A97300E7C254 /* Typography+Size.swift */,
+			);
+			path = Typography;
 			sourceTree = "<group>";
 		};
 		E1A95F98288256A2009367EA = {
@@ -269,6 +298,7 @@
 		E1DF10FA28832DAD0024D31B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E170008C2884961700E7C254 /* DescriptionCell */,
 				E1700085288471F600E7C254 /* NameCell */,
 				E1DF10FB28832DB10024D31B /* ImageCell */,
 				E1DF11012883391D0024D31B /* CharacterDetailComponent.swift */,
@@ -366,6 +396,7 @@
 		E1EAEEFF288275D400C6425B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E170008E2884982200E7C254 /* Typography */,
 				E1FC27D92882C25E00F85279 /* ShimmerView */,
 				E1FC27D22882B3B700F85279 /* OPImageView */,
 				E15CDF80288295530099D91C /* OPButton */,
@@ -555,6 +586,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E17000902884985800E7C254 /* Typography.swift in Sources */,
 				E1EAEEE428825E2A00C6425B /* CharacterListViewController.swift in Sources */,
 				E1EAEEF62882656F00C6425B /* NetworkError.swift in Sources */,
 				E15CDF7628827B360099D91C /* UIImage+UnifyIcons.swift in Sources */,
@@ -578,15 +610,19 @@
 				E1C320922884428500311F8A /* CharacterListItemCell.swift in Sources */,
 				E1EAEEF32882648600C6425B /* CharacterUseCase.swift in Sources */,
 				E1FC27D42882B3C600F85279 /* OPImageView.swift in Sources */,
+				E17000922884993700E7C254 /* Typography+Constant.swift in Sources */,
 				E15CDF82288295880099D91C /* OPButton.swift in Sources */,
 				E1FC27D82882B73C00F85279 /* UIView+Extension.swift in Sources */,
 				E1EAEEF82882662900C6425B /* JSONDecoder+Extension.swift in Sources */,
 				E1DF11022883391D0024D31B /* CharacterDetailComponent.swift in Sources */,
+				E17000942884A02100E7C254 /* Typography+Helper.swift in Sources */,
+				E170009A2884A97300E7C254 /* Typography+Size.swift in Sources */,
 				E1EAEF02288275EC00C6425B /* UnifyIcon.swift in Sources */,
 				E1DF1100288330BA0024D31B /* FailableDecodable.swift in Sources */,
 				E15CDF8628829BFD0099D91C /* UIFont+Extension.swift in Sources */,
 				E1FC27E42882E92100F85279 /* CharacterDetailViewModel.swift in Sources */,
 				E1A95FC228825D2E009367EA /* ViewModelType.swift in Sources */,
+				E17000962884A82800E7C254 /* CharacterDetailDescriptionCell.swift in Sources */,
 				E170008428845CAA00E7C254 /* CharacterDetailViewController+CollectionView.swift in Sources */,
 				E15CDF882882AE650099D91C /* UIButton+BarButtonItem.swift in Sources */,
 			);
