@@ -23,11 +23,16 @@ internal final class CharacterListViewController: UIViewController {
         size: .micro
     )
     
+    internal var selectedCell: UICollectionViewCell?
+    internal var selectedCellImageViewSnapshot: UIView?
+    internal var animator: CharacterPageAnimator?
+    
     private let disposeBag = DisposeBag()
     private let viewModel: CharacterListViewModel
+    
     private var tempCharacters: [Character] = []
     private var characters: [Character] = []
-    private var isGridMode: Bool = false {
+    private var isGridMode: Bool = true {
         didSet { updateContentMode() }
     }
     
@@ -117,9 +122,13 @@ internal final class CharacterListViewController: UIViewController {
         }
     }
     
-    private func navigateToDetail(_ characterID: String) {
+    private func presentDetailController(_ characterID: String) {
         let vc = CharacterDetailViewController(id: characterID)
-        navigationController?.pushViewController(vc, animated: true)
+        vc.transitioningDelegate = self
+        vc.viewDidLoad()
+        
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 }
 
@@ -139,7 +148,7 @@ extension CharacterListViewController: UICollectionViewDataSource, UICollectionV
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterPageCell.identifier, for: indexPath) as? CharacterPageCell {
                 cell.setupData(character)
                 cell.didTapExploreButton = { [weak self, character] in
-                    self?.navigateToDetail(character.id)
+                    self?.presentDetailController(character.id)
                 }
                 return cell
             }
@@ -160,7 +169,14 @@ extension CharacterListViewController: UICollectionViewDataSource, UICollectionV
     
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard isGridMode else { return }
+        
+        selectedCell = collectionView.cellForItem(at: indexPath)
+        if let gridCell = selectedCell as? CharacterGridCell {
+            selectedCellImageViewSnapshot = gridCell.imageView.snapshotView(afterScreenUpdates: false)
+        }
+
+        
         let character = characters[indexPath.item]
-        navigateToDetail(character.id)
+        presentDetailController(character.id)
     }
 }

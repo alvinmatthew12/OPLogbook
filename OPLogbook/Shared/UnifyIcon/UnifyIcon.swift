@@ -10,6 +10,7 @@ import UIKit
 public enum UnifyIcon: String, Equatable {
     case carousel
     case grid
+    case chevronLeft
 }
 
 extension UnifyIcon {
@@ -19,12 +20,14 @@ extension UnifyIcon {
             return "ic-carousel"
         case .grid:
             return "ic-grid"
+        case .chevronLeft:
+            return "ic-chevron-left"
         }
     }
     
     public var color: UIColor? {
         switch self {
-        case .carousel, .grid:
+        case .carousel, .grid, .chevronLeft:
             return .primaryColor
         }
     }

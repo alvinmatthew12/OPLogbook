@@ -106,8 +106,7 @@ public final class OPButton: UIButton {
             backgroundColor = UIColor.clear
             setImage(image, for: .normal)
             contentMode = .scaleAspectFit
-            frame.size.width = size.height
-            clipsToBounds = true
+            widthAnchor.constraint(equalToConstant: size.height).isActive = true
         }
     }
     

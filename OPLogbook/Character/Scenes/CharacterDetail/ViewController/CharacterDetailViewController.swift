@@ -17,6 +17,14 @@ internal final class CharacterDetailViewController: UIViewController {
         return collectionView
     }()
     
+    private let backButton = OPButton(
+        title: "",
+        mode: .image(UIImage(unifyIcon: .chevronLeft)),
+        size: .micro
+    )
+    
+    internal var imageView = OPImageView()
+    
     private let disposeBag = DisposeBag()
     private let viewModel: CharacterDetailViewModel
     internal var components: [CharacterDetailComponent] = []
@@ -34,15 +42,40 @@ internal final class CharacterDetailViewController: UIViewController {
     override internal func viewDidLoad() {
         super.viewDidLoad()
         
+        view.isUserInteractionEnabled = false
+        backButton.isUserInteractionEnabled = true
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(imageView)
+        imageView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 300)
+        imageView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.fixInView(view, attributes: [.top, .leading, .trailing])
+        
+        setupBackButton()
         setupNavigationBar()
         setupCollectionView()
         bindViewModel()
+        setupRedux()
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5)) {
+//            self.dismiss(animated: true, completion: nil)
+//        }
     }
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    private func setupBackButton() {
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(backButton)
+        backButton.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        backButton.layer.zPosition = 1
+        backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 32).isActive = true
+        backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
     }
     
     private func setupCollectionView() {
@@ -79,6 +112,14 @@ internal final class CharacterDetailViewController: UIViewController {
         output.networkError
             .drive(onNext: { [weak self] error in
                 print(error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupRedux() {
+        backButton.rx.tap.asDriver()
+            .drive(onNext: { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }
