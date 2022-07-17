@@ -15,9 +15,10 @@ internal final class CharacterDetailImageCell: UICollectionViewCell {
     override internal init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         imageView.contentMode = .scaleAspectFill
-        imageView.fixInView(contentView)
+        imageView.fixInView(self, attributes: [.top, .leading, .trailing])
+        imageView.backgroundColor = .red
+        contentView.heightAnchor.constraint(equalToConstant: 250).isActive = true
     }
 
     required internal init?(coder aDecoder: NSCoder) {

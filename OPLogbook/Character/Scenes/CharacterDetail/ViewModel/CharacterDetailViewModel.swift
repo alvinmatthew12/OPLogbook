@@ -44,7 +44,7 @@ internal final class CharacterDetailViewModel: ViewModelType {
         let components = character
             .flatMapLatest { character -> Driver<[CharacterDetailComponent]> in
                 let components: [CharacterDetailComponent] = [
-                    .image(character.images.detailURL)
+                    .image(character.images.bannerURL)
                 ]
                 return .just(components)
             }

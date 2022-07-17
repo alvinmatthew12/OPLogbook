@@ -3,6 +3,7 @@
         {
             "id": "1",
             "name": "Monkey D. Luffy",
+            "nickname": "Luffy",
             "epithet": "Straw Hat",
             "bounty": 3000000000,
             "short_description": "Monkey D. Luffy is the main protagonist of anime, One Piece. He is the founder and captain of the increasingly infamous and powerful Straw Hat Pirates, as well as one of its top fighters.",
@@ -12,14 +13,14 @@
                 "image_name": "strawhat-jolly-roger"
             },
             "images": {
-                "grid_url": "https://i.ibb.co/QPGmF7F/luffy-grid-image.png",
-                "page_url": "https://i.ibb.co/bz4c2tX/luffy-page-image.png",
-                "detail_url": "https://i.ibb.co/BwWtx17/luffy-detail-image.png"
+                "grid_url": "https://i.ibb.co/sv6DxkK/luffy-grid-image.png",
+                "banner_url": "https://i.ibb.co/JnhqPVG/luffy-banner-image.png"
             }
         },
         {
             "id": "2",
             "name": "Roronoa Zoro",
+            "nickname": "Zoro",
             "epithet": "Pirate Hunter",
             "bounty": 320000000,
             "short_description": "Roronoa Zoro, also known as Pirate Hunter Zoro, is the combatant of the Straw Hat Pirates, and one of their two swordsmen. Formerly a bounty hunter, he is first to join Luffy's crew.",
@@ -29,9 +30,8 @@
                 "image_name": "strawhat-jolly-roger"
             },
             "images": {
-                "grid_url": "https://i.ibb.co/MgQs6w9/zoro-grid-image.png",
-                "page_url": "https://i.ibb.co/QXD9Lf0/zoro-page-image.png",
-                "detail_url": "https://i.ibb.co/jHKbcGN/zoro-detail-image.png"
+                "grid_url": "https://i.ibb.co/HN4f6xJ/zoro-grid-image.png",
+                "banner_url": "https://i.ibb.co/myF792D/zoro-banner-image.png"
             }
         }
     ]

@@ -11,30 +11,26 @@ import UIKit
 
 internal final class CharacterListViewController: UIViewController {
     private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 25
+        layout.minimumInteritemSpacing = 25
+        layout.sectionInset = UIEdgeInsets(top: 16, left: 30, bottom: 0, right: 30)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
+        collectionView.setCollectionViewLayout(layout, animated: false)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .BB30
         return collectionView
     }()
     
-    private let layoutModeButton = OPButton(
-        title: "",
-        mode: .image(UIImage(unifyIcon: .carousel)),
-        size: .micro
-    )
-    
-    internal var selectedCell: UICollectionViewCell?
+    internal var selectedCell: CharacterListItemCell?
     internal var selectedCellImageViewSnapshot: UIView?
-    internal var animator: CharacterPageAnimator?
+//    internal var animator: CharacterPageAnimator?
     
     private let disposeBag = DisposeBag()
     private let viewModel: CharacterListViewModel
-    
-    private var tempCharacters: [Character] = []
     private var characters: [Character] = []
-    private var isGridMode: Bool = true {
-        didSet { updateContentMode() }
-    }
     
     internal init() {
         viewModel = CharacterListViewModel(useCase: .live)
@@ -48,21 +44,15 @@ internal final class CharacterListViewController: UIViewController {
     override internal func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Characters"
-        navigationItem.rightBarButtonItem = layoutModeButton.toBarButtonItem()
-        
         setupCollectionView()
         bindViewModel()
-        setupRedux()
     }
     
     private func setupCollectionView() {
         collectionView.fixInView(self.view, toSafeArea: true)
         collectionView.dataSource = self
         collectionView.delegate = self
-        setupCollectionLayout()
-        collectionView.register(CharacterGridCell.self, forCellWithReuseIdentifier: CharacterGridCell.identifier)
-        collectionView.register(CharacterPageCell.nib, forCellWithReuseIdentifier: CharacterPageCell.identifier)
+        collectionView.register(CharacterListItemCell.nib, forCellWithReuseIdentifier: CharacterListItemCell.identifier)
     }
     
     private func bindViewModel() {
@@ -74,7 +64,6 @@ internal final class CharacterListViewController: UIViewController {
         
         output.characters
             .drive(onNext: { [weak self] characters in
-                self?.tempCharacters = characters
                 self?.characters = characters
                 self?.collectionView.reloadData()
             })
@@ -87,48 +76,13 @@ internal final class CharacterListViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setupRedux() {
-        layoutModeButton.rx.tap.asDriver()
-            .drive(onNext: { [weak self] _ in
-                self?.isGridMode.toggle()
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    private func updateContentMode() {
-        characters = []
-        collectionView.reloadData()
-        setupCollectionLayout()
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
-            self.characters = self.tempCharacters
-            self.collectionView.reloadData()
-        }
-    }
-    
-    private func setupCollectionLayout() {
-        if isGridMode {
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .vertical
-            layout.minimumLineSpacing = 16
-            layout.minimumInteritemSpacing = 16
-            layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
-            collectionView.isPagingEnabled = false
-            collectionView.setCollectionViewLayout(layout, animated: false)
-            layoutModeButton.mode = .image(UIImage(unifyIcon: .carousel))
-        } else {
-            collectionView.isPagingEnabled = true
-            collectionView.setCarouselLayout(animated: false)
-            layoutModeButton.mode = .image(UIImage(unifyIcon: .grid))
-        }
-    }
-    
     private func presentDetailController(_ characterID: String) {
-        let vc = CharacterDetailViewController(id: characterID)
-        vc.transitioningDelegate = self
-        vc.viewDidLoad()
-        
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+//        let vc = CharacterDetailViewController(id: characterID)
+//        vc.transitioningDelegate = self
+//        vc.viewDidLoad()
+//
+//        vc.modalPresentationStyle = .fullScreen
+//        present(vc, animated: true)
     }
 }
 
@@ -139,43 +93,26 @@ extension CharacterListViewController: UICollectionViewDataSource, UICollectionV
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let character = characters[indexPath.item]
-        if isGridMode {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterGridCell.identifier, for: indexPath) as? CharacterGridCell {
-                cell.imageView.url = character.images.gridURL
-                return cell
-            }
-        } else {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterPageCell.identifier, for: indexPath) as? CharacterPageCell {
-                cell.setupData(character)
-                cell.didTapExploreButton = { [weak self, character] in
-                    self?.presentDetailController(character.id)
-                }
-                return cell
-            }
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterListItemCell.identifier, for: indexPath) as? CharacterListItemCell {
+            cell.setupData(character)
+            return cell
         }
         return UICollectionViewCell()
     }
     
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if isGridMode {
-            let width: CGFloat = collectionView.bounds.size.width
-            let padding: CGFloat = 32 - 8 // LR padding - interitem spacing
-            let itemWidth: CGFloat = (width / 2) - padding
-            return CGSize(width: itemWidth, height: itemWidth)
-        } else {
-            return collectionView.bounds.size
-        }
+        let width: CGFloat = collectionView.bounds.size.width
+        let padding: CGFloat = 30 + 12.5 // LR padding + interitem spacing
+        let itemWidth: CGFloat = (width / 2) - padding
+        let itemHeight: CGFloat = itemWidth + 35
+        return CGSize(width: itemWidth, height: itemHeight)
     }
     
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard isGridMode else { return }
-        
-        selectedCell = collectionView.cellForItem(at: indexPath)
-        if let gridCell = selectedCell as? CharacterGridCell {
-            selectedCellImageViewSnapshot = gridCell.imageView.snapshotView(afterScreenUpdates: false)
+        if let cell = collectionView.cellForItem(at: indexPath) as? CharacterListItemCell {
+            selectedCell = cell
+            selectedCellImageViewSnapshot = cell.imageView.snapshotView(afterScreenUpdates: false)
         }
-
-        
         let character = characters[indexPath.item]
         presentDetailController(character.id)
     }

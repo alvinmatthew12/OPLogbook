@@ -10,6 +10,7 @@ import Foundation
 internal struct Character: Decodable, Equatable {
     internal let id: String
     internal let name: String
+    internal let nickname: String
     internal let epithet: String
     internal let bounty: Double
     internal let shortDescription: String
@@ -18,7 +19,8 @@ internal struct Character: Decodable, Equatable {
     
     private enum CodingKeys: String, CodingKey {
         case id, name, epithet,
-             bounty, affiliation, images
+             bounty, affiliation, images,
+             nickname
         case shortDescription = "short_description"
     }
 }
@@ -38,13 +40,10 @@ internal struct CharacterImages: Decodable, Equatable {
     @FailableDecodable
     internal var gridURL: URL?
     @FailableDecodable
-    internal var pageURL: URL?
-    @FailableDecodable
-    internal var detailURL: URL?
+    internal var bannerURL: URL?
     
     private enum CodingKeys: String, CodingKey {
         case gridURL = "grid_url"
-        case pageURL = "page_url"
-        case detailURL = "detail_url"
+        case bannerURL = "banner_url"
     }
 }
