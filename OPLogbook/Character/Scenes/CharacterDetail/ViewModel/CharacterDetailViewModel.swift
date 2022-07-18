@@ -47,7 +47,11 @@ internal final class CharacterDetailViewModel: ViewModelType {
                 let components: [CharacterDetailComponent] = [
                     .image(char.images.bannerURL),
                     .name(char.epithet, char.name, char.affiliation.imageName),
-                    .description(char.description)
+                    .description(char.description),
+                    .vStackTile(label: "Affiliation", value: char.affiliation.name),
+                    .vStackTile(label: "Bounty", value: char.bounty.currencyDecimalFormat),
+                    .vStackTile(label: "Birthday", value: char.birthday),
+                    .vStackTile(label: "Origin", value: char.origin)
                 ]
                 return .just(components)
             }

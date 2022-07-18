@@ -11,6 +11,7 @@ internal enum CharacterDetailComponent: Equatable {
     case image(URL?)
     case name(_ epithet: String, _ name: String, _ affiliationImageName: String)
     case description(String)
+    case vStackTile(label: String, value: String)
 }
 
 extension CharacterDetailComponent {
@@ -38,6 +39,13 @@ extension CharacterDetailComponent {
                 textLineSpacing: TypographyConstant.paragraph2LineSpacing,
                 margins: defaultMargins,
                 lineSpacing: 30
+            )
+        case .vStackTile:
+            return .staggered(
+                height: 32,
+                margins: defaultMargins,
+                interItemSpacing: 10,
+                lineSpacing: 15
             )
         }
     }

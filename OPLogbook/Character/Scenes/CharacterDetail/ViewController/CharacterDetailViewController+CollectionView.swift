@@ -12,14 +12,51 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
         collectionView.register(CharacterDetailImageCell.self, forCellWithReuseIdentifier: CharacterDetailImageCell.identifier)
         collectionView.register(CharacterDetailNameCell.nib, forCellWithReuseIdentifier: CharacterDetailNameCell.identifier)
         collectionView.register(CharacterDetailDescriptionCell.self, forCellWithReuseIdentifier: CharacterDetailDescriptionCell.identifier)
+        collectionView.register(CharacterDetailVStackTileCell.nib, forCellWithReuseIdentifier: CharacterDetailVStackTileCell.identifier)
+    }
+    
+    internal func performUpdates(_ components: [CharacterDetailComponent]) {
+        var collectionData: [CollectionData] = []
+        
+        var staggeredItem: [CharacterDetailComponent] = []
+        var staggeredFirstMargin: UIEdgeInsets = .zero
+        
+        for i in 0..<components.count {
+            let component = components[i]
+            switch component.layout {
+            case let .fullWidth(_, margins, _):
+                collectionData.append(.init(components: [component], margins: margins))
+                
+            case let .dynamicText(_, _, margins, _):
+                collectionData.append(.init(components: [component], margins: margins))
+                
+            case let .staggered(_, margins, _, _):
+                if staggeredItem.isEmpty {
+                    staggeredFirstMargin = margins
+                }
+                staggeredItem.append(component)
+                if case .staggered = components[safe: i + 1]?.layout { } else {
+                    collectionData.append(.init(components: staggeredItem, margins: staggeredFirstMargin))
+                    staggeredItem = []
+                    staggeredFirstMargin = .zero
+                }
+            }
+        }
+        
+        self.collectionData = collectionData
+        self.collectionView.reloadData()
+    }
+    
+    internal func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return collectionData.count
     }
     
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return components.count
+        return collectionData[section].components.count
     }
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let component = components[indexPath.item]
+        let component = collectionData[indexPath.section].components[indexPath.item]
         
         switch component {
         case let .image(url):
@@ -40,13 +77,23 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
                 return cell
             }
             
+        case let .vStackTile(label, value):
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailVStackTileCell.identifier, for: indexPath) as? CharacterDetailVStackTileCell {
+                cell.setup(label: label, value: value)
+                return cell
+            }
+            
         }
         
         return UICollectionViewCell()
     }
     
+    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return collectionData[section].margins
+    }
+    
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let component = components[indexPath.item]
+        let component = collectionData[indexPath.section].components[indexPath.item]
         
         let width = collectionView.frame.size.width
         
@@ -58,8 +105,8 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
             return CGSize(width: _width, height: _height)
             
         case let .staggered(height, margins, interItemSpacing, lineSpacing):
-            let totalMargin: CGFloat = margins.left + margins.right
-            let interItemHalf = (interItemSpacing / 2)
+            let totalMargin: CGFloat = max(margins.left, margins.right)
+            let interItemHalf = max((interItemSpacing / 2), 0)
             let _width = (width / 2) - interItemHalf - totalMargin
             let _height = height + lineSpacing
             return CGSize(width: _width, height: _height)

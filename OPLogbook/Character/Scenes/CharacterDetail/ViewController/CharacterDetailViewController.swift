@@ -10,14 +10,19 @@ import RxSwift
 import UIKit
 
 internal final class CharacterDetailViewController: UIViewController {
-    @IBOutlet private weak var collectionView: UICollectionView!
+    internal struct CollectionData {
+        internal let components: [CharacterDetailComponent]
+        internal let margins: UIEdgeInsets
+    }
+    
+    @IBOutlet internal weak var collectionView: UICollectionView!
     @IBOutlet private weak var backButton: UIButton!
     
     internal var imageView = OPImageView()
     
     private let disposeBag = DisposeBag()
     private let viewModel: CharacterDetailViewModel
-    internal var components: [CharacterDetailComponent] = []
+    internal var collectionData: [CollectionData] = []
     
     internal init(id: String) {
         viewModel = CharacterDetailViewModel(id: id, useCase: .live)
@@ -85,8 +90,7 @@ internal final class CharacterDetailViewController: UIViewController {
         
         output.components
             .drive(onNext: { [weak self] components in
-                self?.components = components
-                self?.collectionView.reloadData()
+                self?.performUpdates(components)
             })
             .disposed(by: disposeBag)
         

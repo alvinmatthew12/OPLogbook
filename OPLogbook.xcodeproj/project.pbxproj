@@ -27,6 +27,9 @@
 		E17000942884A02100E7C254 /* Typography+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000932884A02100E7C254 /* Typography+Helper.swift */; };
 		E17000962884A82800E7C254 /* CharacterDetailDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000952884A82800E7C254 /* CharacterDetailDescriptionCell.swift */; };
 		E170009A2884A97300E7C254 /* Typography+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000992884A97300E7C254 /* Typography+Size.swift */; };
+		E17000A22884C16700E7C254 /* CharacterDetailVStackTileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000A02884C16700E7C254 /* CharacterDetailVStackTileCell.swift */; };
+		E17000A32884C16700E7C254 /* CharacterDetailVStackTileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17000A12884C16700E7C254 /* CharacterDetailVStackTileCell.xib */; };
+		E17000A52884C80B00E7C254 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000A42884C80B00E7C254 /* Collection+Extension.swift */; };
 		E1A95FA5288256A2009367EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95FA4288256A2009367EA /* AppDelegate.swift */; };
 		E1A95FA7288256A2009367EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95FA6288256A2009367EA /* SceneDelegate.swift */; };
 		E1A95FAE288256A4009367EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A95FAD288256A4009367EA /* Assets.xcassets */; };
@@ -79,6 +82,9 @@
 		E17000932884A02100E7C254 /* Typography+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Typography+Helper.swift"; sourceTree = "<group>"; };
 		E17000952884A82800E7C254 /* CharacterDetailDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailDescriptionCell.swift; sourceTree = "<group>"; };
 		E17000992884A97300E7C254 /* Typography+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Typography+Size.swift"; sourceTree = "<group>"; };
+		E17000A02884C16700E7C254 /* CharacterDetailVStackTileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailVStackTileCell.swift; sourceTree = "<group>"; };
+		E17000A12884C16700E7C254 /* CharacterDetailVStackTileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailVStackTileCell.xib; sourceTree = "<group>"; };
+		E17000A42884C80B00E7C254 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		E1A95FA1288256A2009367EA /* OPLogbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OPLogbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A95FA4288256A2009367EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1A95FA6288256A2009367EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +195,8 @@
 		E170009B2884BCD700E7C254 /* VStackTileCell */ = {
 			isa = PBXGroup;
 			children = (
+				E17000A02884C16700E7C254 /* CharacterDetailVStackTileCell.swift */,
+				E17000A12884C16700E7C254 /* CharacterDetailVStackTileCell.xib */,
 			);
 			path = VStackTileCell;
 			sourceTree = "<group>";
@@ -365,6 +373,7 @@
 				E15CDF8528829BFD0099D91C /* UIFont+Extension.swift */,
 				E15CDF872882AE650099D91C /* UIButton+BarButtonItem.swift */,
 				E1FC27D72882B73C00F85279 /* UIView+Extension.swift */,
+				E17000A42884C80B00E7C254 /* Collection+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -539,6 +548,7 @@
 				E1A95FB1288256A4009367EA /* LaunchScreen.storyboard in Resources */,
 				E1A95FAE288256A4009367EA /* Assets.xcassets in Resources */,
 				E1EAEEE82882620A00C6425B /* Characters.json in Resources */,
+				E17000A32884C16700E7C254 /* CharacterDetailVStackTileCell.xib in Resources */,
 				E170008B2884759900E7C254 /* CharacterDetailNameCell.xib in Resources */,
 				E1C320932884428500311F8A /* CharacterListItemCell.xib in Resources */,
 				E170008228845C8A00E7C254 /* CharacterDetailViewController.xib in Resources */,
@@ -594,6 +604,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E17000A52884C80B00E7C254 /* Collection+Extension.swift in Sources */,
 				E17000902884985800E7C254 /* Typography.swift in Sources */,
 				E1EAEEE428825E2A00C6425B /* CharacterListViewController.swift in Sources */,
 				E1EAEEF62882656F00C6425B /* NetworkError.swift in Sources */,
@@ -626,6 +637,7 @@
 				E17000942884A02100E7C254 /* Typography+Helper.swift in Sources */,
 				E170009A2884A97300E7C254 /* Typography+Size.swift in Sources */,
 				E1EAEF02288275EC00C6425B /* UnifyIcon.swift in Sources */,
+				E17000A22884C16700E7C254 /* CharacterDetailVStackTileCell.swift in Sources */,
 				E1DF1100288330BA0024D31B /* FailableDecodable.swift in Sources */,
 				E15CDF8628829BFD0099D91C /* UIFont+Extension.swift in Sources */,
 				E1FC27E42882E92100F85279 /* CharacterDetailViewModel.swift in Sources */,
