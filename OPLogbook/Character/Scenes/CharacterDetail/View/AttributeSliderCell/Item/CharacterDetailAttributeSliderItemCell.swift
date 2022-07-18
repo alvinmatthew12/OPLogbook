@@ -24,6 +24,6 @@ internal final class CharacterDetailAttributeSliderItemCell: UICollectionViewCel
     
     internal func setupData(imageURL: URL?, label text: String) {
         imageView.url = imageURL
-        label.attributedText = .display3(text, alignment: .center, textStyle: [.bold])
+        label.attributedText = .small(text, alignment: .center, textStyle: [.bold])
     }
 }

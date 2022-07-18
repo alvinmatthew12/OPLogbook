@@ -129,7 +129,7 @@
             "bounty": 66000000,
             "birthday": "Jul 3rd - 20 y.o",
             "origin": "East Blue",
-            "description": "Cat Burglar Nami is the navigator of the Straw Hat Pirates. She is the third member of the crew and the second to join, doing so during the Orange Town Arc. She is the adoptive sister of Nojiko after the two were orphaned and taken in by Bell-mère.",
+            "description": "Cat Burglar Nami is the navigator of the Straw Hat Pirates. She is the third member of the crew and the second to join, doing so during the Orange Town Arc. She is the adoptive sister of Nojiko after the two were orphaned and taken in by Bell-mère. She legitimately joined the Straw Hats after they rebelled against and defeated Arlong. Her dream is to make a map of the entire world.",
             "affiliation": {
                 "id": "1",
                 "name": "Straw Hat Pirates",
@@ -168,6 +168,64 @@
                         {
                             "image_url": "",
                             "title": "Sorcery Clima-Tact",
+                            "short_description": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "4",
+            "name": "Usopp",
+            "nickname": "Usopp",
+            "epithet": "God Usopp",
+            "bounty": 200000000,
+            "birthday": "Apr 1st - 19 y.o",
+            "origin": "East Blue",
+            "description": "God Usopp is the sniper of the Straw Hat Pirates. He is the fourth member of the crew and the third to join, doing so at the end of the Syrup Village Arc. Although he left the crew during the Water 7 Arc, he rejoined at the end of the Post-Enies Lobby Arc. Usopp is the son of Yasopp and Banchina. After working with the Straw Hats to defeat Kuro and the Black Cat Pirates, he was invited to join the crew. Despite his usual cowardice, Usopp dreams of becoming a brave warrior of the sea just like his father and lives every day in pursuit of living up to this dream.",
+            "affiliation": {
+                "id": "1",
+                "name": "Straw Hat Pirates",
+                "image_name": "strawhat-jolly-roger"
+            },
+            "images": {
+                "grid_url": "https://i.ibb.co/Q6KvsDG/usopp-grid-image.png",
+                "banner_url": "https://i.ibb.co/Ydgdg54/usopp-banner-image.png"
+            },
+            "attributes": [
+                {
+                    "type": "tile",
+                    "title": "Fighting Style",
+                    "items": [
+                        {
+                            "image_url": "",
+                            "title": "Weapons & Psychological Tactics",
+                            "short_description": "Along with his lies and sniping skills, give him a completely unique fighting style of his own called Usopp Tactics, a trickery based fighting style which even amazes his fellow crew members."
+                        }
+                    ]
+                },
+                {
+                    "type": "slider",
+                    "title": "Arsenal",
+                    "items": [
+                        {
+                            "image_url": "",
+                            "title": "Lies",
+                            "short_description": ""
+                        },
+                        {
+                            "image_url": "",
+                            "title": "Hammers",
+                            "short_description": ""
+                        },
+                        {
+                            "image_url": "",
+                            "title": "Dials",
+                            "short_description": ""
+                        },
+                        {
+                            "image_url": "",
+                            "title": "Sniper Goggles",
                             "short_description": ""
                         }
                     ]
