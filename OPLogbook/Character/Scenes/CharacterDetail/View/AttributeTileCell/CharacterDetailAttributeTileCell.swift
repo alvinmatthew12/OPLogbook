@@ -19,7 +19,7 @@ internal final class CharacterDetailAttributeTileCell: UICollectionViewCell {
     override internal func awakeFromNib() {
         super.awakeFromNib()
         containerView.layer.cornerRadius = 12
-        imageView.imageShape = .rect(cornerRadius: 12)
+        imageView.imageShape = .rect(cornerRadius: 7)
     }
     
     internal func setupData(_ data: CharacterAttributeItem) {

@@ -52,7 +52,7 @@ internal final class CharacterDetailViewModel: ViewModelType {
                     .vStackTile(label: "Bounty", value: char.bounty.currencyDecimalFormat),
                     .vStackTile(label: "Birthday", value: char.birthday),
                     .vStackTile(label: "Origin", value: char.origin),
-                    .spacing(30)
+                    .spacing(15)
                 ]
                 
                 for attr in char.attributes {
