@@ -25,6 +25,7 @@ internal final class CharacterDetailViewModel: ViewModelType {
     internal struct Output {
         internal let components: Driver<[CharacterDetailComponent]>
         internal let gridImageUrl: Driver<URL?>
+        internal let title: Driver<String>
         internal let networkError: Driver<NetworkError>
     }
     
@@ -77,6 +78,11 @@ internal final class CharacterDetailViewModel: ViewModelType {
             .flatMapLatest { character -> Driver<URL?> in
                 return .just(character.images.gridURL)
             }
+        
+        let title = character
+            .flatMapLatest { character -> Driver<String> in
+                return .just(character.name)
+            }
             
         
         let networkError = response
@@ -88,6 +94,7 @@ internal final class CharacterDetailViewModel: ViewModelType {
         return Output(
             components: components,
             gridImageUrl: gridImageUrl,
+            title: title,
             networkError: networkError
         )
     }

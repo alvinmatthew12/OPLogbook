@@ -16,6 +16,9 @@ internal final class CharacterDetailViewController: UIViewController {
     }
     
     @IBOutlet internal weak var collectionView: UICollectionView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var statusBarView: UIView!
+    @IBOutlet private weak var navigationBarView: UIView!
     @IBOutlet private weak var backButton: UIButton!
     
     internal var imageView = OPImageView()
@@ -42,9 +45,11 @@ internal final class CharacterDetailViewController: UIViewController {
         }
         
         setupImageView()
-        setupCollectionView()
-        bindViewModel()
-        setupRedux()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
+            self.setupCollectionView()
+            self.bindViewModel()
+            self.setupRedux()
+        }
     }
     
     private func setupImageView() {
@@ -101,6 +106,12 @@ internal final class CharacterDetailViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        output.title
+            .drive(onNext: { [weak self] title in
+                self?.titleLabel.attributedText = .display1(title, alignment: .center, textStyle: [.bold])
+            })
+            .disposed(by: disposeBag)
+        
         output.networkError
             .drive(onNext: { [weak self] error in
                 print(error.localizedDescription)
@@ -114,5 +125,26 @@ internal final class CharacterDetailViewController: UIViewController {
                 self?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
+    }
+}
+
+extension CharacterDetailViewController: UIScrollViewDelegate {
+    internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 150 {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: { [weak self] in
+                guard let self = self else { return }
+                self.statusBarView.backgroundColor = .BB50
+                self.navigationBarView.backgroundColor = .BB50
+                self.titleLabel.alpha = 1
+            })
+            
+        } else {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+                guard let self = self else { return }
+                self.statusBarView.backgroundColor = .clear
+                self.navigationBarView.backgroundColor = .clear
+                self.titleLabel.alpha = 0
+            })
+        }
     }
 }
