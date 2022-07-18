@@ -19,16 +19,16 @@ public struct TypographyConstant {
     internal static let display3Size: CGFloat = 12
     internal static let smallSize: CGFloat = 10
     
-    internal static let heading1LineSpacing: CGFloat = 30
-    internal static let heading2LineSpacing: CGFloat = 26
-    internal static let heading3LineSpacing: CGFloat = 24
-    internal static let display1LineSpacing: CGFloat = 20
-    internal static let display2LineSpacing: CGFloat = 18
-    internal static let display3LineSpacing: CGFloat = 16
-    internal static let paragraph1LineSpacing: CGFloat = 26
-    internal static let paragraph2LineSpacing: CGFloat = 22
-    internal static let paragraph3LineSpacing: CGFloat = 18
-    internal static let smallLineSpacing: CGFloat = 12
+    internal static let heading1LineHeight: CGFloat = 30
+    internal static let heading2LineHeight: CGFloat = 26
+    internal static let heading3LineHeight: CGFloat = 24
+    internal static let display1LineHeight: CGFloat = 20
+    internal static let display2LineHeight: CGFloat = 18
+    internal static let display3LineHeight: CGFloat = 16
+    internal static let paragraph1LineHeight: CGFloat = 26
+    internal static let paragraph2LineHeight: CGFloat = 22
+    internal static let paragraph3LineHeight: CGFloat = 18
+    internal static let smallLineHeight: CGFloat = 12
 }
 
 public enum TypographyStyle {
@@ -51,5 +51,5 @@ public enum TypographyType {
 
 public struct TypographyAttribute {
     internal let size: CGFloat
-    internal var lineSpacing: CGFloat
+    internal var lineHeight: CGFloat
 }

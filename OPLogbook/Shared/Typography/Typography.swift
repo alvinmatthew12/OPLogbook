@@ -43,7 +43,7 @@ extension NSAttributedString {
         let attributes = NSAttributedString.setFont(
             font: currentFont,
             color: color,
-            lineSpacing: Typography.getLineSpacing(font: currentFont, lineSpacing: typographyAttributes.lineSpacing),
+            lineSpacing: Typography.getLineSpacing(font: currentFont, lineHeight: typographyAttributes.lineHeight),
             alignment: alignment,
             strikethrough: strikethrough
         )
@@ -62,7 +62,7 @@ extension NSAttributedString {
         let attributes = NSAttributedString.setFont(
             font: currentFont,
             color: color,
-            lineSpacing: Typography.getLineSpacing(font: currentFont, lineSpacing: typographyAttributes.lineSpacing),
+            lineSpacing: Typography.getLineSpacing(font: currentFont, lineHeight: typographyAttributes.lineHeight),
             alignment: alignment,
             strikethrough: strikethrough
         )
@@ -81,7 +81,7 @@ extension NSAttributedString {
         let attributes = NSAttributedString.setFont(
             font: currentFont,
             color: color,
-            lineSpacing: Typography.getLineSpacing(font: currentFont, lineSpacing: typographyAttributes.lineSpacing),
+            lineSpacing: Typography.getLineSpacing(font: currentFont, lineHeight: typographyAttributes.lineHeight),
             alignment: alignment,
             strikethrough: strikethrough
         )
@@ -101,7 +101,7 @@ extension NSAttributedString {
         let attributes = NSAttributedString.setFont(
             font: currentFont,
             color: color,
-            lineSpacing: Typography.getLineSpacing(font: currentFont, lineSpacing: typographyAttributes.lineSpacing),
+            lineSpacing: Typography.getLineSpacing(font: currentFont, lineHeight: typographyAttributes.lineHeight),
             alignment: alignment,
             strikethrough: textStyle.contains(.strikethrough)
         )
@@ -121,7 +121,7 @@ extension NSAttributedString {
         let attributes = NSAttributedString.setFont(
             font: currentFont,
             color: color,
-            lineSpacing: Typography.getLineSpacing(font: currentFont, lineSpacing: typographyAttributes.lineSpacing),
+            lineSpacing: Typography.getLineSpacing(font: currentFont, lineHeight: typographyAttributes.lineHeight),
             alignment: alignment,
             strikethrough: textStyle.contains(.strikethrough)
         )
@@ -141,7 +141,7 @@ extension NSAttributedString {
         let attributes = NSAttributedString.setFont(
             font: currentFont,
             color: color,
-            lineSpacing: Typography.getLineSpacing(font: currentFont, lineSpacing: typographyAttributes.lineSpacing),
+            lineSpacing: Typography.getLineSpacing(font: currentFont, lineHeight: typographyAttributes.lineHeight),
             alignment: alignment,
             strikethrough: textStyle.contains(.strikethrough)
         )
@@ -161,7 +161,7 @@ extension NSAttributedString {
         let attributes = NSAttributedString.setFont(
             font: currentFont,
             color: color,
-            lineSpacing: Typography.getLineSpacing(font: currentFont, lineSpacing: typographyAttributes.lineSpacing),
+            lineSpacing: Typography.getLineSpacing(font: currentFont, lineHeight: typographyAttributes.lineHeight),
             alignment: alignment,
             strikethrough: textStyle.contains(.strikethrough)
         )
@@ -181,7 +181,7 @@ extension NSAttributedString {
         let attributes = NSAttributedString.setFont(
             font: currentFont,
             color: color,
-            lineSpacing: Typography.getLineSpacing(font: currentFont, lineSpacing: typographyAttributes.lineSpacing),
+            lineSpacing: Typography.getLineSpacing(font: currentFont, lineHeight: typographyAttributes.lineHeight),
             alignment: alignment,
             strikethrough: textStyle.contains(.strikethrough)
         )
@@ -201,7 +201,7 @@ extension NSAttributedString {
         let attributes = NSAttributedString.setFont(
             font: currentFont,
             color: color,
-            lineSpacing: Typography.getLineSpacing(font: currentFont, lineSpacing: typographyAttributes.lineSpacing),
+            lineSpacing: Typography.getLineSpacing(font: currentFont, lineHeight: typographyAttributes.lineHeight),
             alignment: alignment,
             strikethrough: textStyle.contains(.strikethrough)
         )
@@ -221,7 +221,7 @@ extension NSAttributedString {
         let attributes = NSAttributedString.setFont(
             font: currentFont,
             color: color,
-            lineSpacing: Typography.getLineSpacing(font: currentFont, lineSpacing: typographyAttributes.lineSpacing),
+            lineSpacing: Typography.getLineSpacing(font: currentFont, lineHeight: typographyAttributes.lineHeight),
             alignment: alignment,
             strikethrough: textStyle.contains(.strikethrough)
         )

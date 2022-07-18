@@ -27,7 +27,7 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
             case let .fullWidth(_, margins, _):
                 collectionData.append(.init(components: [component], margins: margins))
                 
-            case let .dynamicText(_, _, margins, _):
+            case let .dynamicText(_, margins, _):
                 collectionData.append(.init(components: [component], margins: margins))
                 
             case let .staggered(_, margins, _, _):
@@ -83,6 +83,9 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
                 return cell
             }
             
+        case .spacing:
+            break
+            
         }
         
         return UICollectionViewCell()
@@ -111,9 +114,9 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
             let _height = height + lineSpacing
             return CGSize(width: _width, height: _height)
             
-        case let .dynamicText(attributedText, textLineSpacing, margins, lineSpacing):
+        case let .dynamicText(attributedText, margins, lineSpacing):
             let textWidth = attributedText.size().width
-            let textHeight: CGFloat = textLineSpacing
+            let textHeight: CGFloat = attributedText.heightOfString()
             let totalMargin: CGFloat = margins.left + margins.right
             
             let widthWithPadding = width - totalMargin

@@ -12,18 +12,15 @@ internal enum CharacterDetailComponent: Equatable {
     case name(_ epithet: String, _ name: String, _ affiliationImageName: String)
     case description(String)
     case vStackTile(label: String, value: String)
+//    case header(NSAttributedString)
+    case spacing(CGFloat)
 }
 
 extension CharacterDetailComponent {
     internal enum Layout {
         case fullWidth(height: CGFloat, margins: UIEdgeInsets = .zero, lineSpacing: CGFloat = 0)
         case staggered(height: CGFloat, margins: UIEdgeInsets = .zero, interItemSpacing: CGFloat = 0, lineSpacing: CGFloat = 0)
-        case dynamicText(
-            NSAttributedString,
-            textLineSpacing: CGFloat = TypographyConstant.display1LineSpacing,
-            margins: UIEdgeInsets = .zero,
-            lineSpacing: CGFloat = 0
-        )
+        case dynamicText(NSAttributedString,margins: UIEdgeInsets = .zero,lineSpacing: CGFloat = 0)
     }
     
     internal var layout: Layout{
@@ -36,7 +33,6 @@ extension CharacterDetailComponent {
         case let .description(text):
             return .dynamicText(
                 .paragraph2(text, alignment: .justified),
-                textLineSpacing: TypographyConstant.paragraph2LineSpacing,
                 margins: defaultMargins,
                 lineSpacing: 30
             )
@@ -47,6 +43,10 @@ extension CharacterDetailComponent {
                 interItemSpacing: 10,
                 lineSpacing: 15
             )
+//        case let .header:
+//            return .fullWidth(height: <#T##CGFloat#>, margins: <#T##UIEdgeInsets#>, lineSpacing: <#T##CGFloat#>)
+        case let .spacing(height):
+            return .fullWidth(height: height)
         }
     }
 }

@@ -16,43 +16,20 @@ extension TypographyType {
     }
 }
 
-extension String {
-    internal func getSize(_ type: TypographyType, _ textStyle: [TypographyStyle] = []) -> CGSize {
-        let typographyAttributes = Typography.getAttributes(type: type)
-        let fontFamily = (textStyle.contains(.bold) || type.isHeading) ?
-            TypographyConstant.helveticeNeueBold : TypographyConstant.helveticeNeue
-        let currentFont = fontFamily.withSize(typographyAttributes.size)
-        let attributes = NSAttributedString.setFont(
-            font: currentFont,
-            color: .BW50,
-            lineSpacing: Typography.getLineSpacing(font: currentFont, lineSpacing: typographyAttributes.lineSpacing),
-            alignment: .left,
-            strikethrough: textStyle.contains(.strikethrough)
-        )
-        let size = self.size(withAttributes: attributes)
-        return size
-    }
-    
-    public func widthOfString(_ attributedString: NSAttributedString) -> CGFloat {
-        let attributes = attributedString.attributes(at: 0, effectiveRange: nil)
-        let size = self.size(withAttributes: attributes)
+extension NSAttributedString {
+    public func widthOfString() -> CGFloat {
+        let attributes = self.attributes(at: 0, effectiveRange: nil)
+        let size = self.string.size(withAttributes: attributes)
         return size.width
     }
     
-    public func heightOfString(_ attributedString: NSAttributedString) -> CGFloat {
-        let attributes = attributedString.attributes(at: 0, effectiveRange: nil)
-        let size = self.size(withAttributes: attributes)
-        return size.height
+    public func heightOfString() -> CGFloat {
+        var lineHeight: CGFloat = 0
+        if let paragraphStyle = self.attribute(NSAttributedString.Key.paragraphStyle, at: 0, effectiveRange: nil) as? NSParagraphStyle {
+            lineHeight = paragraphStyle.lineSpacing
+        }
+        let attributes = self.attributes(at: 0, effectiveRange: nil)
+        let size = self.string.size(withAttributes: attributes)
+        return size.height + lineHeight
     }
-    
-    public func widthOfString(_ type: TypographyType, textStyle: [TypographyStyle] = []) -> CGFloat {
-        let size = getSize(type, textStyle)
-        return size.width
-    }
-    
-    public func heightOfString(_ type: TypographyType, textStyle: [TypographyStyle] = []) -> CGFloat {
-        let size = getSize(type, textStyle)
-        return size.height
-    }
-    
 }
