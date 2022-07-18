@@ -16,6 +16,7 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
         collectionView.register(CharacterDetailVStackTileCell.nib, forCellWithReuseIdentifier: CharacterDetailVStackTileCell.identifier)
         collectionView.register(CharacterDetailLabelCell.self, forCellWithReuseIdentifier: CharacterDetailLabelCell.identifier)
         collectionView.register(CharacterDetailAttributeTileCell.nib, forCellWithReuseIdentifier: CharacterDetailAttributeTileCell.identifier)
+        collectionView.register(CharacterDetailAttributeSliderCell.self, forCellWithReuseIdentifier: CharacterDetailAttributeSliderCell.identifier)
     }
     
     internal func performUpdates(_ components: [CharacterDetailComponent]) {
@@ -95,6 +96,12 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
         case let .attributeTile(data):
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailAttributeTileCell.identifier, for: indexPath) as? CharacterDetailAttributeTileCell {
                 cell.setupData(data)
+                return cell
+            }
+            
+        case let .attributeSlider(items):
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailAttributeSliderCell.identifier, for: indexPath) as? CharacterDetailAttributeSliderCell {
+                cell.items = items
                 return cell
             }
             

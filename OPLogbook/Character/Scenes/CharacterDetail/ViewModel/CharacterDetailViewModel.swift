@@ -57,15 +57,16 @@ internal final class CharacterDetailViewModel: ViewModelType {
                 
                 for attr in char.attributes {
                     components.append(.label(.heading3(attr.title)))
-                    
-                    for item in attr.items {
-                        switch attr.type {
-                        case .tile:
+                    switch attr.type {
+                    case .tile:
+                        for item in attr.items {
                             components.append(.attributeTile(item))
-                        case .slider, .none:
-                            break
                         }
-                    }                    
+                    case .slider:
+                        components.append(.attributeSlider(attr.items))
+                    case .none:
+                        break
+                    }
                     components.append(.spacing(15))
                 }
                 

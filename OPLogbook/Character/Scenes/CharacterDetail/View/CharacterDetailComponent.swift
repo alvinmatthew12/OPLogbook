@@ -14,6 +14,7 @@ internal enum CharacterDetailComponent: Equatable {
     case vStackTile(label: String, value: String)
     case label(NSAttributedString)
     case attributeTile(CharacterAttributeItem)
+    case attributeSlider([CharacterAttributeItem])
     case spacing(CGFloat)
 }
 
@@ -54,6 +55,9 @@ extension CharacterDetailComponent {
             
         case .attributeTile:
             return .fullWidth(height: 80, margins: defaultMargins, lineSpacing: 15)
+            
+        case .attributeSlider:
+            return .fullWidth(height: 110, margins: .zero, lineSpacing: 15)
             
         case let .spacing(height):
             return .fullWidth(height: height)

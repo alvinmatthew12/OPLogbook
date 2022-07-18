@@ -36,7 +36,7 @@ public class OPImageView: UIView {
     private var imageCornerRadius: CGFloat {
         switch imageShape {
         case .circle:
-            return max(self.bounds.size.width, 0)
+            return max((self.bounds.size.width / 2), 0)
         case let .rect(cornerRadius):
             return cornerRadius
         case .none:

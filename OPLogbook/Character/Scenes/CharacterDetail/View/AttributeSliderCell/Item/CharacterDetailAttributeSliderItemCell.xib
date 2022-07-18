@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CharacterDetailAttributeSliderItemCell" customModule="OPLogbook" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="60" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="60" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTN-Lp-M98" customClass="OPImageView" customModule="OPLogbook" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="5" width="60" height="60"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="fC0-06-e65"/>
+                            <constraint firstAttribute="width" constant="60" id="pNl-Qb-zbY"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IS8-1W-aVF">
+                        <rect key="frame" x="0.0" y="75" width="60" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="JTN-Lp-M98" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="7dv-is-6W2"/>
+                <constraint firstAttribute="trailing" secondItem="IS8-1W-aVF" secondAttribute="trailing" id="Gtw-YM-rGV"/>
+                <constraint firstItem="IS8-1W-aVF" firstAttribute="top" secondItem="JTN-Lp-M98" secondAttribute="bottom" constant="10" id="XdZ-c2-PRS"/>
+                <constraint firstItem="JTN-Lp-M98" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="lQu-iM-kfn"/>
+                <constraint firstItem="IS8-1W-aVF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tG1-uA-yTt"/>
+            </constraints>
+            <size key="customSize" width="162" height="177"/>
+            <connections>
+                <outlet property="imageView" destination="JTN-Lp-M98" id="0H9-kt-JmB"/>
+                <outlet property="label" destination="IS8-1W-aVF" id="EuJ-lu-jvJ"/>
+            </connections>
+            <point key="canvasLocation" x="213.04347826086959" y="126.89732142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

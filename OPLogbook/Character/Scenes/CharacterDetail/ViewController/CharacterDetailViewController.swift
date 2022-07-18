@@ -78,6 +78,7 @@ internal final class CharacterDetailViewController: UIViewController {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         collectionView.setCollectionViewLayout(layout, animated: false)
+        collectionView.contentInset = .init(top: 0, left: 0, bottom: 32, right: 0)
         registerCell(collectionView)
     }
     
