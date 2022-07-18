@@ -30,6 +30,9 @@
 		E17000A22884C16700E7C254 /* CharacterDetailVStackTileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000A02884C16700E7C254 /* CharacterDetailVStackTileCell.swift */; };
 		E17000A32884C16700E7C254 /* CharacterDetailVStackTileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17000A12884C16700E7C254 /* CharacterDetailVStackTileCell.xib */; };
 		E17000A52884C80B00E7C254 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17000A42884C80B00E7C254 /* Collection+Extension.swift */; };
+		E19AC5B92885C928001C19E9 /* CharacterDetailLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AC5B72885C928001C19E9 /* CharacterDetailLabelCell.swift */; };
+		E19AC5BE2885E00F001C19E9 /* CharacterDetailAttributeTileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AC5BC2885E00F001C19E9 /* CharacterDetailAttributeTileCell.swift */; };
+		E19AC5BF2885E00F001C19E9 /* CharacterDetailAttributeTileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19AC5BD2885E00F001C19E9 /* CharacterDetailAttributeTileCell.xib */; };
 		E1A95FA5288256A2009367EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95FA4288256A2009367EA /* AppDelegate.swift */; };
 		E1A95FA7288256A2009367EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95FA6288256A2009367EA /* SceneDelegate.swift */; };
 		E1A95FAE288256A4009367EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A95FAD288256A4009367EA /* Assets.xcassets */; };
@@ -85,6 +88,9 @@
 		E17000A02884C16700E7C254 /* CharacterDetailVStackTileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailVStackTileCell.swift; sourceTree = "<group>"; };
 		E17000A12884C16700E7C254 /* CharacterDetailVStackTileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailVStackTileCell.xib; sourceTree = "<group>"; };
 		E17000A42884C80B00E7C254 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		E19AC5B72885C928001C19E9 /* CharacterDetailLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailLabelCell.swift; sourceTree = "<group>"; };
+		E19AC5BC2885E00F001C19E9 /* CharacterDetailAttributeTileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailAttributeTileCell.swift; sourceTree = "<group>"; };
+		E19AC5BD2885E00F001C19E9 /* CharacterDetailAttributeTileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailAttributeTileCell.xib; sourceTree = "<group>"; };
 		E1A95FA1288256A2009367EA /* OPLogbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OPLogbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A95FA4288256A2009367EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1A95FA6288256A2009367EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,6 +207,23 @@
 			path = VStackTileCell;
 			sourceTree = "<group>";
 		};
+		E19AC5B62885C911001C19E9 /* TextCell */ = {
+			isa = PBXGroup;
+			children = (
+				E19AC5B72885C928001C19E9 /* CharacterDetailLabelCell.swift */,
+			);
+			path = TextCell;
+			sourceTree = "<group>";
+		};
+		E19AC5BB2885DFE4001C19E9 /* AttributeTileCell */ = {
+			isa = PBXGroup;
+			children = (
+				E19AC5BC2885E00F001C19E9 /* CharacterDetailAttributeTileCell.swift */,
+				E19AC5BD2885E00F001C19E9 /* CharacterDetailAttributeTileCell.xib */,
+			);
+			path = AttributeTileCell;
+			sourceTree = "<group>";
+		};
 		E1A95F98288256A2009367EA = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +336,8 @@
 		E1DF10FA28832DAD0024D31B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E19AC5BB2885DFE4001C19E9 /* AttributeTileCell */,
+				E19AC5B62885C911001C19E9 /* TextCell */,
 				E170009B2884BCD700E7C254 /* VStackTileCell */,
 				E170008C2884961700E7C254 /* DescriptionCell */,
 				E1700085288471F600E7C254 /* NameCell */,
@@ -544,6 +569,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E19AC5BF2885E00F001C19E9 /* CharacterDetailAttributeTileCell.xib in Resources */,
 				E170007D28845B0500E7C254 /* CharacterListViewController.xib in Resources */,
 				E1A95FB1288256A4009367EA /* LaunchScreen.storyboard in Resources */,
 				E1A95FAE288256A4009367EA /* Assets.xcassets in Resources */,
@@ -627,6 +653,7 @@
 				E15CDF84288295BC0099D91C /* OPButton+Extension.swift in Sources */,
 				E1EAEEF02882642800C6425B /* CharacterListViewModel.swift in Sources */,
 				E1C320922884428500311F8A /* CharacterListItemCell.swift in Sources */,
+				E19AC5B92885C928001C19E9 /* CharacterDetailLabelCell.swift in Sources */,
 				E1EAEEF32882648600C6425B /* CharacterUseCase.swift in Sources */,
 				E1FC27D42882B3C600F85279 /* OPImageView.swift in Sources */,
 				E17000922884993700E7C254 /* Typography+Constant.swift in Sources */,
@@ -638,6 +665,7 @@
 				E170009A2884A97300E7C254 /* Typography+Size.swift in Sources */,
 				E1EAEF02288275EC00C6425B /* UnifyIcon.swift in Sources */,
 				E17000A22884C16700E7C254 /* CharacterDetailVStackTileCell.swift in Sources */,
+				E19AC5BE2885E00F001C19E9 /* CharacterDetailAttributeTileCell.swift in Sources */,
 				E1DF1100288330BA0024D31B /* FailableDecodable.swift in Sources */,
 				E15CDF8628829BFD0099D91C /* UIFont+Extension.swift in Sources */,
 				E1FC27E42882E92100F85279 /* CharacterDetailViewModel.swift in Sources */,

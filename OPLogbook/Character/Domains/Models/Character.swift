@@ -19,12 +19,13 @@ internal struct Character: Decodable, Equatable {
     internal let description: String
     internal let affiliation: CharacterAffiliation
     internal let images: CharacterImages
+    internal let attributes: [CharacterAttribute]
     
     private enum CodingKeys: String, CodingKey {
         case id, name, epithet,
              bounty, affiliation, images,
              nickname, description, birthday,
-             origin
+             origin, attributes
         case shortDescription = "short_description"
     }
 }
@@ -49,5 +50,30 @@ internal struct CharacterImages: Decodable, Equatable {
     private enum CodingKeys: String, CodingKey {
         case gridURL = "grid_url"
         case bannerURL = "banner_url"
+    }
+}
+
+internal struct CharacterAttribute: Decodable, Equatable {
+    internal enum AttributeType: String, Decodable, Equatable {
+        case tile
+        case slider
+    }
+    
+    @FailableDecodable
+    internal var type: AttributeType?
+    internal let title: String
+    internal let items: [CharacterAttributeItem]
+}
+
+internal struct CharacterAttributeItem: Decodable, Equatable {
+    @FailableDecodable
+    internal var imageURL: URL?
+    internal let title: String
+    internal let shortDescription: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case imageURL = "image_url"
+        case title
+        case shortDescription = "short_description"
     }
 }

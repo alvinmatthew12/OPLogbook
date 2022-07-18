@@ -12,7 +12,8 @@ internal enum CharacterDetailComponent: Equatable {
     case name(_ epithet: String, _ name: String, _ affiliationImageName: String)
     case description(String)
     case vStackTile(label: String, value: String)
-//    case header(NSAttributedString)
+    case label(NSAttributedString)
+    case attributeTile(CharacterAttributeItem)
     case spacing(CGFloat)
 }
 
@@ -28,14 +29,17 @@ extension CharacterDetailComponent {
         switch self {
         case .image:
             return .fullWidth(height: 250, lineSpacing: 20)
+            
         case .name:
             return .fullWidth(height: 48, margins: defaultMargins, lineSpacing: 30)
+            
         case let .description(text):
             return .dynamicText(
                 .paragraph2(text, alignment: .justified),
                 margins: defaultMargins,
                 lineSpacing: 30
             )
+            
         case .vStackTile:
             return .staggered(
                 height: 32,
@@ -43,8 +47,14 @@ extension CharacterDetailComponent {
                 interItemSpacing: 10,
                 lineSpacing: 15
             )
-//        case let .header:
-//            return .fullWidth(height: <#T##CGFloat#>, margins: <#T##UIEdgeInsets#>, lineSpacing: <#T##CGFloat#>)
+            
+        case let .label(attributedString):
+            let height = attributedString.heightOfString()
+            return .fullWidth(height: height, margins: defaultMargins, lineSpacing: 15)
+            
+        case .attributeTile:
+            return .fullWidth(height: 80, margins: defaultMargins, lineSpacing: 15)
+            
         case let .spacing(height):
             return .fullWidth(height: height)
         }

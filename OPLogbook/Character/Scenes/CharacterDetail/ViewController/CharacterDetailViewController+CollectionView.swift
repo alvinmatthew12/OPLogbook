@@ -9,10 +9,13 @@ import UIKit
 
 extension CharacterDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     internal func registerCell(_ collectionView: UICollectionView) {
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
         collectionView.register(CharacterDetailImageCell.self, forCellWithReuseIdentifier: CharacterDetailImageCell.identifier)
         collectionView.register(CharacterDetailNameCell.nib, forCellWithReuseIdentifier: CharacterDetailNameCell.identifier)
         collectionView.register(CharacterDetailDescriptionCell.self, forCellWithReuseIdentifier: CharacterDetailDescriptionCell.identifier)
         collectionView.register(CharacterDetailVStackTileCell.nib, forCellWithReuseIdentifier: CharacterDetailVStackTileCell.identifier)
+        collectionView.register(CharacterDetailLabelCell.self, forCellWithReuseIdentifier: CharacterDetailLabelCell.identifier)
+        collectionView.register(CharacterDetailAttributeTileCell.nib, forCellWithReuseIdentifier: CharacterDetailAttributeTileCell.identifier)
     }
     
     internal func performUpdates(_ components: [CharacterDetailComponent]) {
@@ -83,12 +86,24 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
                 return cell
             }
             
+        case let .label(attributedString):
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailLabelCell.identifier, for: indexPath) as? CharacterDetailLabelCell {
+                cell.label.attributedText = attributedString
+                return cell
+            }
+            
+        case let .attributeTile(data):
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailAttributeTileCell.identifier, for: indexPath) as? CharacterDetailAttributeTileCell {
+                cell.setupData(data)
+                return cell
+            }
+            
         case .spacing:
             break
             
         }
         
-        return UICollectionViewCell()
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath)
     }
     
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

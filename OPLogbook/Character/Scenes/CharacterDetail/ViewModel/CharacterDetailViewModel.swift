@@ -44,15 +44,31 @@ internal final class CharacterDetailViewModel: ViewModelType {
         
         let components = character
             .flatMapLatest { char -> Driver<[CharacterDetailComponent]> in
-                let components: [CharacterDetailComponent] = [
+                var components: [CharacterDetailComponent] = [
                     .image(char.images.bannerURL),
                     .name(char.epithet, char.name, char.affiliation.imageName),
                     .description(char.description),
                     .vStackTile(label: "Affiliation", value: char.affiliation.name),
                     .vStackTile(label: "Bounty", value: char.bounty.currencyDecimalFormat),
                     .vStackTile(label: "Birthday", value: char.birthday),
-                    .vStackTile(label: "Origin", value: char.origin)
+                    .vStackTile(label: "Origin", value: char.origin),
+                    .spacing(30)
                 ]
+                
+                for attr in char.attributes {
+                    components.append(.label(.heading3(attr.title)))
+                    
+                    for item in attr.items {
+                        switch attr.type {
+                        case .tile:
+                            components.append(.attributeTile(item))
+                        case .slider, .none:
+                            break
+                        }
+                    }                    
+                    components.append(.spacing(15))
+                }
+                
                 return .just(components)
             }
         

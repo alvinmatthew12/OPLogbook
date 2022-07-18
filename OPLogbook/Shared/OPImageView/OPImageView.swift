@@ -9,6 +9,9 @@ import UIKit
 import Kingfisher
 
 public class OPImageView: UIView {
+    public static let brokenImageName = "broken-image"
+    public static let brokenImage = UIImage(named: "broken-image")
+    
     private let imageView = UIImageView()
     private let shimmerView = ShimmerView()
     
@@ -85,6 +88,10 @@ public class OPImageView: UIView {
             setLocalImage(imageName)
         } else if let url = url {
             fetchImage(url: url)
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                self.imageName = OPImageView.brokenImageName
+            }
         }
     }
     
@@ -108,7 +115,7 @@ public class OPImageView: UIView {
             }
             .onFailure { [weak self] error in
                 self?.isFetchingImage = false
-                self?.shimmerView.removeFromSuperview()
+                self?.imageName = OPImageView.brokenImageName
             }
             .set(to: imageView)
     }

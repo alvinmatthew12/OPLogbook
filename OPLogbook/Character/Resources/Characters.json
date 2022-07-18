@@ -18,7 +18,46 @@
             "images": {
                 "grid_url": "https://i.ibb.co/sv6DxkK/luffy-grid-image.png",
                 "banner_url": "https://i.ibb.co/JnhqPVG/luffy-banner-image.png"
-            }
+            },
+            "attributes": [
+                {
+                    "type": "tile",
+                    "title": "Devil Fruit",
+                    "items": [
+                        {
+                            "image_url": "",
+                            "title": "Gomu Gomu no Mi",
+                            "short_description": "Originally known as the Hito Hito no Mi, Model Nika, is a Mythical Zoan-type Devil Fruit that allows the user to transform into the legendary Sun God Nika and gain his attributes, namely a body with the properties of rubber."
+                        }
+                    ]
+                },
+                {
+                    "type": "slider",
+                    "title": "Abilities and Powers",
+                    "items": [
+                        {
+                            "image_url": "",
+                            "title": "Gear 5",
+                            "short_description": ""
+                        },
+                        {
+                            "image_url": "",
+                            "title": "Gear 4",
+                            "short_description": ""
+                        },
+                        {
+                            "image_url": "",
+                            "title": "Gear 3",
+                            "short_description": ""
+                        },
+                        {
+                            "image_url": "",
+                            "title": "Gear 2",
+                            "short_description": ""
+                        }
+                    ]
+                }
+            ]
         },
         {
             "id": "2",
@@ -38,7 +77,51 @@
             "images": {
                 "grid_url": "https://i.ibb.co/HN4f6xJ/zoro-grid-image.png",
                 "banner_url": "https://i.ibb.co/myF792D/zoro-banner-image.png"
-            }
+            },
+            "attributes": [
+                {
+                    "type": "tile",
+                    "title": "Fighting Style",
+                    "items": [
+                        {
+                            "image_url": "",
+                            "title": "Three Sword Style",
+                            "short_description": "Is a unique style of triple wielding swordsmanship where the practitioner wields three katanas, one in each hand and the third in the jaw. There are many different techniques for this sword style, including direct hit attacks and compressed air projectile attacks"
+                        }
+                    ]
+                },
+                {
+                    "type": "slider",
+                    "title": "Weapons",
+                    "items": [
+                        {
+                            "image_url": "",
+                            "title": "Wado Ichimonji",
+                            "short_description": ""
+                        },
+                        {
+                            "image_url": "",
+                            "title": "Sandai Kitetsu",
+                            "short_description": ""
+                        },
+                        {
+                            "image_url": "",
+                            "title": "Enma",
+                            "short_description": ""
+                        },
+                        {
+                            "image_url": "",
+                            "title": "Shusui (Former)",
+                            "short_description": ""
+                        },
+                        {
+                            "image_url": "",
+                            "title": "Yubashiri (Former)",
+                            "short_description": ""
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
