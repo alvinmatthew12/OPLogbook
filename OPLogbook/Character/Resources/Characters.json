@@ -8,7 +8,6 @@
             "bounty": 3000000000,
             "birthday": "May 15th - 19 y.o",
             "origin": "East Blue",
-            "short_description": "Monkey D. Luffy is the main protagonist of anime, One Piece. He is the founder and captain of the increasingly infamous and powerful Straw Hat Pirates, as well as one of its top fighters.",
             "description": "Monkey D. Luffy, also known as Straw Hat Luffy and commonly as Straw Hat, is the main protagonist of the manga and anime, One Piece. He is the founder and captain of the increasingly infamous and powerful Straw Hat Pirates, as well as one of its top fighters. His lifelong dream is to become the Pirate King by finding the legendary treasure left behind by the late Gol D. Roger. He believes that being the Pirate King means having the most freedom in the world.",
             "affiliation": {
                 "id": "1",
@@ -67,7 +66,6 @@
             "bounty": 320000000,
             "birthday": "Nov 11th - 21 y.o",
             "origin": "East Blue",
-            "short_description": "Roronoa Zoro, also known as Pirate Hunter Zoro, is the combatant of the Straw Hat Pirates, and one of their two swordsmen. Formerly a bounty hunter, he is first to join Luffy's crew.",
             "description": "Roronoa Zoro, also known as Pirate Hunter Zoro, is the combatant of the Straw Hat Pirates, and one of their two swordsmen. Formerly a bounty hunter, he is the second member of Luffy's crew and the first to join it, doing so in the Romance Dawn Arc. As a master of Three Sword Style, a swordsmanship style which he created during his childhood training in Shimotsuki Village, Zoro is among the three most powerful combatants of the Straw Hats, alongside Luffy and Sanji.",
             "affiliation": {
                 "id": "1",
@@ -117,6 +115,59 @@
                         {
                             "image_url": "",
                             "title": "Yubashiri (Former)",
+                            "short_description": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "name": "Nami",
+            "nickname": "Nami",
+            "epithet": "Cat Burglar",
+            "bounty": 66000000,
+            "birthday": "Jul 3rd - 20 y.o",
+            "origin": "East Blue",
+            "description": "Cat Burglar Nami is the navigator of the Straw Hat Pirates. She is the third member of the crew and the second to join, doing so during the Orange Town Arc. She is the adoptive sister of Nojiko after the two were orphaned and taken in by Bell-mère.",
+            "affiliation": {
+                "id": "1",
+                "name": "Straw Hat Pirates",
+                "image_name": "strawhat-jolly-roger"
+            },
+            "images": {
+                "grid_url": "https://i.ibb.co/CtSRGyd/nami-grid-image.png",
+                "banner_url": "https://i.ibb.co/M1S8q39/nami-banner-image.png"
+            },
+            "attributes": [
+                {
+                    "type": "tile",
+                    "title": "Fighting Style",
+                    "items": [
+                        {
+                            "image_url": "",
+                            "title": "Art of Weather",
+                            "short_description": "Mainly on using the Clima-Tact to manipulate the weather of her surroundings, also known as the Art of Weather. When combined with her immense knowledge of meteorology and weather systems, this ability can be used for devastating results."
+                        }
+                    ]
+                },
+                {
+                    "type": "slider",
+                    "title": "Weapons",
+                    "items": [
+                        {
+                            "image_url": "",
+                            "title": "Clima-Tact",
+                            "short_description": ""
+                        },
+                        {
+                            "image_url": "",
+                            "title": "Perfect Clima-Tact",
+                            "short_description": ""
+                        },
+                        {
+                            "image_url": "",
+                            "title": "Sorcery Clima-Tact",
                             "short_description": ""
                         }
                     ]

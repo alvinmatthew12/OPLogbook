@@ -145,7 +145,8 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
             
             let deltaWidth = textWidth / widthWithPadding
             var multiply = ceil(deltaWidth)
-            if (deltaWidth - floor(deltaWidth) > 0.5) { // check has decimal
+            let delta = multiply - deltaWidth
+            if (delta > 0 && delta < 0.5) { // check has decimal
                 multiply += 1
             }
             

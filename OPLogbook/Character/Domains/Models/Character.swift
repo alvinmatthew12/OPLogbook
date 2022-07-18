@@ -15,19 +15,10 @@ internal struct Character: Decodable, Equatable {
     internal let bounty: Double
     internal let birthday: String
     internal let origin: String
-    internal let shortDescription: String
     internal let description: String
     internal let affiliation: CharacterAffiliation
     internal let images: CharacterImages
     internal let attributes: [CharacterAttribute]
-    
-    private enum CodingKeys: String, CodingKey {
-        case id, name, epithet,
-             bounty, affiliation, images,
-             nickname, description, birthday,
-             origin, attributes
-        case shortDescription = "short_description"
-    }
 }
 
 internal struct CharacterAffiliation: Decodable, Equatable {
