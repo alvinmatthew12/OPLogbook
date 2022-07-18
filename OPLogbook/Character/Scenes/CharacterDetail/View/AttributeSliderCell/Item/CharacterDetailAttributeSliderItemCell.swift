@@ -18,7 +18,7 @@ internal final class CharacterDetailAttributeSliderItemCell: UICollectionViewCel
         super.awakeFromNib()
         
         imageView.imageShape = .circle
-        imageView.layer.borderWidth = 2
+        imageView.layer.borderWidth = 2.5
         imageView.layer.borderColor = UIColor.BB10.cgColor
     }
     
