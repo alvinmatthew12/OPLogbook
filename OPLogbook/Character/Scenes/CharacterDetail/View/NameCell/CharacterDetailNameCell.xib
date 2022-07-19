@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bp4-XX-YFt">
                         <rect key="frame" x="0.0" y="0.0" width="332" height="48"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELn-Oz-YDg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELn-Oz-YDg">
                                 <rect key="frame" x="0.0" y="0.0" width="287" height="17"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" name="GY50"/>
@@ -35,7 +35,7 @@
                                     <constraint firstAttribute="width" secondItem="5C0-8y-wwF" secondAttribute="height" multiplier="1:1" id="Mre-f5-gNJ"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ek2-iI-Nyt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ek2-iI-Nyt">
                                 <rect key="frame" x="0.0" y="17" width="287" height="29"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" name="BW50"/>
@@ -52,7 +52,6 @@
                             <constraint firstItem="ek2-iI-Nyt" firstAttribute="leading" secondItem="bp4-XX-YFt" secondAttribute="leading" id="Shm-mL-Gzx"/>
                             <constraint firstItem="5C0-8y-wwF" firstAttribute="centerY" secondItem="bp4-XX-YFt" secondAttribute="centerY" id="ZD7-3h-WCp"/>
                             <constraint firstItem="5C0-8y-wwF" firstAttribute="leading" secondItem="ek2-iI-Nyt" secondAttribute="trailing" constant="10" id="gtf-Z6-I6S"/>
-                            <constraint firstAttribute="height" constant="48" id="jzr-Sg-kro"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -60,6 +59,7 @@
                     <constraint firstItem="bp4-XX-YFt" firstAttribute="leading" secondItem="kl9-RD-FZF" secondAttribute="leading" id="2Xx-kH-ZYb"/>
                     <constraint firstItem="bp4-XX-YFt" firstAttribute="top" secondItem="kl9-RD-FZF" secondAttribute="top" id="Zqg-bd-cet"/>
                     <constraint firstAttribute="trailing" secondItem="bp4-XX-YFt" secondAttribute="trailing" id="gbd-ky-k8R"/>
+                    <constraint firstAttribute="bottom" secondItem="bp4-XX-YFt" secondAttribute="bottom" id="m6B-0n-QKo"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="332" height="48"/>

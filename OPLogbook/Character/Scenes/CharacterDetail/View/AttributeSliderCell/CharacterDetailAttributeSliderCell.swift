@@ -7,7 +7,7 @@
 
 import UIKit
 
-internal final class CharacterDetailAttributeSliderCell: UICollectionViewCell {
+internal final class CharacterDetailAttributeSliderCell: CharacterDetailBaseCell {
     internal static let identifier = "CharacterDetailAttributeSliderCell"
     
     private let collectionView: UICollectionView = {
@@ -28,9 +28,9 @@ internal final class CharacterDetailAttributeSliderCell: UICollectionViewCell {
     
     override internal init(frame: CGRect) {
         super.init(frame: frame)
-        collectionView.fixInView(self, attributes: [.top, .leading, .trailing])
-        collectionView.heightAnchor.constraint(equalToConstant: 110).isActive = true
+        contentView.heightAnchor.constraint(equalToConstant: 115).isActive = true
         
+        collectionView.fixInView(self)
         collectionView.delegate = self
         collectionView.dataSource = self
         

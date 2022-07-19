@@ -7,7 +7,7 @@
 
 import UIKit
 
-internal final class CharacterDetailDescriptionCell: UICollectionViewCell {
+internal final class CharacterDetailDescriptionCell: CharacterDetailBaseCell {
     internal static let identifier = "CharacterDetailDescriptionCell"
     
     internal let label = UILabel()
@@ -18,7 +18,7 @@ internal final class CharacterDetailDescriptionCell: UICollectionViewCell {
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(label)
-        label.fixInView(self.contentView, attributes: [.top, .leading, .trailing])
+        label.fixInView(self.contentView)
     }
 
     required internal init?(coder aDecoder: NSCoder) {

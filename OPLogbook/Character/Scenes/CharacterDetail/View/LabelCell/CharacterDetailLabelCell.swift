@@ -7,14 +7,14 @@
 
 import UIKit
 
-internal final class CharacterDetailLabelCell: UICollectionViewCell {
+internal final class CharacterDetailLabelCell: CharacterDetailBaseCell {
     internal static let identifier = "CharacterDetailLabelCell"
     
     internal let label = UILabel()
     
     override internal init(frame: CGRect) {
         super.init(frame: frame)
-        label.fixInView(self, attributes: [.top, .leading, .trailing])
+        label.fixInView(self)
     }
     
     required internal init?(coder aDecoder: NSCoder) {

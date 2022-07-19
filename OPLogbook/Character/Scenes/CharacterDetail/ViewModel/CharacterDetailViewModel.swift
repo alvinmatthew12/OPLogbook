@@ -53,7 +53,6 @@ internal final class CharacterDetailViewModel: ViewModelType {
                     .vStackTile(label: "Bounty", value: char.bounty.currencyDecimalFormat),
                     .vStackTile(label: "Birthday", value: char.birthday),
                     .vStackTile(label: "Origin", value: char.origin),
-                    .spacing(15)
                 ]
                 
                 for attr in char.attributes {
@@ -68,7 +67,6 @@ internal final class CharacterDetailViewModel: ViewModelType {
                     case .none:
                         break
                     }
-                    components.append(.spacing(15))
                 }
                 
                 return .just(components)

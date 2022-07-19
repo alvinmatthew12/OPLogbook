@@ -213,12 +213,12 @@
 			path = VStackTileCell;
 			sourceTree = "<group>";
 		};
-		E19AC5B62885C911001C19E9 /* TextCell */ = {
+		E19AC5B62885C911001C19E9 /* LabelCell */ = {
 			isa = PBXGroup;
 			children = (
 				E19AC5B72885C928001C19E9 /* CharacterDetailLabelCell.swift */,
 			);
-			path = TextCell;
+			path = LabelCell;
 			sourceTree = "<group>";
 		};
 		E19AC5BB2885DFE4001C19E9 /* AttributeTileCell */ = {
@@ -362,7 +362,7 @@
 			children = (
 				E19AC5C02885E916001C19E9 /* AttributeSliderCell */,
 				E19AC5BB2885DFE4001C19E9 /* AttributeTileCell */,
-				E19AC5B62885C911001C19E9 /* TextCell */,
+				E19AC5B62885C911001C19E9 /* LabelCell */,
 				E170009B2884BCD700E7C254 /* VStackTileCell */,
 				E170008C2884961700E7C254 /* DescriptionCell */,
 				E1700085288471F600E7C254 /* NameCell */,

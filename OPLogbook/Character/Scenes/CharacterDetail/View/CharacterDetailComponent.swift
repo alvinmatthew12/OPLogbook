@@ -15,52 +15,50 @@ internal enum CharacterDetailComponent: Equatable {
     case label(NSAttributedString)
     case attributeTile(CharacterAttributeItem)
     case attributeSlider([CharacterAttributeItem])
-    case spacing(CGFloat)
 }
 
 extension CharacterDetailComponent {
     internal enum Layout {
-        case fullWidth(height: CGFloat, margins: UIEdgeInsets = .zero, lineSpacing: CGFloat = 0)
-        case staggered(height: CGFloat, margins: UIEdgeInsets = .zero, interItemSpacing: CGFloat = 0, lineSpacing: CGFloat = 0)
-        case dynamicText(NSAttributedString,margins: UIEdgeInsets = .zero,lineSpacing: CGFloat = 0)
+        case fullWidth(margins: UIEdgeInsets = .zero, lineSpacing: CGFloat = 0)
+        case staggered(margins: UIEdgeInsets = .zero, interItemSpacing: CGFloat = 0, lineSpacing: CGFloat = 0)
     }
     
     internal var layout: Layout{
         let defaultMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         switch self {
         case .image:
-            return .fullWidth(height: 250, lineSpacing: 20)
+            return .fullWidth(lineSpacing: 20)
             
-        case .name:
-            return .fullWidth(height: 48, margins: defaultMargins, lineSpacing: 30)
-            
-        case let .description(text):
-            return .dynamicText(
-                .paragraph2(text, alignment: .justified),
+        case .name, .description:
+            return .fullWidth(
                 margins: defaultMargins,
                 lineSpacing: 30
             )
             
         case .vStackTile:
             return .staggered(
-                height: 32,
                 margins: defaultMargins,
                 interItemSpacing: 10,
                 lineSpacing: 15
             )
             
-        case let .label(attributedString):
-            let height = attributedString.heightOfString()
-            return .fullWidth(height: height, margins: defaultMargins, lineSpacing: 15)
+        case .label:
+            return .fullWidth(
+                margins: defaultMargins,
+                lineSpacing: 0
+            )
             
         case .attributeTile:
-            return .fullWidth(height: 80, margins: defaultMargins, lineSpacing: 15)
+            return .fullWidth(
+                margins: defaultMargins,
+                lineSpacing: 15
+            )
             
         case .attributeSlider:
-            return .fullWidth(height: 110, margins: .zero, lineSpacing: 15)
-            
-        case let .spacing(height):
-            return .fullWidth(height: height)
+            return .fullWidth(
+                margins: .zero,
+                lineSpacing: 15
+            )
         }
     }
 }

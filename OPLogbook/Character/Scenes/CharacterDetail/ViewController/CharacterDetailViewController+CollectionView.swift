@@ -28,15 +28,16 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
         for i in 0..<components.count {
             let component = components[i]
             switch component.layout {
-            case let .fullWidth(_, margins, _):
-                collectionData.append(.init(components: [component], margins: margins))
+            case let .fullWidth(margins, lineSpacing):
+                var _margins = margins
+                _margins.bottom = max(lineSpacing, 0.1)
+                collectionData.append(.init(components: [component], margins: _margins))
                 
-            case let .dynamicText(_, margins, _):
-                collectionData.append(.init(components: [component], margins: margins))
-                
-            case let .staggered(_, margins, _, _):
+            case let .staggered(margins, _, lineSpacing):
+                var _margins = margins
+                _margins.bottom = lineSpacing
                 if staggeredItem.isEmpty {
-                    staggeredFirstMargin = margins
+                    staggeredFirstMargin = _margins
                 }
                 staggeredItem.append(component)
                 if case .staggered = components[safe: i + 1]?.layout { } else {
@@ -65,49 +66,53 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
         switch component {
         case let .image(url):
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailImageCell.identifier, for: indexPath) as? CharacterDetailImageCell {
+                cell.layout = component.layout
                 cell.imageView.url = url
                 return cell
             }
             
         case let .name(epithet, name, affiliationImageName):
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailNameCell.identifier, for: indexPath) as? CharacterDetailNameCell {
+                cell.layout = component.layout
                 cell.setupData(epithet, name, affiliationImageName)
                 return cell
             }
             
         case let .description(text):
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailDescriptionCell.identifier, for: indexPath) as? CharacterDetailDescriptionCell {
+                cell.layout = component.layout
                 cell.label.attributedText = .paragraph2(text, alignment: .justified)
                 return cell
             }
             
         case let .vStackTile(label, value):
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailVStackTileCell.identifier, for: indexPath) as? CharacterDetailVStackTileCell {
+                cell.layout = component.layout
                 cell.setup(label: label, value: value)
                 return cell
             }
             
         case let .label(attributedString):
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailLabelCell.identifier, for: indexPath) as? CharacterDetailLabelCell {
+                cell.layout = component.layout
                 cell.label.attributedText = attributedString
                 return cell
             }
             
         case let .attributeTile(data):
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailAttributeTileCell.identifier, for: indexPath) as? CharacterDetailAttributeTileCell {
+                cell.layout = component.layout
                 cell.setupData(data)
                 return cell
             }
             
         case let .attributeSlider(items):
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailAttributeSliderCell.identifier, for: indexPath) as? CharacterDetailAttributeSliderCell {
+                cell.layout = component.layout
                 cell.items = items
                 return cell
             }
-            
-        case .spacing:
-            break
-            
+
         }
         
         return collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath)
@@ -115,46 +120,5 @@ extension CharacterDetailViewController: UICollectionViewDataSource, UICollectio
     
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return collectionData[section].margins
-    }
-    
-    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let component = collectionData[indexPath.section].components[indexPath.item]
-        
-        let width = collectionView.frame.size.width
-        
-        switch component.layout {
-        case let .fullWidth(height, margins, lineSpacing):
-            let totalMargin: CGFloat = margins.left + margins.right
-            let _width = width - totalMargin
-            let _height = height + lineSpacing
-            return CGSize(width: _width, height: _height)
-            
-        case let .staggered(height, margins, interItemSpacing, lineSpacing):
-            let totalMargin: CGFloat = max(margins.left, margins.right)
-            let interItemHalf = max((interItemSpacing / 2), 0)
-            let _width = (width / 2) - interItemHalf - totalMargin
-            let _height = height + lineSpacing
-            return CGSize(width: _width, height: _height)
-            
-        case let .dynamicText(attributedText, margins, lineSpacing):
-            let textWidth = attributedText.size().width
-            let textHeight: CGFloat = attributedText.heightOfString()
-            let totalMargin: CGFloat = margins.left + margins.right
-            
-            let widthWithPadding = width - totalMargin
-            
-            let deltaWidth = textWidth / widthWithPadding
-            var multiply = ceil(deltaWidth)
-            let delta = multiply - deltaWidth
-            if (delta > 0 && delta < 0.5) { // check has decimal
-                multiply += 1
-            }
-            
-            let containerHeight = max((textHeight * multiply), 50)
-            let height = containerHeight + lineSpacing
-            
-            let _width = width - totalMargin
-            return CGSize(width: _width, height: height)
-        }
     }
 }

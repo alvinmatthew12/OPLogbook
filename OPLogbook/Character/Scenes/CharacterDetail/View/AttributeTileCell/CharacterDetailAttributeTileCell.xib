@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="334" height="80"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B4n-rP-HR9">
+                    <view contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="B4n-rP-HR9">
                         <rect key="frame" x="0.0" y="0.0" width="334" height="80"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="khy-h3-LLJ" customClass="OPImageView" customModule="OPLogbook" customModuleProvider="target">
@@ -27,7 +27,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="9fP-5e-Gl0"/>
-                                    <constraint firstAttribute="width" constant="70" id="PSi-cP-CAQ"/>
+                                    <constraint firstAttribute="width" secondItem="khy-h3-LLJ" secondAttribute="height" id="T72-Z1-Mnb"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-chevron-right" translatesAutoresizingMaskIntoConstraints="NO" id="19R-Fb-iYt">
@@ -54,7 +54,6 @@
                         <constraints>
                             <constraint firstItem="19R-Fb-iYt" firstAttribute="centerY" secondItem="B4n-rP-HR9" secondAttribute="centerY" id="0ha-1X-mvx"/>
                             <constraint firstItem="OtO-ng-BnU" firstAttribute="top" secondItem="B4n-rP-HR9" secondAttribute="top" constant="10" id="4hj-81-ooT"/>
-                            <constraint firstAttribute="height" constant="80" id="HK4-Re-7BU"/>
                             <constraint firstItem="khy-h3-LLJ" firstAttribute="centerY" secondItem="B4n-rP-HR9" secondAttribute="centerY" id="JcC-Lk-fTc"/>
                             <constraint firstAttribute="trailing" secondItem="19R-Fb-iYt" secondAttribute="trailing" constant="5" id="Krg-jz-JgP"/>
                             <constraint firstItem="OtO-ng-BnU" firstAttribute="leading" secondItem="khy-h3-LLJ" secondAttribute="trailing" constant="12" id="N4a-zr-dCC"/>
@@ -70,9 +69,11 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="B4n-rP-HR9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="HHY-rt-Dqa"/>
+                <constraint firstAttribute="bottom" secondItem="B4n-rP-HR9" secondAttribute="bottom" id="KbK-GT-pYQ"/>
                 <constraint firstItem="B4n-rP-HR9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NyN-XU-mfF"/>
                 <constraint firstAttribute="trailing" secondItem="B4n-rP-HR9" secondAttribute="trailing" id="ReG-1d-nhw"/>
             </constraints>
+            <size key="customSize" width="334" height="80"/>
             <connections>
                 <outlet property="containerView" destination="B4n-rP-HR9" id="TYY-Ku-LQU"/>
                 <outlet property="descriptionLabel" destination="yZl-hp-HFL" id="jaC-es-iTr"/>

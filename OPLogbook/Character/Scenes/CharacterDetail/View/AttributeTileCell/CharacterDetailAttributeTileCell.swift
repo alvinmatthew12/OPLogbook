@@ -7,7 +7,7 @@
 
 import UIKit
 
-internal final class CharacterDetailAttributeTileCell: UICollectionViewCell {
+internal final class CharacterDetailAttributeTileCell: CharacterDetailBaseCell {
     internal static let nib = UINib(nibName: "CharacterDetailAttributeTileCell", bundle: nil)
     internal static let identifier = "CharacterDetailAttributeTileCell"
 
@@ -18,6 +18,7 @@ internal final class CharacterDetailAttributeTileCell: UICollectionViewCell {
     
     override internal func awakeFromNib() {
         super.awakeFromNib()
+        contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 80).isActive = true
         containerView.layer.cornerRadius = 12
         imageView.imageShape = .rect(cornerRadius: 7)
     }

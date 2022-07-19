@@ -82,6 +82,7 @@ internal final class CharacterDetailViewController: UIViewController {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
+        layout.estimatedItemSize = CGSize(width: collectionView.bounds.size.width, height: 50)
         collectionView.setCollectionViewLayout(layout, animated: false)
         collectionView.contentInset = .init(top: 0, left: 0, bottom: 32, right: 0)
         registerCell(collectionView)
