@@ -30,19 +30,19 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljZ-w6-tkk">
-                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEQ-C9-Kca">
-                            <rect key="frame" x="15" y="10" width="30" height="30"/>
+                            <rect key="frame" x="15" y="10" width="24" height="24"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="HVv-fK-1YC"/>
+                                <constraint firstAttribute="height" constant="24" id="HVv-fK-1YC"/>
                                 <constraint firstAttribute="width" secondItem="DEQ-C9-Kca" secondAttribute="height" id="mBE-91-fIp"/>
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" backgroundImage="ic-circle-back-button"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69t-Oe-oAh">
-                            <rect key="frame" x="60" y="14.5" width="294" height="21"/>
+                            <rect key="frame" x="54" y="11.5" width="306" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -52,7 +52,7 @@
                     <constraints>
                         <constraint firstItem="69t-Oe-oAh" firstAttribute="centerY" secondItem="ljZ-w6-tkk" secondAttribute="centerY" id="BFE-Ox-7fa"/>
                         <constraint firstItem="DEQ-C9-Kca" firstAttribute="leading" secondItem="ljZ-w6-tkk" secondAttribute="leading" constant="15" id="f5o-qY-NPc"/>
-                        <constraint firstAttribute="height" constant="50" id="gwt-2m-IU3"/>
+                        <constraint firstAttribute="height" constant="44" id="gwt-2m-IU3"/>
                         <constraint firstItem="69t-Oe-oAh" firstAttribute="centerX" secondItem="ljZ-w6-tkk" secondAttribute="centerX" id="ixo-sZ-s1b"/>
                         <constraint firstItem="DEQ-C9-Kca" firstAttribute="centerY" secondItem="ljZ-w6-tkk" secondAttribute="centerY" id="nft-Rj-mfr"/>
                         <constraint firstItem="69t-Oe-oAh" firstAttribute="leading" secondItem="DEQ-C9-Kca" secondAttribute="trailing" constant="15" id="oX7-OZ-hZb"/>

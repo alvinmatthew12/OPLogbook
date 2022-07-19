@@ -16,8 +16,6 @@ internal final class CharacterDetailViewController: UIViewController {
     @IBOutlet private weak var navigationBarView: UIView!
     @IBOutlet private weak var backButton: UIButton!
     
-    internal var imageView = OPImageView()
-    
     private let registerCells: ListView<CharacterDetailComponent>.RegisterCells = { 
         [
             .init(CharacterDetailImageCell.self, forCellWithReuseIdentifier: CharacterDetailImageCell.identifier),
@@ -129,38 +127,23 @@ internal final class CharacterDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override internal func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override internal func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     override internal func viewDidLoad() {
         super.viewDidLoad()
         
         listView.backgroundColor = .BB30
-        DispatchQueue.main.async {
-            let screenSize = UIScreen.main.bounds.size
-            self.view.frame.size = screenSize
-            self.listViewContainer.frame.size.width = screenSize.width
-            self.listView.fixInView(self.listViewContainer)
-        }
-        setupImageView()
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
-            self.bindViewModel()
-            self.setupRedux()
-        }
-    }
-    
-    private func setupImageView() {
-        let width: CGFloat = view.bounds.size.width
-        let padding: CGFloat = 30 + 25 + 10 // LR padding + interitem spacing
-        let itemWidth: CGFloat = (width / 2) - padding
-        
-        let itemCenter = (itemWidth / 2)
-        let topConstraint = 123 - itemCenter
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.zPosition = -1
-        imageView.imageShape = .rect(cornerRadius: 15)
-        view.addSubview(imageView)
-        imageView.widthAnchor.constraint(equalToConstant: itemWidth).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: itemWidth).isActive = true
-        imageView.topAnchor.constraint(equalTo: self.listViewContainer.topAnchor, constant: topConstraint).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        listView.fixInView(listViewContainer)
+        bindViewModel()
+        setupRedux()
     }
     
     private func bindViewModel() {
@@ -173,12 +156,6 @@ internal final class CharacterDetailViewController: UIViewController {
         output.components
             .drive(onNext: { [weak self] components in
                 self?.listView.performUpdates(components)
-            })
-            .disposed(by: disposeBag)
-        
-        output.gridImageUrl
-            .drive(onNext: { [weak self] url in
-                self?.imageView.url = url
             })
             .disposed(by: disposeBag)
         
@@ -198,7 +175,7 @@ internal final class CharacterDetailViewController: UIViewController {
     private func setupRedux() {
         backButton.rx.tap.asDriver()
             .drive(onNext: { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
+                self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
         

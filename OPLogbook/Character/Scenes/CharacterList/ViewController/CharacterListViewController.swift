@@ -11,9 +11,6 @@ import UIKit
 
 internal final class CharacterListViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
-    internal var selectedCell: CharacterListItemCell?
-    internal var selectedCellImageViewSnapshot: UIView?
-    internal var animator: CharacterPageAnimator?
     
     private let disposeBag = DisposeBag()
     private let viewModel: CharacterListViewModel
@@ -84,11 +81,9 @@ internal final class CharacterListViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func presentDetailController(_ characterID: String) {
+    private func toDetailController(_ characterID: String) {
         let vc = CharacterDetailViewController(id: characterID)
-        vc.transitioningDelegate = self
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -115,11 +110,7 @@ extension CharacterListViewController: UICollectionViewDataSource, UICollectionV
     }
     
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? CharacterListItemCell {
-            selectedCell = cell
-            selectedCellImageViewSnapshot = cell.imageView.snapshotView(afterScreenUpdates: false)
-        }
         let character = characters[indexPath.item]
-        presentDetailController(character.id)
+        toDetailController(character.id)
     }
 }

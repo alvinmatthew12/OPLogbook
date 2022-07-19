@@ -32,6 +32,15 @@ public final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         ]
         UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal)
         UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .highlighted)
+        UINavigationBar.appearance().barTintColor = .BB30
+        UINavigationBar.appearance().tintColor = .BW50
+        
+        let textAttributes: [NSAttributedString.Key: Any] = [
+            .font: TypographyConstant.helveticeNeueBold.withSize(TypographyConstant.display1Size),
+            .foregroundColor: UIColor.BW50
+        ]
+        UINavigationBar.appearance().titleTextAttributes = textAttributes
+        UINavigationBar.appearance().isTranslucent = false
     }
 
     public func sceneDidDisconnect(_ scene: UIScene) {

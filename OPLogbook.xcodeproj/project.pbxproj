@@ -48,8 +48,6 @@
 		E1DF10FD28832DE80024D31B /* CharacterDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF10FC28832DE80024D31B /* CharacterDetailImageCell.swift */; };
 		E1DF1100288330BA0024D31B /* FailableDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF10FF288330BA0024D31B /* FailableDecodable.swift */; };
 		E1DF11022883391D0024D31B /* CharacterDetailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF11012883391D0024D31B /* CharacterDetailComponent.swift */; };
-		E1DF11062883454C0024D31B /* CharacterListViewController+TransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF11052883454C0024D31B /* CharacterListViewController+TransitioningDelegate.swift */; };
-		E1DF1108288345A00024D31B /* CharacterPageAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1107288345A00024D31B /* CharacterPageAnimator.swift */; };
 		E1EAEEE428825E2A00C6425B /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEE228825E2A00C6425B /* CharacterListViewController.swift */; };
 		E1EAEEE82882620A00C6425B /* Characters.json in Resources */ = {isa = PBXBuildFile; fileRef = E1EAEEE72882620A00C6425B /* Characters.json */; };
 		E1EAEEEC2882625C00C6425B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEEB2882625C00C6425B /* Character.swift */; };
@@ -113,8 +111,6 @@
 		E1DF10FC28832DE80024D31B /* CharacterDetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailImageCell.swift; sourceTree = "<group>"; };
 		E1DF10FF288330BA0024D31B /* FailableDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableDecodable.swift; sourceTree = "<group>"; };
 		E1DF11012883391D0024D31B /* CharacterDetailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailComponent.swift; sourceTree = "<group>"; };
-		E1DF11052883454C0024D31B /* CharacterListViewController+TransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterListViewController+TransitioningDelegate.swift"; sourceTree = "<group>"; };
-		E1DF1107288345A00024D31B /* CharacterPageAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPageAnimator.swift; sourceTree = "<group>"; };
 		E1EAEEE228825E2A00C6425B /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		E1EAEEE72882620A00C6425B /* Characters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Characters.json; sourceTree = "<group>"; };
 		E1EAEEEB2882625C00C6425B /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -346,7 +342,6 @@
 			children = (
 				E1FC27DC2882E68E00F85279 /* CharacterDetail */,
 				E1A95FC428825D8B009367EA /* CharacterList */,
-				E1DF1107288345A00024D31B /* CharacterPageAnimator.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -356,7 +351,6 @@
 			children = (
 				E170007C28845B0500E7C254 /* CharacterListViewController.xib */,
 				E1EAEEE228825E2A00C6425B /* CharacterListViewController.swift */,
-				E1DF11052883454C0024D31B /* CharacterListViewController+TransitioningDelegate.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -679,12 +673,10 @@
 				E1A95FA5288256A2009367EA /* AppDelegate.swift in Sources */,
 				E1DF10FD28832DE80024D31B /* CharacterDetailImageCell.swift in Sources */,
 				E1EAEF082882788800C6425B /* UIColor+Extension.swift in Sources */,
-				E1DF1108288345A00024D31B /* CharacterPageAnimator.swift in Sources */,
 				E133C80728870F1F005EC285 /* ListView.swift in Sources */,
 				E1FC27D62882B3FA00F85279 /* OPImageView+Extension.swift in Sources */,
 				E15CDF7F288291010099D91C /* Double+Extension.swift in Sources */,
 				E1EAEEEC2882625C00C6425B /* Character.swift in Sources */,
-				E1DF11062883454C0024D31B /* CharacterListViewController+TransitioningDelegate.swift in Sources */,
 				E15CDF7D288289F70099D91C /* UICollectionView+Carousel.swift in Sources */,
 				E19AC5C62885EB6A001C19E9 /* CharacterDetailAttributeSliderItemCell.swift in Sources */,
 				E1A95FA7288256A2009367EA /* SceneDelegate.swift in Sources */,
