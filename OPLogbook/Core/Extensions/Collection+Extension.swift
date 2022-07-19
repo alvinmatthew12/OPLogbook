@@ -11,4 +11,8 @@ extension Collection {
     public subscript(safe index: Index) -> Element? {
         return (index >= startIndex && index < endIndex) ? self[index] : nil
     }
+    
+    public var isNotEmpty: Bool {
+        self.isEmpty == false
+    }
 }

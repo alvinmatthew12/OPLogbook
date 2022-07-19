@@ -105,6 +105,12 @@ public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, U
         var staggeredItem: [C] = []
         var staggeredFirstMargin: UIEdgeInsets = .zero
         
+        func appendStaggeredItems() {
+            collectionData.append(.init(components: staggeredItem, margins: staggeredFirstMargin))
+            staggeredItem = []
+            staggeredFirstMargin = .zero
+        }
+        
         for i in 0..<components.count {
             let component = components[i]
             let layout = customizableLayout?(component)
@@ -117,19 +123,22 @@ public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, U
                 
             case let .staggered(margins, _, lineSpacing):
                 var _margins = margins
-                _margins.bottom = lineSpacing
+                _margins.bottom = max(lineSpacing, 0.1)
                 if staggeredItem.isEmpty {
                     staggeredFirstMargin = _margins
                 }
                 staggeredItem.append(component)
-                if case .staggered = layout { } else {
-                    collectionData.append(.init(components: staggeredItem, margins: staggeredFirstMargin))
-                    staggeredItem = []
-                    staggeredFirstMargin = .zero
+                if let nextComponent = components[safe: i + 1],
+                   case .staggered = customizableLayout?(nextComponent) { } else {
+                    appendStaggeredItems()
                 }
                 
             case .none: break
             }
+        }
+        
+        if staggeredItem.isNotEmpty {
+            appendStaggeredItems()
         }
         
         self.collectionData = collectionData
