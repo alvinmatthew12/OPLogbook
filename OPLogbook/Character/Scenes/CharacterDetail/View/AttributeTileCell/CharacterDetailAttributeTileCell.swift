@@ -7,7 +7,7 @@
 
 import UIKit
 
-internal final class CharacterDetailAttributeTileCell: CharacterDetailBaseCell {
+internal final class CharacterDetailAttributeTileCell: ListViewCell {
     internal static let nib = UINib(nibName: "CharacterDetailAttributeTileCell", bundle: nil)
     internal static let identifier = "CharacterDetailAttributeTileCell"
 

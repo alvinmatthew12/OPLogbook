@@ -7,7 +7,7 @@
 
 import UIKit
 
-internal final class CharacterDetailLabelCell: CharacterDetailBaseCell {
+internal final class CharacterDetailLabelCell: ListViewCell {
     internal static let identifier = "CharacterDetailLabelCell"
     
     internal let label = UILabel()

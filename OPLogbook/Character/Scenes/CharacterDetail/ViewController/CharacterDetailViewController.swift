@@ -10,12 +10,7 @@ import RxSwift
 import UIKit
 
 internal final class CharacterDetailViewController: UIViewController {
-    internal struct CollectionData {
-        internal let components: [CharacterDetailComponent]
-        internal let margins: UIEdgeInsets
-    }
-    
-    @IBOutlet internal weak var collectionView: UICollectionView!
+    @IBOutlet weak var listViewContainer: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var statusBarView: UIView!
     @IBOutlet private weak var navigationBarView: UIView!
@@ -23,9 +18,107 @@ internal final class CharacterDetailViewController: UIViewController {
     
     internal var imageView = OPImageView()
     
+    private let registerCells: ListView<CharacterDetailComponent>.RegisterCells = { 
+        [
+            .init(CharacterDetailImageCell.self, forCellWithReuseIdentifier: CharacterDetailImageCell.identifier),
+            .init(nib: CharacterDetailNameCell.nib, forCellWithReuseIdentifier: CharacterDetailNameCell.identifier),
+            .init(CharacterDetailDescriptionCell.self, forCellWithReuseIdentifier: CharacterDetailDescriptionCell.identifier),
+            .init(nib: CharacterDetailVStackTileCell.nib, forCellWithReuseIdentifier: CharacterDetailVStackTileCell.identifier),
+            .init(CharacterDetailLabelCell.self, forCellWithReuseIdentifier: CharacterDetailLabelCell.identifier),
+            .init(nib: CharacterDetailAttributeTileCell.nib, forCellWithReuseIdentifier: CharacterDetailAttributeTileCell.identifier),
+            .init(CharacterDetailAttributeSliderCell.self, forCellWithReuseIdentifier: CharacterDetailAttributeSliderCell.identifier)
+        ]
+    }
+    
+    private let customizableLayout: ListView<CharacterDetailComponent>.CustomizableLayout = { item in
+        let defaultMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        switch item {
+        case .image:
+            return .fullWidth(lineSpacing: 20)
+            
+        case .name, .description:
+            return .fullWidth(
+                margins: defaultMargins,
+                lineSpacing: 30
+            )
+            
+        case .vStackTile:
+            return .staggered(
+                margins: defaultMargins,
+                interItemSpacing: 10,
+                lineSpacing: 15
+            )
+            
+        case .label:
+            return .fullWidth(
+                margins: defaultMargins,
+                lineSpacing: 0
+            )
+            
+        case .attributeTile:
+            return .fullWidth(
+                margins: defaultMargins,
+                lineSpacing: 15
+            )
+            
+        case .attributeSlider:
+            return .fullWidth(
+                margins: .zero,
+                lineSpacing: 15
+            )
+        }
+    }
+    
+    private lazy var listView: ListView<CharacterDetailComponent> = .init(registerCells: registerCells, customizableLayout: customizableLayout) { [weak self] collectionView, indexPath, item in
+            switch item {
+            case let .image(url):
+                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailImageCell.identifier, for: indexPath) as? CharacterDetailImageCell {
+                    cell.imageView.url = url
+                    return cell
+                }
+                
+            case let .name(epithet, name, affiliationImageName):
+                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailNameCell.identifier, for: indexPath) as? CharacterDetailNameCell {
+                    cell.setupData(epithet, name, affiliationImageName)
+                    return cell
+                }
+                
+            case let .description(text):
+                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailDescriptionCell.identifier, for: indexPath) as? CharacterDetailDescriptionCell {
+                    cell.label.attributedText = .paragraph2(text, alignment: .justified)
+                    return cell
+                }
+                
+            case let .vStackTile(label, value):
+                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailVStackTileCell.identifier, for: indexPath) as? CharacterDetailVStackTileCell {
+                    cell.setup(label: label, value: value)
+                    return cell
+                }
+                
+            case let .label(attributedString):
+                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailLabelCell.identifier, for: indexPath) as? CharacterDetailLabelCell {
+                    cell.label.attributedText = attributedString
+                    return cell
+                }
+                
+            case let .attributeTile(data):
+                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailAttributeTileCell.identifier, for: indexPath) as? CharacterDetailAttributeTileCell {
+                    cell.setupData(data)
+                    return cell
+                }
+                
+            case let .attributeSlider(items):
+                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailAttributeSliderCell.identifier, for: indexPath) as? CharacterDetailAttributeSliderCell {
+                    cell.items = items
+                    return cell
+                }
+            }
+            return nil
+        }
+    
+    
     private let disposeBag = DisposeBag()
     private let viewModel: CharacterDetailViewModel
-    internal var collectionData: [CollectionData] = []
     
     internal init(id: String) {
         viewModel = CharacterDetailViewModel(id: id, useCase: .live)
@@ -39,14 +132,15 @@ internal final class CharacterDetailViewController: UIViewController {
     override internal func viewDidLoad() {
         super.viewDidLoad()
         
+        listView.backgroundColor = .BB30
         DispatchQueue.main.async {
             let screenSize = UIScreen.main.bounds.size
             self.view.frame.size = screenSize
+            self.listViewContainer.frame.size.width = screenSize.width
+            self.listView.fixInView(self.listViewContainer)
         }
-        
         setupImageView()
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
-            self.setupCollectionView()
             self.bindViewModel()
             self.setupRedux()
         }
@@ -65,27 +159,8 @@ internal final class CharacterDetailViewController: UIViewController {
         view.addSubview(imageView)
         imageView.widthAnchor.constraint(equalToConstant: itemWidth).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: itemWidth).isActive = true
-        imageView.topAnchor.constraint(equalTo: self.collectionView.topAnchor, constant: topConstraint).isActive = true
+        imageView.topAnchor.constraint(equalTo: self.listViewContainer.topAnchor, constant: topConstraint).isActive = true
         imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-    }
-    
-    private func setupCollectionView() {
-        collectionView.backgroundColor = .BB30
-        collectionView.contentInsetAdjustmentBehavior = .never
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.estimatedItemSize = CGSize(width: collectionView.bounds.size.width, height: 50)
-        collectionView.setCollectionViewLayout(layout, animated: false)
-        collectionView.contentInset = .init(top: 0, left: 0, bottom: 32, right: 0)
-        registerCell(collectionView)
     }
     
     private func bindViewModel() {
@@ -97,7 +172,7 @@ internal final class CharacterDetailViewController: UIViewController {
         
         output.components
             .drive(onNext: { [weak self] components in
-                self?.performUpdates(components)
+                self?.listView.performUpdates(components)
             })
             .disposed(by: disposeBag)
         
@@ -126,12 +201,14 @@ internal final class CharacterDetailViewController: UIViewController {
                 self?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
+        
+        listView.didScroll = { [weak self] scrollView in
+            self?.handleNavigationBarAnimcation(yOffset: scrollView.contentOffset.y)
+        }
     }
-}
-
-extension CharacterDetailViewController: UIScrollViewDelegate {
-    internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > 150 {
+    
+    private func handleNavigationBarAnimcation(yOffset: CGFloat) {
+        if yOffset > 150 {
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: { [weak self] in
                 guard let self = self else { return }
                 self.statusBarView.backgroundColor = .BB50

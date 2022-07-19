@@ -7,7 +7,7 @@
 
 import UIKit
 
-internal final class CharacterDetailAttributeSliderCell: CharacterDetailBaseCell {
+internal final class CharacterDetailAttributeSliderCell: ListViewCell {
     internal static let identifier = "CharacterDetailAttributeSliderCell"
     
     private let collectionView: UICollectionView = {

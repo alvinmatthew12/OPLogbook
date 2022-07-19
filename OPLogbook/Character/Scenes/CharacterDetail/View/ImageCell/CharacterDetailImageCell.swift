@@ -7,7 +7,7 @@
 
 import UIKit
 
-internal final class CharacterDetailImageCell: CharacterDetailBaseCell {
+internal final class CharacterDetailImageCell: ListViewCell {
     internal static let identifier = "CharacterDetailImageCell"
     
     internal let imageView = OPImageView()

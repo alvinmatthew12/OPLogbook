@@ -1,18 +1,18 @@
 //
-//  CharacterDetailBaseCell.swift
+//  ListViewCell.swift
 //  OPLogbook
 //
-//  Created by Alvin Matthew Pratama on 17/07/22.
+//  Created by Alvin Matthew Pratama on 19/07/22.
 //
 
 import UIKit
 
-internal class CharacterDetailBaseCell: UICollectionViewCell {
-    internal var layout: CharacterDetailComponent.Layout? {
+open class ListViewCell: UICollectionViewCell {
+    internal var layout: ListViewLayout? {
         didSet { setNeedsLayout() }
     }
     
-    override internal func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+    override open func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         super.preferredLayoutAttributesFitting(layoutAttributes)
         
         layoutIfNeeded()
