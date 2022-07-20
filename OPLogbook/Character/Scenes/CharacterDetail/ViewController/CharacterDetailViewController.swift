@@ -68,51 +68,53 @@ internal final class CharacterDetailViewController: UIViewController {
     }
     
     private lazy var listView: ListView<CharacterDetailComponent> = .init(registerCells: registerCells, customizableLayout: customizableLayout) { [weak self] collectionView, indexPath, item in
-            switch item {
-            case let .image(url):
-                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailImageCell.identifier, for: indexPath) as? CharacterDetailImageCell {
-                    cell.imageView.url = url
-                    return cell
-                }
-                
-            case let .name(epithet, name, affiliationImageName):
-                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailNameCell.identifier, for: indexPath) as? CharacterDetailNameCell {
-                    cell.setupData(epithet, name, affiliationImageName)
-                    return cell
-                }
-                
-            case let .description(text):
-                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailDescriptionCell.identifier, for: indexPath) as? CharacterDetailDescriptionCell {
-                    cell.label.attributedText = .paragraph2(text, alignment: .justified)
-                    return cell
-                }
-                
-            case let .vStackTile(label, value):
-                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailVStackTileCell.identifier, for: indexPath) as? CharacterDetailVStackTileCell {
-                    cell.setup(label: label, value: value)
-                    return cell
-                }
-                
-            case let .label(attributedString):
-                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailLabelCell.identifier, for: indexPath) as? CharacterDetailLabelCell {
-                    cell.label.attributedText = attributedString
-                    return cell
-                }
-                
-            case let .attributeTile(data):
-                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailAttributeTileCell.identifier, for: indexPath) as? CharacterDetailAttributeTileCell {
-                    cell.setupData(data)
-                    return cell
-                }
-                
-            case let .attributeSlider(items):
-                if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailAttributeSliderCell.identifier, for: indexPath) as? CharacterDetailAttributeSliderCell {
-                    cell.items = items
-                    return cell
-                }
+        guard let self = self else { return nil }
+        
+        switch item {
+        case let .image(url):
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailImageCell.identifier, for: indexPath) as? CharacterDetailImageCell {
+                cell.imageView.url = url
+                return cell
             }
-            return nil
+            
+        case let .name(epithet, name, affiliationImageName):
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailNameCell.identifier, for: indexPath) as? CharacterDetailNameCell {
+                cell.setupData(epithet, name, affiliationImageName)
+                return cell
+            }
+            
+        case let .description(text):
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailDescriptionCell.identifier, for: indexPath) as? CharacterDetailDescriptionCell {
+                cell.label.attributedText = .paragraph2(text, alignment: .justified)
+                return cell
+            }
+            
+        case let .vStackTile(label, value):
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailVStackTileCell.identifier, for: indexPath) as? CharacterDetailVStackTileCell {
+                cell.setup(label: label, value: value)
+                return cell
+            }
+            
+        case let .label(attributedString):
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailLabelCell.identifier, for: indexPath) as? CharacterDetailLabelCell {
+                cell.label.attributedText = attributedString
+                return cell
+            }
+            
+        case let .attributeTile(data):
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailAttributeTileCell.identifier, for: indexPath) as? CharacterDetailAttributeTileCell {
+                cell.setupData(data)
+                return cell
+            }
+            
+        case let .attributeSlider(items):
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailAttributeSliderCell.identifier, for: indexPath) as? CharacterDetailAttributeSliderCell {
+                cell.items = items
+                return cell
+            }
         }
+        return nil
+    }
     
     
     private let disposeBag = DisposeBag()

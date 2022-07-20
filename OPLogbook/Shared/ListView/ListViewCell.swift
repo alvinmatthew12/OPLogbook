@@ -5,9 +5,13 @@
 //  Created by Alvin Matthew Pratama on 19/07/22.
 //
 
+import RxCocoa
+import RxSwift
 import UIKit
 
 open class ListViewCell: UICollectionViewCell {
+    public var disposeBag = DisposeBag()
+    
     internal var layout: ListViewLayout? {
         didSet { setNeedsLayout() }
     }

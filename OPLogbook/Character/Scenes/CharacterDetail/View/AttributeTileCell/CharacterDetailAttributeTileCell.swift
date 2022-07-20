@@ -5,6 +5,8 @@
 //  Created by Alvin Matthew Pratama on 19/07/22.
 //
 
+import RxCocoa
+import RxSwift
 import UIKit
 
 internal final class CharacterDetailAttributeTileCell: ListViewCell {
@@ -21,11 +23,25 @@ internal final class CharacterDetailAttributeTileCell: ListViewCell {
         contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 80).isActive = true
         containerView.layer.cornerRadius = 12
         imageView.imageShape = .rect(cornerRadius: 7)
+        
+        let tap = UITapGestureRecognizer()
+        tap.cancelsTouchesInView = true
+        containerView.addGestureRecognizer(tap)
+        containerView.isUserInteractionEnabled = true
+        tap.rx.event.asDriver()
+            .drive(onNext: { [weak self] _ in
+                self?.navigateTo()
+            })
+            .disposed(by: disposeBag)
     }
     
     internal func setupData(_ data: CharacterAttributeItem) {
         imageView.url = data.imageURL
         titleLabel.attributedText = .display2(data.title, textStyle: [.bold])
         descriptionLabel.attributedText = .paragraph3(data.shortDescription)
+    }
+    
+    internal func navigateTo() {
+        UIApplication.topViewController()?.navigationController?.pushViewController(UIViewController(), animated: true)
     }
 }

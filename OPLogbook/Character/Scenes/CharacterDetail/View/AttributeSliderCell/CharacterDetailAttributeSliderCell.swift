@@ -41,6 +41,10 @@ internal final class CharacterDetailAttributeSliderCell: ListViewCell {
     required internal init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    internal func navigateTo() {
+        UIApplication.topViewController()?.navigationController?.pushViewController(UIViewController(), animated: true)
+    }
 }
 
 extension CharacterDetailAttributeSliderCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -60,5 +64,9 @@ extension CharacterDetailAttributeSliderCell: UICollectionViewDataSource, UIColl
     
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 60, height: 110)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigateTo()
     }
 }
