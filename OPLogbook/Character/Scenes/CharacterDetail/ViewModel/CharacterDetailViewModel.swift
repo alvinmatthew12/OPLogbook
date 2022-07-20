@@ -24,7 +24,6 @@ internal final class CharacterDetailViewModel: ViewModelType {
     
     internal struct Output {
         internal let components: Driver<[CharacterDetailComponent]>
-        internal let gridImageUrl: Driver<URL?>
         internal let title: Driver<String>
         internal let networkError: Driver<NetworkError>
     }
@@ -46,7 +45,7 @@ internal final class CharacterDetailViewModel: ViewModelType {
         let components = character
             .flatMapLatest { char -> Driver<[CharacterDetailComponent]> in
                 var components: [CharacterDetailComponent] = [
-                    .image(char.images.bannerURL),
+                    .image(char.imageURL, char.color),
                     .name(char.epithet, char.name, char.affiliation.imageName),
                     .description(char.description),
                     .vStackTile(label: "Affiliation", value: char.affiliation.name),
@@ -72,16 +71,10 @@ internal final class CharacterDetailViewModel: ViewModelType {
                 return .just(components)
             }
         
-        let gridImageUrl = character
-            .flatMapLatest { character -> Driver<URL?> in
-                return .just(character.images.gridURL)
-            }
-        
         let title = character
             .flatMapLatest { character -> Driver<String> in
                 return .just(character.name)
             }
-            
         
         let networkError = response
             .compactMap { result -> NetworkError? in
@@ -91,7 +84,6 @@ internal final class CharacterDetailViewModel: ViewModelType {
         
         return Output(
             components: components,
-            gridImageUrl: gridImageUrl,
             title: title,
             networkError: networkError
         )

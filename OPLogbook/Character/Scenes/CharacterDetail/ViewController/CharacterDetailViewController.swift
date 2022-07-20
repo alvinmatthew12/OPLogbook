@@ -71,9 +71,9 @@ internal final class CharacterDetailViewController: UIViewController {
         guard let self = self else { return nil }
         
         switch item {
-        case let .image(url):
+        case let .image(url, color):
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterDetailImageCell.identifier, for: indexPath) as? CharacterDetailImageCell {
-                cell.imageView.url = url
+                cell.setup(url: url, backgroundColor: color)
                 return cell
             }
             

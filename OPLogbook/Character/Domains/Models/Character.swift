@@ -5,7 +5,7 @@
 //  Created by Alvin Matthew Pratama on 16/07/22.
 //
 
-import Foundation
+import UIKit
 
 internal struct Character: Decodable, Equatable {
     internal let id: String
@@ -17,8 +17,23 @@ internal struct Character: Decodable, Equatable {
     internal let origin: String
     internal let description: String
     internal let affiliation: CharacterAffiliation
-    internal let images: CharacterImages
     internal let attributes: [CharacterAttribute]
+    private let _color: String
+    @FailableDecodable
+    internal var imageURL: URL?
+    
+    internal var color: UIColor {
+        UIColor(hexaRGB: _color) ?? .BB10
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, name, nickname,
+             epithet, bounty, birthday,
+             origin, description, affiliation,
+             attributes
+        case _color = "color"
+        case imageURL = "image_url"
+    }
 }
 
 internal struct CharacterAffiliation: Decodable, Equatable {
@@ -29,18 +44,6 @@ internal struct CharacterAffiliation: Decodable, Equatable {
     private enum CodingKeys: String, CodingKey {
         case id, name
         case imageName = "image_name"
-    }
-}
-
-internal struct CharacterImages: Decodable, Equatable {
-    @FailableDecodable
-    internal var gridURL: URL?
-    @FailableDecodable
-    internal var bannerURL: URL?
-    
-    private enum CodingKeys: String, CodingKey {
-        case gridURL = "grid_url"
-        case bannerURL = "banner_url"
     }
 }
 

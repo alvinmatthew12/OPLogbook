@@ -10,7 +10,7 @@ import UIKit
 internal final class CharacterDetailImageCell: ListViewCell {
     internal static let identifier = "CharacterDetailImageCell"
     
-    internal let imageView = OPImageView()
+    private let imageView = OPImageView()
     
     override internal init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,6 +18,11 @@ internal final class CharacterDetailImageCell: ListViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.fixInView(self)
         contentView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+    }
+    
+    internal func setup(url: URL?, backgroundColor: UIColor) {
+        imageView.backgroundColor = backgroundColor
+        imageView.loadAndCrop(url: url, targetSize: CGSize(width: 375, height: 250))
     }
 
     required internal init?(coder aDecoder: NSCoder) {

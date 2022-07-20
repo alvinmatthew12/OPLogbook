@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -64,7 +63,6 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" name="BB30"/>
             <constraints>
                 <constraint firstItem="m8h-wa-Kbm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6HD-Wo-gKj"/>
                 <constraint firstItem="ljZ-w6-tkk" firstAttribute="top" secondItem="m8h-wa-Kbm" secondAttribute="bottom" id="P17-bH-mLy"/>
@@ -83,9 +81,6 @@
     </objects>
     <resources>
         <image name="ic-circle-back-button" width="16.5" height="16.5"/>
-        <namedColor name="BB30">
-            <color red="0.15700000524520874" green="0.16500000655651093" blue="0.18799999356269836" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

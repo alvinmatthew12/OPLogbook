@@ -20,10 +20,12 @@ internal final class CharacterListItemCell: UICollectionViewCell {
         
         containerView.layer.cornerRadius = 20
         imageView.imageShape = .rect(cornerRadius: 15)
+        imageView.contentMode = .center
     }
     
     internal func setupData(_ data: Character) {
-        imageView.url = data.images.gridURL
+        imageView.backgroundColor = data.color
+        imageView.loadAndCrop(url: data.imageURL, targetSize: CGSize(width: 375, height: 250))
         label.text = data.nickname
     }
 }

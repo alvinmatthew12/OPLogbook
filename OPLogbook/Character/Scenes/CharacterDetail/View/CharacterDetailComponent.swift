@@ -8,7 +8,7 @@
 import UIKit
 
 internal enum CharacterDetailComponent: Equatable {
-    case image(URL?)
+    case image(URL?, UIColor)
     case name(_ epithet: String, _ name: String, _ affiliationImageName: String)
     case description(String)
     case vStackTile(label: String, value: String)
