@@ -4,14 +4,16 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharacterDetailViewController" customModule="OPLogbook" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="DEQ-C9-Kca" id="WQG-lT-pLt"/>
+                <outlet property="colorView" destination="zTl-ds-tjK" id="O60-S3-eys"/>
+                <outlet property="colorViewHeightConstraint" destination="8yf-eJ-uUk" id="zIL-dB-Vzc"/>
                 <outlet property="listViewContainer" destination="F4u-tx-wTe" id="IcH-fH-ODU"/>
                 <outlet property="navigationBarView" destination="ljZ-w6-tkk" id="MtA-Cq-oUC"/>
                 <outlet property="statusBarView" destination="m8h-wa-Kbm" id="l3k-aP-dn6"/>
@@ -24,11 +26,18 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4u-tx-wTe">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTl-ds-tjK" userLabel="colorView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
+                    <color key="backgroundColor" name="BB30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="240" id="8yf-eJ-uUk"/>
+                    </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljZ-w6-tkk">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4u-tx-wTe" userLabel="listView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljZ-w6-tkk" userLabel="navbar">
                     <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEQ-C9-Kca">
@@ -57,16 +66,20 @@
                         <constraint firstItem="69t-Oe-oAh" firstAttribute="leading" secondItem="DEQ-C9-Kca" secondAttribute="trailing" constant="15" id="oX7-OZ-hZb"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8h-wa-Kbm">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8h-wa-Kbm" userLabel="statusbar">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" name="BB30"/>
             <constraints>
+                <constraint firstItem="zTl-ds-tjK" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="1uk-JS-ivb"/>
                 <constraint firstItem="m8h-wa-Kbm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6HD-Wo-gKj"/>
+                <constraint firstItem="zTl-ds-tjK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9hl-Wz-9WF"/>
                 <constraint firstItem="ljZ-w6-tkk" firstAttribute="top" secondItem="m8h-wa-Kbm" secondAttribute="bottom" id="P17-bH-mLy"/>
                 <constraint firstItem="ljZ-w6-tkk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="RyA-f2-ZyB"/>
+                <constraint firstItem="zTl-ds-tjK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XEx-0F-rQo"/>
                 <constraint firstItem="F4u-tx-wTe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="le1-PI-0kY"/>
                 <constraint firstAttribute="bottom" secondItem="F4u-tx-wTe" secondAttribute="bottom" id="pdn-FA-ZCa"/>
                 <constraint firstItem="F4u-tx-wTe" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="qYI-Ak-B30"/>
@@ -81,8 +94,8 @@
     </objects>
     <resources>
         <image name="ic-circle-back-button" width="16.5" height="16.5"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="BB30">
+            <color red="0.15700000524520874" green="0.16500000655651093" blue="0.18799999356269836" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

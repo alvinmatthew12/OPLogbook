@@ -10,13 +10,15 @@ import RxSwift
 import UIKit
 
 internal final class CharacterDetailViewController: UIViewController {
-    @IBOutlet weak var listViewContainer: UIView!
+    @IBOutlet private weak var listViewContainer: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var statusBarView: UIView!
     @IBOutlet private weak var navigationBarView: UIView!
     @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var colorView: UIView!
+    @IBOutlet weak var colorViewHeightConstraint: NSLayoutConstraint!
     
-    private let registerCells: ListView<CharacterDetailComponent>.RegisterCells = { 
+    private let registerCells: ListView<CharacterDetailComponent>.RegisterCells = {
         [
             .init(CharacterDetailImageCell.self, forCellWithReuseIdentifier: CharacterDetailImageCell.identifier),
             .init(nib: CharacterDetailNameCell.nib, forCellWithReuseIdentifier: CharacterDetailNameCell.identifier),
@@ -142,7 +144,8 @@ internal final class CharacterDetailViewController: UIViewController {
     override internal func viewDidLoad() {
         super.viewDidLoad()
         
-        listView.backgroundColor = .BB30
+        colorView.isHidden = true
+        listView.backgroundColor = .clear
         listView.fixInView(listViewContainer)
         bindViewModel()
         setupRedux()
@@ -167,6 +170,12 @@ internal final class CharacterDetailViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        output.backgroundColor
+            .drive(onNext: { [weak self] color in
+                self?.colorView.backgroundColor = color
+            })
+            .disposed(by: disposeBag)
+        
         output.networkError
             .drive(onNext: { [weak self] error in
                 print(error.localizedDescription)
@@ -182,11 +191,14 @@ internal final class CharacterDetailViewController: UIViewController {
             .disposed(by: disposeBag)
         
         listView.didScroll = { [weak self] scrollView in
-            self?.handleNavigationBarAnimcation(yOffset: scrollView.contentOffset.y)
+            self?.handleYOffsetDidChange(scrollView.contentOffset.y)
         }
     }
     
-    private func handleNavigationBarAnimcation(yOffset: CGFloat) {
+    private func handleYOffsetDidChange(_ yOffset: CGFloat) {
+        colorView.isHidden = yOffset > 5
+        colorViewHeightConstraint.constant = yOffset < -235 ? 500 : 240
+        
         if yOffset > 150 {
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: { [weak self] in
                 guard let self = self else { return }

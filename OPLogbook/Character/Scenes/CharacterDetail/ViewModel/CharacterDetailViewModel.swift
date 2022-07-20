@@ -7,6 +7,7 @@
 
 import RxCocoa
 import RxSwift
+import UIKit
 
 internal final class CharacterDetailViewModel: ViewModelType {
     
@@ -25,6 +26,7 @@ internal final class CharacterDetailViewModel: ViewModelType {
     internal struct Output {
         internal let components: Driver<[CharacterDetailComponent]>
         internal let title: Driver<String>
+        internal let backgroundColor: Driver<UIColor>
         internal let networkError: Driver<NetworkError>
     }
     
@@ -76,6 +78,11 @@ internal final class CharacterDetailViewModel: ViewModelType {
                 return .just(character.name)
             }
         
+        let backgroundColor = character
+            .flatMapLatest { character -> Driver<UIColor> in
+                return .just(character.color)
+            }
+        
         let networkError = response
             .compactMap { result -> NetworkError? in
                 guard case let .failure(error) = result else { return nil }
@@ -85,6 +92,7 @@ internal final class CharacterDetailViewModel: ViewModelType {
         return Output(
             components: components,
             title: title,
+            backgroundColor: backgroundColor,
             networkError: networkError
         )
     }
