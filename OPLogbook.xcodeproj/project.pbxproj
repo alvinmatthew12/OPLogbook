@@ -18,7 +18,6 @@
 		E15CDF84288295BC0099D91C /* OPButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15CDF83288295BC0099D91C /* OPButton+Extension.swift */; };
 		E15CDF8628829BFD0099D91C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15CDF8528829BFD0099D91C /* UIFont+Extension.swift */; };
 		E15CDF882882AE650099D91C /* UIButton+BarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15CDF872882AE650099D91C /* UIButton+BarButtonItem.swift */; };
-		E170007D28845B0500E7C254 /* CharacterListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E170007C28845B0500E7C254 /* CharacterListViewController.xib */; };
 		E170008128845C8A00E7C254 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E170007F28845C8A00E7C254 /* CharacterDetailViewController.swift */; };
 		E170008228845C8A00E7C254 /* CharacterDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E170008028845C8A00E7C254 /* CharacterDetailViewController.xib */; };
 		E170008428845CAA00E7C254 /* CharacterDetailViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E170008328845CAA00E7C254 /* CharacterDetailViewController+CollectionView.swift */; };
@@ -83,7 +82,6 @@
 		E15CDF83288295BC0099D91C /* OPButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OPButton+Extension.swift"; sourceTree = "<group>"; };
 		E15CDF8528829BFD0099D91C /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		E15CDF872882AE650099D91C /* UIButton+BarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+BarButtonItem.swift"; sourceTree = "<group>"; };
-		E170007C28845B0500E7C254 /* CharacterListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterListViewController.xib; sourceTree = "<group>"; };
 		E170007F28845C8A00E7C254 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		E170008028845C8A00E7C254 /* CharacterDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailViewController.xib; sourceTree = "<group>"; };
 		E170008328845CAA00E7C254 /* CharacterDetailViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterDetailViewController+CollectionView.swift"; sourceTree = "<group>"; };
@@ -358,7 +356,6 @@
 		E1A95FCA28825DE7009367EA /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E170007C28845B0500E7C254 /* CharacterListViewController.xib */,
 				E1EAEEE228825E2A00C6425B /* CharacterListViewController.swift */,
 			);
 			path = ViewController;
@@ -656,7 +653,6 @@
 			files = (
 				E19AC5BF2885E00F001C19E9 /* CharacterDetailAttributeTileCell.xib in Resources */,
 				E1E0831F288B36EF00C0A5EA /* CharacterGalleryViewController.xib in Resources */,
-				E170007D28845B0500E7C254 /* CharacterListViewController.xib in Resources */,
 				E1A95FB1288256A4009367EA /* LaunchScreen.storyboard in Resources */,
 				E19AC5C72885EB6A001C19E9 /* CharacterDetailAttributeSliderItemCell.xib in Resources */,
 				E1A95FAE288256A4009367EA /* Assets.xcassets in Resources */,

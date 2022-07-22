@@ -7,9 +7,13 @@
 
 import UIKit
 
-internal final class CharacterListItemCell: UICollectionViewCell {
+internal final class CharacterListItemCell: ListViewCell {
     internal static let nib = UINib(nibName: "CharacterListItemCell", bundle: nil)
-    internal static let identifier = "CharacterListItemCell"
+    internal static let identifier = String(describing: CharacterListItemCell.self)
+    internal static var reusableCell = ListViewReuseableCell(
+        UINib(nibName: CharacterListItemCell.identifier, bundle: nil),
+        identifier: CharacterListItemCell.identifier
+    )
     
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet internal weak var imageView: OPImageView!
@@ -17,6 +21,10 @@ internal final class CharacterListItemCell: UICollectionViewCell {
     
     override internal func awakeFromNib() {
         super.awakeFromNib()
+        
+        let width: CGFloat = contentView.bounds.size.width
+        let height: CGFloat = width + 35
+        containerView.heightAnchor.constraint(equalToConstant: height).isActive = true
         
         containerView.layer.cornerRadius = 20
         imageView.imageShape = .rect(cornerRadius: 15)

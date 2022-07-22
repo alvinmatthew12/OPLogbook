@@ -32,19 +32,21 @@ public struct ListViewReuseableCell {
     }
 }
 
-public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
-    public typealias CustomizableLayout = ((_ item: C) -> ListViewLayout)?
+public final class ListView<T: Equatable>: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
+    public typealias CustomizableLayout = ((_ item: T) -> ListViewLayout)?
     public typealias CellForItemAt = ((
         _ collectionView: UICollectionView,
         _ indexPath: IndexPath,
-        _ item: C
+        _ item: T
     ) -> ListViewCell?)?
     
+    private let listViewCellIdentifier = String(describing: ListViewCell.self)
     public let defaultCellIdentifier = "default"
     
     private struct CollectionData {
-        internal let components: [C]
+        internal let components: [T?]
         internal let margins: UIEdgeInsets
+        internal var isPlaceholder: Bool = false
     }
     
     public let collectionView: UICollectionView = {
@@ -63,6 +65,7 @@ public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, U
     }()
     
     public var didScroll: ((_ scrollView: UIScrollView) -> Void)?
+    public var didSelectItemAt: ((_ item: T) -> Void)?
     
     private var registerCells: [ListViewReuseableCell]
     private var customizableLayout: CustomizableLayout
@@ -95,6 +98,7 @@ public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, U
     
     private func registeringCells() {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: defaultCellIdentifier)
+        collectionView.register(ListViewCell.self, forCellWithReuseIdentifier: listViewCellIdentifier)
         for cell in registerCells {
             if let cellClass = cell.cellClass {
                 collectionView.register(cellClass, forCellWithReuseIdentifier: cell.identifier)
@@ -104,15 +108,19 @@ public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, U
         }
     }
     
-    public func performUpdates(_ components: [C]) {
+    public func performUpdates(_ components: [T]) {
         var collectionData: [CollectionData] = []
         
-        var staggeredItem: [C] = []
+        var staggeredItems: [T?] = []
         var staggeredFirstMargin: UIEdgeInsets = .zero
         
         func appendStaggeredItems() {
-            collectionData.append(.init(components: staggeredItem, margins: staggeredFirstMargin))
-            staggeredItem = []
+            // To add blank item for staggered view that not complete the full width
+            if staggeredItems.count < 2 {
+                staggeredItems.append(nil)
+            }
+            collectionData.append(.init(components: staggeredItems, margins: staggeredFirstMargin))
+            staggeredItems = []
             staggeredFirstMargin = .zero
         }
         
@@ -129,12 +137,17 @@ public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, U
             case let .staggered(margins, _, lineSpacing):
                 var _margins = margins
                 _margins.bottom = max(lineSpacing, 0.1)
-                if staggeredItem.isEmpty {
+                if staggeredItems.isEmpty {
                     staggeredFirstMargin = _margins
                 }
-                staggeredItem.append(component)
+                staggeredItems.append(component)
+                
+                if staggeredItems.count > 1 {
+                    appendStaggeredItems()
+                }
+                
                 if let nextComponent = components[safe: i + 1],
-                   case .staggered = customizableLayout?(nextComponent) { } else {
+                   case .fullWidth = customizableLayout?(nextComponent) {
                     appendStaggeredItems()
                 }
                 
@@ -143,7 +156,7 @@ public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, U
             }
         }
         
-        if staggeredItem.isNotEmpty {
+        if staggeredItems.isNotEmpty {
             appendStaggeredItems()
         }
         
@@ -161,16 +174,32 @@ public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, U
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = collectionData[indexPath.section].components[indexPath.item]
-        if let cell = cellForItemAt?(collectionView, indexPath, item) {
+        if let item = item, let cell = cellForItemAt?(collectionView, indexPath, item) {
             cell.layout = customizableLayout?(item)
             return cell
         } else {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: defaultCellIdentifier, for: indexPath)
+            // Filling staggerd layout
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: listViewCellIdentifier, for: indexPath) as? ListViewCell {
+                if let previousItem = collectionData[indexPath.section].components[safe: indexPath.item - 1],
+                   let item = previousItem,
+                   let previousLayout = customizableLayout?(item) {
+                    cell.layout = previousLayout
+                    return cell
+                }
+            }
         }
+        return collectionView.dequeueReusableCell(withReuseIdentifier: defaultCellIdentifier, for: indexPath)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return collectionData[section].margins
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = collectionData[indexPath.section]
+        if let item = data.components[indexPath.item] {
+            didSelectItemAt?(item)
+        }
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {

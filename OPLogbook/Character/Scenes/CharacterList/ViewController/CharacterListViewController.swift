@@ -10,11 +10,23 @@ import RxSwift
 import UIKit
 
 internal final class CharacterListViewController: UIViewController {
-    @IBOutlet private weak var collectionView: UICollectionView!
+    private lazy var listView = ListView<Character>(
+        registerCells: [CharacterListItemCell.reusableCell],
+        customizableLayout: { _ in .staggered(
+            margins: UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30),
+            interItemSpacing: 25,
+            lineSpacing: 25
+        ) }
+    ) { collectionView, indexPath, character in
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterListItemCell.identifier, for: indexPath) as? CharacterListItemCell {
+            cell.setupData(character)
+            return cell
+        }
+        return nil
+    }
     
     private let disposeBag = DisposeBag()
     private let viewModel: CharacterListViewModel
-    private var characters: [Character] = []
     
     internal init() {
         viewModel = CharacterListViewModel(useCase: .live)
@@ -30,8 +42,13 @@ internal final class CharacterListViewController: UIViewController {
         
         title = "Characters"
         
+        listView.fixInView(self.view)
+        
+        listView.didSelectItemAt = { [weak self] character in
+            self?.navigateToDetail(character.id)
+        }
+        
         setupBarButton()
-        setupCollectionView()
         bindViewModel()
     }
     
@@ -40,24 +57,6 @@ internal final class CharacterListViewController: UIViewController {
         let searchButton = OPButton(title: "", mode: .image(.init(unifyIcon: .search)), size: .micro)
         navigationItem.leftBarButtonItem = menusButton.toBarButtonItem()
         navigationItem.rightBarButtonItem = searchButton.toBarButtonItem()
-    }
-    
-    private func setupCollectionView() {
-        collectionView.backgroundColor = .BB30
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 25
-        layout.minimumInteritemSpacing = 25
-        layout.sectionInset = UIEdgeInsets(top: 16, left: 30, bottom: 0, right: 30)
-        collectionView.setCollectionViewLayout(layout, animated: false)
-        
-        collectionView.register(CharacterListItemCell.nib, forCellWithReuseIdentifier: CharacterListItemCell.identifier)
     }
     
     private func bindViewModel() {
@@ -69,8 +68,7 @@ internal final class CharacterListViewController: UIViewController {
         
         output.characters
             .drive(onNext: { [weak self] characters in
-                self?.characters = characters
-                self?.collectionView.reloadData()
+                self?.listView.performUpdates(characters)
             })
             .disposed(by: disposeBag)
         
@@ -81,36 +79,8 @@ internal final class CharacterListViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func toDetailController(_ characterID: String) {
+    private func navigateToDetail(_ characterID: String) {
         let vc = CharacterDetailViewController(id: characterID)
         navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-extension CharacterListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return characters.count
-    }
-    
-    internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let character = characters[indexPath.item]
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterListItemCell.identifier, for: indexPath) as? CharacterListItemCell {
-            cell.setupData(character)
-            return cell
-        }
-        return UICollectionViewCell()
-    }
-    
-    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = collectionView.bounds.size.width
-        let padding: CGFloat = 30 + 12.5 // LR padding + interitem spacing
-        let itemWidth: CGFloat = (width / 2) - padding
-        let itemHeight: CGFloat = itemWidth + 35
-        return CGSize(width: itemWidth, height: itemHeight)
-    }
-    
-    internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let character = characters[indexPath.item]
-        toDetailController(character.id)
     }
 }
