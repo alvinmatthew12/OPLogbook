@@ -8,7 +8,11 @@
 import UIKit
 
 internal final class CharacterDetailDescriptionCell: ListViewCell {
-    internal static let identifier = "CharacterDetailDescriptionCell"
+    internal static let identifier = String(describing: CharacterDetailDescriptionCell.self)
+    internal static let reusableCell = ListViewReuseableCell(
+        CharacterDetailDescriptionCell.self,
+        identifier: CharacterDetailDescriptionCell.identifier
+    )
     
     internal let label = UILabel()
     

@@ -8,8 +8,11 @@
 import UIKit
 
 internal final class CharacterDetailVStackTileCell: ListViewCell {
-    internal static let nib = UINib(nibName: "CharacterDetailVStackTileCell", bundle: nil)
-    internal static let identifier = "CharacterDetailVStackTileCell"
+    internal static var identifier = String(describing: CharacterDetailVStackTileCell.self)
+    internal static var reusableCell = ListViewReuseableCell(
+        UINib(nibName: CharacterDetailVStackTileCell.identifier, bundle: nil),
+        identifier: CharacterDetailVStackTileCell.identifier
+    )
     
     @IBOutlet private weak var label: UILabel!
     @IBOutlet private weak var value: UILabel!

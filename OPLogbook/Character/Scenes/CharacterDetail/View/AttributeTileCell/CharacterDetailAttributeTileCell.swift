@@ -10,8 +10,11 @@ import RxSwift
 import UIKit
 
 internal final class CharacterDetailAttributeTileCell: ListViewCell {
-    internal static let nib = UINib(nibName: "CharacterDetailAttributeTileCell", bundle: nil)
-    internal static let identifier = "CharacterDetailAttributeTileCell"
+    internal static let identifier = String(describing: CharacterDetailAttributeTileCell.self)
+    internal static var reusableCell = ListViewReuseableCell(
+        UINib(nibName: CharacterDetailAttributeTileCell.identifier, bundle: nil),
+        identifier: CharacterDetailAttributeTileCell.identifier
+    )
 
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var imageView: OPImageView!

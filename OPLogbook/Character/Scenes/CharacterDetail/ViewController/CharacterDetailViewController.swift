@@ -16,60 +16,22 @@ internal final class CharacterDetailViewController: UIViewController {
     @IBOutlet private weak var navigationBarView: UIView!
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var colorView: UIView!
-    @IBOutlet weak var colorViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var colorViewHeightConstraint: NSLayoutConstraint!
     
-    private let registerCells: ListView<CharacterDetailComponent>.RegisterCells = {
-        [
-            .init(CharacterDetailImageCell.self, forCellWithReuseIdentifier: CharacterDetailImageCell.identifier),
-            .init(nib: CharacterDetailNameCell.nib, forCellWithReuseIdentifier: CharacterDetailNameCell.identifier),
-            .init(CharacterDetailDescriptionCell.self, forCellWithReuseIdentifier: CharacterDetailDescriptionCell.identifier),
-            .init(nib: CharacterDetailVStackTileCell.nib, forCellWithReuseIdentifier: CharacterDetailVStackTileCell.identifier),
-            .init(CharacterDetailLabelCell.self, forCellWithReuseIdentifier: CharacterDetailLabelCell.identifier),
-            .init(nib: CharacterDetailAttributeTileCell.nib, forCellWithReuseIdentifier: CharacterDetailAttributeTileCell.identifier),
-            .init(CharacterDetailAttributeSliderCell.self, forCellWithReuseIdentifier: CharacterDetailAttributeSliderCell.identifier)
-        ]
-    }
+    private let registerCells: [ListViewReuseableCell] = [
+        CharacterDetailImageCell.reusableCell,
+        CharacterDetailNameCell.reusableCell,
+        CharacterDetailDescriptionCell.reusableCell,
+        CharacterDetailVStackTileCell.reusableCell,
+        CharacterDetailLabelCell.reusableCell,
+        CharacterDetailAttributeTileCell.reusableCell,
+        CharacterDetailAttributeSliderCell.reusableCell
+    ]
     
-    private let customizableLayout: ListView<CharacterDetailComponent>.CustomizableLayout = { item in
-        let defaultMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        switch item {
-        case .image:
-            return .fullWidth(lineSpacing: 20)
-            
-        case .name, .description:
-            return .fullWidth(
-                margins: defaultMargins,
-                lineSpacing: 30
-            )
-            
-        case .vStackTile:
-            return .staggered(
-                margins: defaultMargins,
-                interItemSpacing: 10,
-                lineSpacing: 15
-            )
-            
-        case .label:
-            return .fullWidth(
-                margins: defaultMargins,
-                lineSpacing: 0
-            )
-            
-        case .attributeTile:
-            return .fullWidth(
-                margins: defaultMargins,
-                lineSpacing: 15
-            )
-            
-        case .attributeSlider:
-            return .fullWidth(
-                margins: .zero,
-                lineSpacing: 15
-            )
-        }
-    }
-    
-    private lazy var listView: ListView<CharacterDetailComponent> = .init(registerCells: registerCells, customizableLayout: customizableLayout) { [weak self] collectionView, indexPath, item in
+    private lazy var listView: ListView<CharacterDetailComponent> = .init(
+        registerCells: registerCells,
+        customizableLayout: { $0.customizableLayout }
+    ) { [weak self] collectionView, indexPath, item in
         guard let self = self else { return nil }
         
         switch item {

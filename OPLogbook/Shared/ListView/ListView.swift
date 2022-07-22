@@ -12,8 +12,27 @@ public enum ListViewLayout {
     case staggered(margins: UIEdgeInsets = .zero, interItemSpacing: CGFloat = 0, lineSpacing: CGFloat = 0)
 }
 
+public struct ListViewReuseableCell {
+    public let cellClass: AnyClass?
+    public let nib: UINib?
+    public let identifier: String
+    
+    public init(_ cellClass: AnyClass? = nil, identifier: String) {
+        self.init(cellClass, nil, identifier: identifier)
+    }
+    
+    public init(_ nib: UINib? = nil, identifier: String) {
+        self.init(nil, nib, identifier: identifier)
+    }
+    
+    internal init(_ cellClass: AnyClass? = nil, _ nib: UINib? = nil, identifier: String) {
+        self.cellClass = cellClass
+        self.nib = nib
+        self.identifier = identifier
+    }
+}
+
 public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
-    public typealias RegisterCells = (() -> [ReuseableCell])?
     public typealias CustomizableLayout = ((_ item: C) -> ListViewLayout)?
     public typealias CellForItemAt = ((
         _ collectionView: UICollectionView,
@@ -22,18 +41,6 @@ public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, U
     ) -> ListViewCell?)?
     
     public let defaultCellIdentifier = "default"
-    
-    public struct ReuseableCell {
-        public let cellClass: AnyClass?
-        public let nib: UINib?
-        public let identifier: String
-        
-        public init(_ cellClass: AnyClass? = nil, nib: UINib? = nil, forCellWithReuseIdentifier: String) {
-            self.cellClass = cellClass
-            self.nib = nib
-            self.identifier = forCellWithReuseIdentifier
-        }
-    }
     
     private struct CollectionData {
         internal let components: [C]
@@ -57,13 +64,13 @@ public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, U
     
     public var didScroll: ((_ scrollView: UIScrollView) -> Void)?
     
-    private var registerCells: RegisterCells
+    private var registerCells: [ListViewReuseableCell]
     private var customizableLayout: CustomizableLayout
     private var cellForItemAt: CellForItemAt
     
     private var collectionData: [CollectionData] = []
     
-    public init(registerCells: RegisterCells, customizableLayout: CustomizableLayout = nil, _ cellForItemAt: CellForItemAt) {
+    public init(registerCells: [ListViewReuseableCell], customizableLayout: CustomizableLayout = nil, _ cellForItemAt: CellForItemAt) {
         self.registerCells = registerCells
         self.customizableLayout = customizableLayout
         self.cellForItemAt = cellForItemAt
@@ -72,7 +79,7 @@ public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, U
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        registerCells = nil
+        registerCells = []
         customizableLayout = nil
         cellForItemAt = nil
         super.init(coder: aDecoder)
@@ -88,9 +95,7 @@ public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, U
     
     private func registeringCells() {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: defaultCellIdentifier)
-        
-        let cells = registerCells?() ?? []
-        for cell in cells {
+        for cell in registerCells {
             if let cellClass = cell.cellClass {
                 collectionView.register(cellClass, forCellWithReuseIdentifier: cell.identifier)
             } else if let nib = cell.nib {
@@ -133,7 +138,8 @@ public final class ListView<C: Equatable>: UIView, UICollectionViewDataSource, U
                     appendStaggeredItems()
                 }
                 
-            case .none: break
+            case .none:
+                collectionData.append(.init(components: [component], margins: .zero))
             }
         }
         

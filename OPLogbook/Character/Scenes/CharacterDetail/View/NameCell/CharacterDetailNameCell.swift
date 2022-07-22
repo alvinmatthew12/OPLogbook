@@ -8,8 +8,11 @@
 import UIKit
 
 internal final class CharacterDetailNameCell: ListViewCell {
-    internal static let nib = UINib(nibName: "CharacterDetailNameCell", bundle: nil)
-    internal static let identifier = "CharacterDetailNameCell"
+    internal static var identifier = String(describing: CharacterDetailNameCell.self)
+    internal static var reusableCell = ListViewReuseableCell(
+        UINib(nibName: CharacterDetailNameCell.identifier, bundle: nil),
+        identifier: CharacterDetailNameCell.identifier
+    )
     
     @IBOutlet private weak var epithetLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!

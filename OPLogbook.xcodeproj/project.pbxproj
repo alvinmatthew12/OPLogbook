@@ -49,6 +49,9 @@
 		E1DF10FD28832DE80024D31B /* CharacterDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF10FC28832DE80024D31B /* CharacterDetailImageCell.swift */; };
 		E1DF1100288330BA0024D31B /* FailableDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF10FF288330BA0024D31B /* FailableDecodable.swift */; };
 		E1DF11022883391D0024D31B /* CharacterDetailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF11012883391D0024D31B /* CharacterDetailComponent.swift */; };
+		E1E0831E288B36EF00C0A5EA /* CharacterGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E0831C288B36EF00C0A5EA /* CharacterGalleryViewController.swift */; };
+		E1E0831F288B36EF00C0A5EA /* CharacterGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E0831D288B36EF00C0A5EA /* CharacterGalleryViewController.xib */; };
+		E1E08326288B37AE00C0A5EA /* CharacterGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E08324288B37AE00C0A5EA /* CharacterGalleryCell.swift */; };
 		E1EAEEE428825E2A00C6425B /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEE228825E2A00C6425B /* CharacterListViewController.swift */; };
 		E1EAEEE82882620A00C6425B /* Characters.json in Resources */ = {isa = PBXBuildFile; fileRef = E1EAEEE72882620A00C6425B /* Characters.json */; };
 		E1EAEEEC2882625C00C6425B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEEB2882625C00C6425B /* Character.swift */; };
@@ -113,6 +116,9 @@
 		E1DF10FC28832DE80024D31B /* CharacterDetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailImageCell.swift; sourceTree = "<group>"; };
 		E1DF10FF288330BA0024D31B /* FailableDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableDecodable.swift; sourceTree = "<group>"; };
 		E1DF11012883391D0024D31B /* CharacterDetailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailComponent.swift; sourceTree = "<group>"; };
+		E1E0831C288B36EF00C0A5EA /* CharacterGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGalleryViewController.swift; sourceTree = "<group>"; };
+		E1E0831D288B36EF00C0A5EA /* CharacterGalleryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterGalleryViewController.xib; sourceTree = "<group>"; };
+		E1E08324288B37AE00C0A5EA /* CharacterGalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGalleryCell.swift; sourceTree = "<group>"; };
 		E1EAEEE228825E2A00C6425B /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		E1EAEEE72882620A00C6425B /* Characters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Characters.json; sourceTree = "<group>"; };
 		E1EAEEEB2882625C00C6425B /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -342,6 +348,7 @@
 		E1A95FC928825DCE009367EA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E1E0831B288B36A100C0A5EA /* CharacterGallery */,
 				E1FC27DC2882E68E00F85279 /* CharacterDetail */,
 				E1A95FC428825D8B009367EA /* CharacterList */,
 			);
@@ -395,6 +402,48 @@
 				E1DF10FF288330BA0024D31B /* FailableDecodable.swift */,
 			);
 			path = PropertyWrappers;
+			sourceTree = "<group>";
+		};
+		E1E0831B288B36A100C0A5EA /* CharacterGallery */ = {
+			isa = PBXGroup;
+			children = (
+				E1E08321288B375100C0A5EA /* View */,
+				E1E08322288B376C00C0A5EA /* ViewModel */,
+				E1E08320288B374600C0A5EA /* ViewController */,
+			);
+			path = CharacterGallery;
+			sourceTree = "<group>";
+		};
+		E1E08320288B374600C0A5EA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E1E0831C288B36EF00C0A5EA /* CharacterGalleryViewController.swift */,
+				E1E0831D288B36EF00C0A5EA /* CharacterGalleryViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E1E08321288B375100C0A5EA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1E08323288B378E00C0A5EA /* GalleryCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E1E08322288B376C00C0A5EA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E1E08323288B378E00C0A5EA /* GalleryCell */ = {
+			isa = PBXGroup;
+			children = (
+				E1E08324288B37AE00C0A5EA /* CharacterGalleryCell.swift */,
+			);
+			path = GalleryCell;
 			sourceTree = "<group>";
 		};
 		E1EAEEE628825FDB00C6425B /* Resources */ = {
@@ -606,6 +655,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E19AC5BF2885E00F001C19E9 /* CharacterDetailAttributeTileCell.xib in Resources */,
+				E1E0831F288B36EF00C0A5EA /* CharacterGalleryViewController.xib in Resources */,
 				E170007D28845B0500E7C254 /* CharacterListViewController.xib in Resources */,
 				E1A95FB1288256A4009367EA /* LaunchScreen.storyboard in Resources */,
 				E19AC5C72885EB6A001C19E9 /* CharacterDetailAttributeSliderItemCell.xib in Resources */,
@@ -669,6 +719,7 @@
 			files = (
 				E17000A52884C80B00E7C254 /* Collection+Extension.swift in Sources */,
 				E17000902884985800E7C254 /* Typography.swift in Sources */,
+				E1E08326288B37AE00C0A5EA /* CharacterGalleryCell.swift in Sources */,
 				E1EAEEE428825E2A00C6425B /* CharacterListViewController.swift in Sources */,
 				E1EAEEF62882656F00C6425B /* NetworkError.swift in Sources */,
 				E133C80928870F9A005EC285 /* ListViewCell.swift in Sources */,
@@ -677,6 +728,7 @@
 				E1DF10FD28832DE80024D31B /* CharacterDetailImageCell.swift in Sources */,
 				E1EAEF082882788800C6425B /* UIColor+Extension.swift in Sources */,
 				E178960D2887E47C00C9F35D /* UIImage+Extension.swift in Sources */,
+				E1E0831E288B36EF00C0A5EA /* CharacterGalleryViewController.swift in Sources */,
 				E133C80728870F1F005EC285 /* ListView.swift in Sources */,
 				E1FC27D62882B3FA00F85279 /* OPImageView+Extension.swift in Sources */,
 				E15CDF7F288291010099D91C /* Double+Extension.swift in Sources */,

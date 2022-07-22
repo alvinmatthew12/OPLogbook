@@ -8,7 +8,11 @@
 import UIKit
 
 internal final class CharacterDetailImageCell: ListViewCell {
-    internal static let identifier = "CharacterDetailImageCell"
+    internal static let identifier = String(describing: CharacterDetailImageCell.self)
+    internal static let reusableCell = ListViewReuseableCell(
+        CharacterDetailImageCell.self,
+        identifier: CharacterDetailImageCell.identifier
+    )
     
     private let imageView = OPImageView()
     

@@ -8,7 +8,11 @@
 import UIKit
 
 internal final class CharacterDetailAttributeSliderCell: ListViewCell {
-    internal static let identifier = "CharacterDetailAttributeSliderCell"
+    internal static let identifier = String(describing: CharacterDetailAttributeSliderCell.self)
+    internal static let reusableCell = ListViewReuseableCell(
+        CharacterDetailAttributeSliderCell.self,
+        identifier: CharacterDetailAttributeSliderCell.identifier
+    )
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
