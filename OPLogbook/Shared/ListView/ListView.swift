@@ -55,8 +55,7 @@ public final class ListView<T: Equatable>: UIView, UICollectionViewDataSource, U
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.width, height: 50)
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
-        collectionView.setCollectionViewLayout(layout, animated: false)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.showsVerticalScrollIndicator = false
@@ -64,7 +63,14 @@ public final class ListView<T: Equatable>: UIView, UICollectionViewDataSource, U
         return collectionView
     }()
     
+    public var contentInset: UIEdgeInsets = .zero {
+        didSet {
+            collectionView.contentInset = contentInset
+        }
+    }
+    
     public var didScroll: ((_ scrollView: UIScrollView) -> Void)?
+    public var didEndScrolling: ((_ scrollView: UIScrollView) -> Void)?
     public var didSelectItemAt: ((_ item: T) -> Void)?
     
     private var registerCells: [ListViewReuseableCell]
@@ -204,5 +210,9 @@ public final class ListView<T: Equatable>: UIView, UICollectionViewDataSource, U
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         didScroll?(scrollView)
+    }
+    
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        didEndScrolling?(scrollView)
     }
 }

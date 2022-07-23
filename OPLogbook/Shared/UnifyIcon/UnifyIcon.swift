@@ -12,6 +12,7 @@ public enum UnifyIcon: String, Equatable {
     case chevronRight
     case menus
     case search
+    case closeCircleFill
 }
 
 extension UnifyIcon {
@@ -25,6 +26,8 @@ extension UnifyIcon {
             return "ic-menus"
         case .search:
             return "ic-search"
+        case .closeCircleFill:
+            return "ic-close-circle-fill"
         }
     }
     

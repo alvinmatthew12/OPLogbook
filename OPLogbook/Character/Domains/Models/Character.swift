@@ -21,6 +21,8 @@ internal struct Character: Decodable, Equatable {
     private let _color: String
     @FailableDecodable
     internal var imageURL: URL?
+    @FailableDecodable
+    internal var backgroundURL: URL?
     
     internal var color: UIColor {
         UIColor(hexaRGB: _color) ?? .BB10
@@ -33,6 +35,7 @@ internal struct Character: Decodable, Equatable {
              attributes
         case _color = "color"
         case imageURL = "image_url"
+        case backgroundURL = "background_url"
     }
 }
 

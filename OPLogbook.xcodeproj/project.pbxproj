@@ -43,13 +43,13 @@
 		E1A95FAE288256A4009367EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A95FAD288256A4009367EA /* Assets.xcassets */; };
 		E1A95FB1288256A4009367EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A95FAF288256A4009367EA /* LaunchScreen.storyboard */; };
 		E1A95FC228825D2E009367EA /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95FC128825D2E009367EA /* ViewModelType.swift */; };
+		E1B157EF288C3E610045CF4C /* CharacterGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B157EE288C3E610045CF4C /* CharacterGalleryViewModel.swift */; };
 		E1C320922884428500311F8A /* CharacterListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C320902884428500311F8A /* CharacterListItemCell.swift */; };
 		E1C320932884428500311F8A /* CharacterListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C320912884428500311F8A /* CharacterListItemCell.xib */; };
 		E1DF10FD28832DE80024D31B /* CharacterDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF10FC28832DE80024D31B /* CharacterDetailImageCell.swift */; };
 		E1DF1100288330BA0024D31B /* FailableDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF10FF288330BA0024D31B /* FailableDecodable.swift */; };
 		E1DF11022883391D0024D31B /* CharacterDetailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF11012883391D0024D31B /* CharacterDetailComponent.swift */; };
 		E1E0831E288B36EF00C0A5EA /* CharacterGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E0831C288B36EF00C0A5EA /* CharacterGalleryViewController.swift */; };
-		E1E0831F288B36EF00C0A5EA /* CharacterGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E0831D288B36EF00C0A5EA /* CharacterGalleryViewController.xib */; };
 		E1E08326288B37AE00C0A5EA /* CharacterGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E08324288B37AE00C0A5EA /* CharacterGalleryCell.swift */; };
 		E1EAEEE428825E2A00C6425B /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEE228825E2A00C6425B /* CharacterListViewController.swift */; };
 		E1EAEEE82882620A00C6425B /* Characters.json in Resources */ = {isa = PBXBuildFile; fileRef = E1EAEEE72882620A00C6425B /* Characters.json */; };
@@ -109,13 +109,13 @@
 		E1A95FB0288256A4009367EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1A95FB2288256A4009367EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1A95FC128825D2E009367EA /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		E1B157EE288C3E610045CF4C /* CharacterGalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGalleryViewModel.swift; sourceTree = "<group>"; };
 		E1C320902884428500311F8A /* CharacterListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListItemCell.swift; sourceTree = "<group>"; };
 		E1C320912884428500311F8A /* CharacterListItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterListItemCell.xib; sourceTree = "<group>"; };
 		E1DF10FC28832DE80024D31B /* CharacterDetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailImageCell.swift; sourceTree = "<group>"; };
 		E1DF10FF288330BA0024D31B /* FailableDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableDecodable.swift; sourceTree = "<group>"; };
 		E1DF11012883391D0024D31B /* CharacterDetailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailComponent.swift; sourceTree = "<group>"; };
 		E1E0831C288B36EF00C0A5EA /* CharacterGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGalleryViewController.swift; sourceTree = "<group>"; };
-		E1E0831D288B36EF00C0A5EA /* CharacterGalleryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterGalleryViewController.xib; sourceTree = "<group>"; };
 		E1E08324288B37AE00C0A5EA /* CharacterGalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGalleryCell.swift; sourceTree = "<group>"; };
 		E1EAEEE228825E2A00C6425B /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		E1EAEEE72882620A00C6425B /* Characters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Characters.json; sourceTree = "<group>"; };
@@ -415,7 +415,6 @@
 			isa = PBXGroup;
 			children = (
 				E1E0831C288B36EF00C0A5EA /* CharacterGalleryViewController.swift */,
-				E1E0831D288B36EF00C0A5EA /* CharacterGalleryViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -431,6 +430,7 @@
 		E1E08322288B376C00C0A5EA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E1B157EE288C3E610045CF4C /* CharacterGalleryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -652,7 +652,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E19AC5BF2885E00F001C19E9 /* CharacterDetailAttributeTileCell.xib in Resources */,
-				E1E0831F288B36EF00C0A5EA /* CharacterGalleryViewController.xib in Resources */,
 				E1A95FB1288256A4009367EA /* LaunchScreen.storyboard in Resources */,
 				E19AC5C72885EB6A001C19E9 /* CharacterDetailAttributeSliderItemCell.xib in Resources */,
 				E1A95FAE288256A4009367EA /* Assets.xcassets in Resources */,
@@ -743,6 +742,7 @@
 				E19AC5B92885C928001C19E9 /* CharacterDetailLabelCell.swift in Sources */,
 				E1EAEEF32882648600C6425B /* CharacterUseCase.swift in Sources */,
 				E1FC27D42882B3C600F85279 /* OPImageView.swift in Sources */,
+				E1B157EF288C3E610045CF4C /* CharacterGalleryViewModel.swift in Sources */,
 				E133C80428870ECD005EC285 /* UIApplication+Extension.swift in Sources */,
 				E17000922884993700E7C254 /* Typography+Constant.swift in Sources */,
 				E15CDF82288295880099D91C /* OPButton.swift in Sources */,

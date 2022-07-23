@@ -80,11 +80,12 @@ internal final class CharacterDetailViewController: UIViewController {
         return nil
     }
     
-    
     private let disposeBag = DisposeBag()
     private let viewModel: CharacterDetailViewModel
+    private let characterID: String
     
     internal init(id: String) {
+        characterID = id
         viewModel = CharacterDetailViewModel(id: id, useCase: .live)
         super.init(nibName: "CharacterDetailViewController", bundle: nil)
     }
@@ -111,6 +112,12 @@ internal final class CharacterDetailViewController: UIViewController {
         listView.fixInView(listViewContainer)
         bindViewModel()
         setupRedux()
+        
+        listView.didSelectItemAt = { [weak self] item in
+            if case .image = item {
+                self?.navigateToGallery()
+            }
+        }
     }
     
     private func bindViewModel() {
@@ -157,9 +164,21 @@ internal final class CharacterDetailViewController: UIViewController {
         }
     }
     
+    private func navigateToGallery() {
+        let vc = CharacterGalleryViewController(id: characterID)
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .fullScreen
+        vc.isModalInPresentation = false
+        self.present(vc, animated: true)
+    }
+    
     private func handleYOffsetDidChange(_ yOffset: CGFloat) {
         colorView.isHidden = yOffset > 5
         colorViewHeightConstraint.constant = yOffset < -235 ? 480 : 240
+        
+        if yOffset < -200 {
+            navigateToGallery()
+        }
         
         if yOffset > 150 {
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: { [weak self] in

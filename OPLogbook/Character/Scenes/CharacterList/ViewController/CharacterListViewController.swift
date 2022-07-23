@@ -43,6 +43,7 @@ internal final class CharacterListViewController: UIViewController {
         title = "Characters"
         
         listView.fixInView(self.view)
+        listView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
         
         listView.didSelectItemAt = { [weak self] character in
             self?.navigateToDetail(character.id)
