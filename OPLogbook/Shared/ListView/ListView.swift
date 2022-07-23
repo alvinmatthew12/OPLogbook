@@ -116,7 +116,7 @@ public final class ListView<T: Equatable>: UIView, UICollectionViewDataSource, U
         
         func appendStaggeredItems() {
             // To add blank item for staggered view that not complete the full width
-            if staggeredItems.count < 2 {
+            if staggeredItems.count == 1 {
                 staggeredItems.append(nil)
             }
             collectionData.append(.init(components: staggeredItems, margins: staggeredFirstMargin))

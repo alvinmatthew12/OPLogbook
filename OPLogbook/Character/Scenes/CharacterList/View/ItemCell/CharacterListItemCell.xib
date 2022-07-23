@@ -50,18 +50,18 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="GPA-iw-PvA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7dK-qs-ZHY"/>
                 <constraint firstItem="GPA-iw-PvA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Sh4-gm-N2P"/>
-                <constraint firstAttribute="bottom" secondItem="GPA-iw-PvA" secondAttribute="bottom" id="TLk-wA-zgd"/>
-                <constraint firstItem="GPA-iw-PvA" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="width" constant="35" id="Z06-8p-NTA"/>
-                <constraint firstItem="GPA-iw-PvA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="xnc-fA-cCe"/>
+                <constraint firstAttribute="bottom" secondItem="GPA-iw-PvA" secondAttribute="bottom" id="ndr-ck-CTL"/>
                 <constraint firstAttribute="trailing" secondItem="GPA-iw-PvA" secondAttribute="trailing" id="y0F-Jv-O3V"/>
             </constraints>
+            <size key="customSize" width="158" height="213"/>
             <connections>
                 <outlet property="containerView" destination="GPA-iw-PvA" id="1r0-D3-aa9"/>
                 <outlet property="imageView" destination="N1Z-yc-foK" id="w5A-Z9-vLo"/>
                 <outlet property="label" destination="JKs-dg-8MV" id="ysJ-sy-Laf"/>
             </connections>
-            <point key="canvasLocation" x="131.15942028985509" y="93.75"/>
+            <point key="canvasLocation" x="140.57971014492756" y="104.79910714285714"/>
         </collectionViewCell>
     </objects>
     <resources>

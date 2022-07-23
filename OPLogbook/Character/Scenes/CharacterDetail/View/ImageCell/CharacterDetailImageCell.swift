@@ -26,7 +26,8 @@ internal final class CharacterDetailImageCell: ListViewCell {
     
     internal func setup(url: URL?, backgroundColor: UIColor) {
         imageView.backgroundColor = backgroundColor
-        imageView.loadAndCrop(url: url, targetSize: CGSize(width: 375, height: 250))
+        let width: CGFloat = UIScreen.main.bounds.size.width
+        imageView.loadAndCrop(url: url, targetSize: CGSize(width: width, height: 250))
     }
 
     required internal init?(coder aDecoder: NSCoder) {

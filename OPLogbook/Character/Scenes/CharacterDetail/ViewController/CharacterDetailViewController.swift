@@ -159,7 +159,7 @@ internal final class CharacterDetailViewController: UIViewController {
     
     private func handleYOffsetDidChange(_ yOffset: CGFloat) {
         colorView.isHidden = yOffset > 5
-        colorViewHeightConstraint.constant = yOffset < -235 ? 500 : 240
+        colorViewHeightConstraint.constant = yOffset < -235 ? 480 : 240
         
         if yOffset > 150 {
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: { [weak self] in

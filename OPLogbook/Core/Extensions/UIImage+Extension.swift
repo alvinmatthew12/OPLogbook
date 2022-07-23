@@ -66,16 +66,12 @@ extension UIImage {
         } else if to.width < to.height { //Portrait
             cropHeight = contextSize.height
             cropWidth = contextSize.height * cropAspect
-            if position == .center {
-                posX = (contextSize.width - cropWidth) / 2
-            }
+            posX = (contextSize.width - cropWidth) / 2
         } else { //Square
             if contextSize.width >= contextSize.height { //Square on landscape (or square)
                 cropHeight = contextSize.height
                 cropWidth = contextSize.height * cropAspect
-                if position == .center {
-                    posX = (contextSize.width - cropWidth) / 2
-                }
+                posX = (contextSize.width - cropWidth) / 2
             }else{ //Square on portrait
                 cropWidth = contextSize.width
                 cropHeight = contextSize.width / cropAspect

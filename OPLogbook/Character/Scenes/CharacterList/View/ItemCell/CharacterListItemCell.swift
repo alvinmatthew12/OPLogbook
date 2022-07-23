@@ -22,9 +22,11 @@ internal final class CharacterListItemCell: ListViewCell {
     override internal func awakeFromNib() {
         super.awakeFromNib()
         
-        let width: CGFloat = contentView.bounds.size.width
-        let height: CGFloat = width + 35
-        containerView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        let width: CGFloat = UIScreen.main.bounds.size.width
+        let padding: CGFloat = 30 + 12.5 // LR padding + interitem spacing
+        let itemWidth: CGFloat = (width / 2) - padding
+        let itemHeight: CGFloat = itemWidth + 35
+        containerView.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
         
         containerView.layer.cornerRadius = 20
         imageView.imageShape = .rect(cornerRadius: 15)

@@ -11,20 +11,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CharacterDetailVStackTileCell" customModule="OPLogbook" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="265" height="42"/>
+            <rect key="frame" x="0.0" y="0.0" width="67" height="42"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="265" height="42"/>
+                <rect key="frame" x="0.0" y="0.0" width="67" height="42"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMg-6e-Tra">
-                        <rect key="frame" x="0.0" y="0.0" width="265" height="21"/>
+                        <rect key="frame" x="0.0" y="0.0" width="67" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G85-px-STr">
-                        <rect key="frame" x="0.0" y="21" width="265" height="21"/>
+                        <rect key="frame" x="0.0" y="21" width="67" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -41,12 +41,12 @@
                 <constraint firstItem="G85-px-STr" firstAttribute="top" secondItem="pMg-6e-Tra" secondAttribute="bottom" id="nUJ-Fu-mYQ"/>
                 <constraint firstAttribute="trailing" secondItem="pMg-6e-Tra" secondAttribute="trailing" id="vrE-SH-eAp"/>
             </constraints>
-            <size key="customSize" width="265" height="42"/>
+            <size key="customSize" width="67" height="42"/>
             <connections>
                 <outlet property="label" destination="pMg-6e-Tra" id="zUm-Z8-Lai"/>
                 <outlet property="value" destination="G85-px-STr" id="dxX-L8-glL"/>
             </connections>
-            <point key="canvasLocation" x="287.68115942028987" y="81.696428571428569"/>
+            <point key="canvasLocation" x="144.20289855072465" y="81.696428571428569"/>
         </collectionViewCell>
     </objects>
 </document>
