@@ -20,6 +20,7 @@ internal final class CharacterGalleryViewController: UIViewController, UICollect
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isPagingEnabled = true
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
         collectionView.register(CharacterGalleryCell.self, forCellWithReuseIdentifier: CharacterGalleryCell.identifier)
         return collectionView

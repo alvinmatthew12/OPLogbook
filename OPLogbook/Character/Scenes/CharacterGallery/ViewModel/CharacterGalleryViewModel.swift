@@ -42,7 +42,15 @@ internal final class CharacterGalleryViewModel: ViewModelType {
         
         let gallery = character
             .flatMapLatest { char -> Driver<[CharacterGalleryData]> in
-                return .just([.init(imageURL: char.imageURL, backgroundURL: char.backgroundURL)])
+                var data: [CharacterGalleryData] = [
+                    .init(imageURL: char.imageURL, backgroundURL: char.backgroundURL)
+                ]
+                if let backgroundURL = char.backgroundURL {
+                    data.append(
+                        .init(imageURL: backgroundURL, contentMode: .scaleAspectFit)
+                    )
+                }
+                return .just(data)
             }
         
         let networkError = response

@@ -21,7 +21,7 @@ public class OPImageView: UIView {
         }
     }
     
-    public var imageName: String? {
+    public var image: UIImage? {
         didSet {
             setup()
         }
@@ -57,10 +57,11 @@ public class OPImageView: UIView {
     }
     
     private var isFetchingImage: Bool = false
+    private var isBrokenImage: Bool = false
     
-    public var hideDefaultImage: Bool = false {
+    public var hideBrokenImage: Bool = false {
         didSet {
-            if hideDefaultImage {
+            if isBrokenImage, hideBrokenImage {
                 imageView.image = nil
             }
         }
@@ -83,16 +84,13 @@ public class OPImageView: UIView {
     private func setup() {
         setupView()
         
-        if let imageName = imageName {
-            setLocalImage(imageName)
+        if let image = image {
+            setLocalImage(image)
         } else if let url = url {
             fetchImage(url: url)
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                if self.hideDefaultImage == false {
-                    self.imageName = OPImageView.brokenImageName
-                }
-                self.shimmerView.removeFromSuperview()
+                self.setBrokenImage()
             }
         }
     }
@@ -109,12 +107,20 @@ public class OPImageView: UIView {
         }
     }
     
-    private func setLocalImage(_ imageName: String) {
-        if imageName == OPImageView.brokenImageName {
+    private func setLocalImage(_ image: UIImage) {
+        imageView.image = image
+        shimmerView.removeFromSuperview()
+    }
+    
+    private func setBrokenImage() {
+        isBrokenImage = true
+        if hideBrokenImage == false {
+            imageView.image = UIImage(named: OPImageView.brokenImageName)
             imageView.contentMode = .scaleAspectFit
             backgroundColor = UIColor(hexaRGB: "D8D8D8")
+        } else {
+            imageView.image = nil
         }
-        imageView.image = UIImage(named: imageName)
         shimmerView.removeFromSuperview()
     }
     
@@ -134,10 +140,7 @@ public class OPImageView: UIView {
             }
             .onFailure { [weak self] error in
                 self?.isFetchingImage = false
-                if self?.hideDefaultImage == false {
-                    self?.imageName = OPImageView.brokenImageName
-                }
-                self?.shimmerView.removeFromSuperview()
+                self?.setBrokenImage()
             }
         
         if setAutomatically {
@@ -162,10 +165,7 @@ public class OPImageView: UIView {
             }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                if self.hideDefaultImage == false {
-                    self.imageName = OPImageView.brokenImageName
-                }
-                self.shimmerView.removeFromSuperview()
+                self.setBrokenImage()
             }
         }
     }

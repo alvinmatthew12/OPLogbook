@@ -8,8 +8,9 @@
 import UIKit
 
 internal struct CharacterGalleryData {
-    internal let imageURL: URL?
-    internal let backgroundURL: URL?
+    internal var imageURL: URL?
+    internal var backgroundURL: URL? = nil
+    internal var contentMode: UIView.ContentMode? = nil
 }
 
 internal final class CharacterGalleryCell: UICollectionViewCell {
@@ -21,7 +22,7 @@ internal final class CharacterGalleryCell: UICollectionViewCell {
     override internal init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundImageView.hideDefaultImage = true
+        backgroundImageView.hideBrokenImage = true
         backgroundImageView.alpha = 0.3
         
         backgroundImageView.fixInView(self.contentView)
@@ -36,24 +37,38 @@ internal final class CharacterGalleryCell: UICollectionViewCell {
     }
     
     internal func setupData(_ data: CharacterGalleryData) {
-        setupCharacterImage(data.imageURL)
-        backgroundImageView.url = data.backgroundURL
+        setupCharacterImage(data.imageURL, data.contentMode)
+        if let url = data.backgroundURL {
+            backgroundImageView.url = url
+        }
     }
     
-    private func setupCharacterImage(_ url: URL?) {
+    private func setupCharacterImage(_ url: URL?, _ contentMode: UIView.ContentMode?) {
+        if let contentMode = contentMode {
+            self.imageView.contentMode = contentMode
+            self.imageView.url = url
+            return
+        }
+        
         OPImageView().fetchImage(url: url, setAutomatically: false) { [weak self] result in
             guard let self = self else { return }
+            
             let width = self.bounds.width
             let delta = width - 375
             let height = result.image.size.height + delta
             
-            let contentHeight = self.bounds.height / 1.25
-            if height > contentHeight {
-                self.imageView.contentMode = .top
+            if let contentMode = contentMode {
+                self.imageView.contentMode = contentMode
             } else {
-                self.imageView.contentMode = .center
+                let contentHeight = self.bounds.height / 1.25
+                if height > contentHeight {
+                    self.imageView.contentMode = .top
+                } else {
+                    self.imageView.contentMode = .center
+                }
             }
-            self.imageView.loadAndCrop(url: url, targetSize: CGSize(width: width, height: height))
+            
+            self.imageView.loadAndCrop(image: result.image, targetSize: CGSize(width: width, height: height))
         }
     }
 }

@@ -27,6 +27,6 @@ internal final class CharacterDetailNameCell: ListViewCell {
     internal func setupData(_ epithet: String, _ name: String, _ affiliationImageName: String) {
         epithetLabel.attributedText = .display1(epithet, color: .GY50, textStyle: [.bold])
         nameLabel.attributedText = .heading1(name)
-        affiliationImageView.imageName = affiliationImageName
+        affiliationImageView.image = UIImage(named: affiliationImageName)
     }
 }
