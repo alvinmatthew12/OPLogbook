@@ -47,7 +47,7 @@ internal final class CharacterGalleryViewModel: ViewModelType {
                 ]
                 if let backgroundURL = char.backgroundURL {
                     data.append(
-                        .init(imageURL: backgroundURL, contentMode: .scaleAspectFit)
+                        .init(imageURL: backgroundURL, contentMode: .scaleAspectFit, backgroundColor: .white)
                     )
                 }
                 return .just(data)

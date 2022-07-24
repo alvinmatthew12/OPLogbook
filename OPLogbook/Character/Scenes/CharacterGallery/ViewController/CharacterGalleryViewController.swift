@@ -26,7 +26,7 @@ internal final class CharacterGalleryViewController: UIViewController, UICollect
         return collectionView
     }()
     
-    private let closeButton: OPButton = {
+    private var closeButton: OPButton = {
         let button = OPButton(title: "")
         button.mode = .image(UIImage(unifyIcon: .closeCircleFill, color: .BW50))
         button.size = .micro
@@ -103,5 +103,20 @@ internal final class CharacterGalleryViewController: UIViewController, UICollect
         }
         
         return collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath)
+    }
+    
+    internal func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let width = self.collectionView.frame.size.width
+        let index = Int(self.collectionView.contentOffset.x / width)
+        let selectedBackground = gallery[index].backgroundColor
+        if selectedBackground.isLight() == true {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: { [weak self] in
+                self?.closeButton.mode = .image(UIImage(unifyIcon: .closeCircleFill, color: .GY50))
+            })
+        } else {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: { [weak self] in
+                self?.closeButton.mode = .image(UIImage(unifyIcon: .closeCircleFill, color: .BW50))
+            })
+        }
     }
 }

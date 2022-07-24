@@ -475,11 +475,11 @@
 				E1EAEEF72882662900C6425B /* JSONDecoder+Extension.swift */,
 				E15CDF7E288291010099D91C /* Double+Extension.swift */,
 				E15CDF8528829BFD0099D91C /* UIFont+Extension.swift */,
-				E15CDF872882AE650099D91C /* UIButton+BarButtonItem.swift */,
 				E1FC27D72882B73C00F85279 /* UIView+Extension.swift */,
+				E15CDF872882AE650099D91C /* UIButton+BarButtonItem.swift */,
+				E178960C2887E47C00C9F35D /* UIImage+Extension.swift */,
 				E17000A42884C80B00E7C254 /* Collection+Extension.swift */,
 				E133C80328870ECD005EC285 /* UIApplication+Extension.swift */,
-				E178960C2887E47C00C9F35D /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

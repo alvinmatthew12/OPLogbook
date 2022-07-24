@@ -11,6 +11,7 @@ internal struct CharacterGalleryData {
     internal var imageURL: URL?
     internal var backgroundURL: URL? = nil
     internal var contentMode: UIView.ContentMode? = nil
+    internal var backgroundColor: UIColor = .clear
 }
 
 internal final class CharacterGalleryCell: UICollectionViewCell {
@@ -41,6 +42,7 @@ internal final class CharacterGalleryCell: UICollectionViewCell {
         if let url = data.backgroundURL {
             backgroundImageView.url = url
         }
+        backgroundColor = data.backgroundColor
     }
     
     private func setupCharacterImage(_ url: URL?, _ contentMode: UIView.ContentMode?) {
